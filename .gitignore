@@ -14,3 +14,5 @@ object-interface/.idea/
 object-interface/target/
 operators/.idea/
 operators/target/
+string-equals-final/.idea/
+string-equals-final/target/

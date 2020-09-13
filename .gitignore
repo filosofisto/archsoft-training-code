@@ -1,4 +1,6 @@
 .idea/
 *.iml
-hello-world/.idea
-hello-world/target
+hello-world/.idea/
+hello-world/target/
+object-oriented-1/.idea/
+object-oriented-1/target/

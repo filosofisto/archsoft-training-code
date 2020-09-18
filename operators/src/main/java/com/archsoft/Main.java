@@ -154,6 +154,7 @@ public class Main {
     }
 
     private static boolean alteraVariavelERetornaTrue() {
+        var = 'A';
         return true;
     }
 }

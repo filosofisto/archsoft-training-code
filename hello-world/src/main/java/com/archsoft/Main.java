@@ -7,7 +7,7 @@ public class Main {
     // Comentario
     public static void main(String[] args) {
         // Mensagem para o usuario
-        out.println("Hello Java - Parabens 25 anos");
+        out.println("Alo Mundo Java ");
 
         if (args.length == 2) {
             Calculator calculator = new Calculator();

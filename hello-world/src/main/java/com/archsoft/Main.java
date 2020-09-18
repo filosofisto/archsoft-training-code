@@ -6,6 +6,7 @@ import static java.lang.System.out;
 
 public class Main {
 
+    // Comentario
     public static void main(String[] args) {
         out.println("Hello Java");
 

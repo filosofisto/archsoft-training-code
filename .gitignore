@@ -20,3 +20,5 @@ string-common-methods/.idea/
 string-common-methods/target/
 string-builder/.idea/
 string-builder/target/
+format-number/.idea/
+format-number/target/

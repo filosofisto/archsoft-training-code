@@ -122,7 +122,7 @@ public class Main {
         a = a * 3;
         out.printf("a * 3: %d\n", a);
         a = 4;
-        a *= 3;
+        a *= 3; // a = a * 3
         out.printf("a *= 3: %d\n", a);
 
         if (a % 2 == 0) {

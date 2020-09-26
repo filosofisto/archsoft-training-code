@@ -12,3 +12,4 @@
 - Acrescente o conceito de Gerente, que eh um Funcionario com uma ajuda de custo
 - Como voce implementaria o calcBeneficio para Gerente?
 - Crie testes unitarios para verificar suas implementacoes 
+- Como seria uma implementacao usando Composicao para o calculo de custo?

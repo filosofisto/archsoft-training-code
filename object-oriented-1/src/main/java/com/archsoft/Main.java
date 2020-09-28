@@ -3,9 +3,13 @@ package com.archsoft;
 public class Main {
 
     public static void main(String[] args) {
-        Pessoa p = new Pessoa();
-        p.setNome("Francisco");
-        p.setIdade(77);
+        Pessoa p = new Pessoa("Francisco", 77);
+        Pessoa pele = new Pessoa();
+        pele.setNome("Pele");
+        pele.setIdade(80);
+
+//        p.setNome("Francisco");
+//        p.setIdade(77);
         //p.idade = -1;
 
 //        System.out.printf("Nome: %s, Idade: %d", p.getNome(), p.getIdade());

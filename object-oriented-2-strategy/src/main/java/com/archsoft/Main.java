@@ -3,6 +3,7 @@ package com.archsoft;
 import com.archsoft.calcbeneficio.CalcBeneficioDefault;
 import com.archsoft.calcbeneficio.CalcBeneficioDiretor;
 import com.archsoft.calcbeneficio.CalcBeneficioGerente;
+import com.archsoft.calcbeneficio.CalcBeneficioStrategy;
 
 import static java.lang.System.out;
 

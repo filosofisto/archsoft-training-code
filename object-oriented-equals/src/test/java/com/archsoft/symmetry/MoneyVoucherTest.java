@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MoneyVoucherTest {
 
@@ -23,7 +22,7 @@ public class MoneyVoucherTest {
         voucher.setStore("Amazon");
 
         // false -> expected
-        assertNotEquals(cash, voucher);
+        assertFalse(voucher.equals(cash));
     }
 
     @Test
@@ -38,7 +37,7 @@ public class MoneyVoucherTest {
         voucher.setStore("Amazon");
 
         // false -> expected => error - money is not a voucher
-        assertNotEquals(voucher, cash);
+        assertFalse(cash.equals(voucher));
     }
 
     @Test

@@ -1,6 +1,6 @@
 package com.archsoft;
 
-public class Pessoa {
+public class Pessoa implements Cloneable {
 
     private String nome;
     private int idade;
@@ -28,5 +28,13 @@ public class Pessoa {
 
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
+    }
+
+    public Pessoa clone() throws CloneNotSupportedException {
+        Pessoa clone = (Pessoa) super.clone();
+        clone.setNome(new String(nome));
+        clone.setCidade(cidade.clone());
+
+        return clone;
     }
 }

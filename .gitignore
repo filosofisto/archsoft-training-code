@@ -6,6 +6,8 @@ object-oriented-1/.idea/
 object-oriented-1/target/
 object-oriented-2/.idea/
 object-oriented-2/target/
+object-oriented-2-strategy/.idea/
+object-oriented-2-strategy/target/
 object-clonning/.idea/
 object-clonning/target/
 object-oriented-figura/.idea/
@@ -14,6 +16,8 @@ object-interface/.idea/
 object-interface/target/
 object-oriented-2-strategy/.idea/
 object-oriented-2-strategy/target/
+object-oriented-equals/.idea/
+object-oriented-equals/target/
 operators/.idea/
 operators/target/
 string-equals-final/.idea/
@@ -64,3 +68,9 @@ lista1-10/.idea/
 lista1-10/target/
 lista1-16/.idea/
 lista1-16/target/
+generic-1/.idea/
+generic-1/target/
+object-oriented-generic-1/.idea/
+object-oriented-generic-1/target/
+object-oriented-generic-2/.idea/
+object-oriented-generic-2/target/

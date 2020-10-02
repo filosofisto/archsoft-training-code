@@ -38,8 +38,8 @@ public class Device {
                 Objects.equals(name, device.name);
     }
 
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(serialNumber, name);
-//    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(serialNumber, name);
+    }
 }

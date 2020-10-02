@@ -6,13 +6,13 @@ import java.util.List;
 public class New {
 
 	void exemplo() {
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		
 		list.add("Primeiro");
 		list.add("Segundo");
 		//Erro de compilacao
-		//list.add(new Object());
-		//list.add(1);
+//		list.add(new Object());
+//		list.add(1);
 		
 		List<Integer> numeros = new ArrayList<Integer>();
 		numeros.add(10);

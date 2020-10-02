@@ -49,6 +49,7 @@ public class MoneyVoucherTest {
         map.put(new Device("12367", "Android X"), "Very good cellphone");
         map.put(new Device("34355", "Xingling 11"), "Good cellphone");
 
-        assertNotNull(map.get(new Device("12345", "iPhone 7")));
+//        assertNotNull(map.get(new Device("12345", "iPhone 7")));
+        assertEquals("Great cellphone", map.get(new Device("12345", "iPhone 7")));
     }
 }

@@ -28,6 +28,14 @@ public class DatabaseConnection implements Connection {
 
     @Override
     public void close() {
-        opened = false;
+        opened = !closeConnection();
     }
+
+    private boolean closeConnection() {
+        // try close connection with database
+
+        return true;
+    }
+
+
 }

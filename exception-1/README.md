@@ -1,4 +1,4 @@
-# Exception-2
+# Exception-1
 
 ## Objetivo
 - Excecoes comuns: ArrayIndexOutOfBoundException e ArithmeticException.

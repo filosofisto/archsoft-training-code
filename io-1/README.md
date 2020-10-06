@@ -1,3 +1,3 @@
-# Operators
+# IO 1
 ## Objetivo
-- Demonstrar riqueza de operadores da linguagem
+- Demonstrar a classe File, File.separator

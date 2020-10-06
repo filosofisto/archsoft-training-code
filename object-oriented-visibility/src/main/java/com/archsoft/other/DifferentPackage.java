@@ -15,6 +15,6 @@ public class DifferentPackage {
         // p.protectedField = 12;
 
         // Compile error: private visibility
-        // privateField = 13;
+        // p.privateField = 13;
     }
 }

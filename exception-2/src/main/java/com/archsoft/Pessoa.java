@@ -18,7 +18,11 @@ public class Pessoa {
     }
 
     public void setIdade(int idade) throws Exception {
-        if (idade < 0) {
+//        if (idade >= 0 && idade < 150) {
+//            this.idade = idade;
+//        }
+
+        if (idade >= 0 && idade < 150) {
             throw new Exception("Idade inválida");
         }
         this.idade = idade;

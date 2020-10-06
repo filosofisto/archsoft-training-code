@@ -12,5 +12,15 @@ public class Main {
         } catch (IdadeInvalidaException e) {
             System.out.println("Sr usuario lamento mas a idade nao eh valida");
         }
+
+//        getValor();
     }
+
+//    static boolean getValor() {
+//        try {
+//            return true;
+//        } finally {
+//            return false;
+//        }
+//    }
 }

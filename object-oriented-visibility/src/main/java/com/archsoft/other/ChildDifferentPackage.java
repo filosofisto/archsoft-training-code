@@ -13,5 +13,9 @@ public class ChildDifferentPackage extends Parent {
 
         // Compile error: private visibility
         // privateField = 13;
+
+        Parent p = new Parent();
+
+        p.publicField = 10;
     }
 }

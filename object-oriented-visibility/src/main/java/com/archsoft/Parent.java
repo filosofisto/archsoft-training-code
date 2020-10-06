@@ -4,9 +4,9 @@ public class Parent {
 
     private int privateField;
 
-    protected int protectedField;
+    /* package */ int packageField;
 
-    int packageField;
+    protected int protectedField;
 
     public int publicField;
 }

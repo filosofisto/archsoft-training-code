@@ -10,6 +10,6 @@ public class SamePackage {
         p.packageField = 10; // same package
 
         // Compile error: private visibility
-        // privateField = 13;
+        // p.privateField = 13;
     }
 }

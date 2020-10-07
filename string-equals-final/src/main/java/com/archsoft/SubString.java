@@ -1,5 +1,5 @@
 package com.archsoft;
 
-public class SubString /* extends String */ /* ERRO -> [String eh final]*/ {
+public class SubString /*extends String*/  /* ERRO -> [String eh final]*/ {
 
 }

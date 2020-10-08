@@ -14,13 +14,10 @@ object-oriented-figura/.idea/
 object-oriented-figura/target/
 object-interface/.idea/
 object-interface/target/
-<<<<<<< HEAD
 object-oriented-2-strategy/.idea/
 object-oriented-2-strategy/target/
-=======
 object-interface-2/.idea/
 object-interface-2/target/
->>>>>>> master
 object-oriented-equals/.idea/
 object-oriented-equals/target/
 operators/.idea/
@@ -31,6 +28,8 @@ string-common-methods/.idea/
 string-common-methods/target/
 string-builder/.idea/
 string-builder/target/
+string-regex-1/.idea/
+string-regex-1/target/
 format-number/.idea/
 format-number/target/
 format-datetime/.idea/

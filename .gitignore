@@ -76,6 +76,14 @@ io-3/generated.dat
 io-4/.idea/
 io-4/target/
 io-4/project.obj
+extras/dynamic-execution-1/dynamic-execution-1-api/.idea/
+extras/dynamic-execution-1/dynamic-execution-1-api/target
+extras/dynamic-execution-1/dynamic-execution-1-implementation-A/.idea/
+extras/dynamic-execution-1/dynamic-execution-1-implementation-A/target
+extras/dynamic-execution-1/dynamic-execution-1-implementation-B/.idea/
+extras/dynamic-execution-1/dynamic-execution-1-implementation-B/target
+extras/dynamic-execution-1/dynamic-execution-1-main/.idea/
+extras/dynamic-execution-1/dynamic-execution-1-main/target
 extras/dynamic-execution-2/dynamic-execution/.idea/
 extras/dynamic-execution-2/dynamic-execution/target/
 extras/dynamic-execution-2/dynamic-execution-api/.idea/

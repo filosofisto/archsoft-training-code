@@ -4,9 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.archsoft</groupId>
-    <artifactId>dynamic-execution-implementation-2</artifactId>
+    <groupId>com.archsoft-training</groupId>
+    <artifactId>dynamic-execution-2-main</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -23,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>com.archsoft</groupId>
-            <artifactId>dynamic-execution-api</artifactId>
+            <artifactId>dynamic-execution-2-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
@@ -70,5 +71,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

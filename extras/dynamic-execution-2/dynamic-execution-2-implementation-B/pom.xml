@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.archsoft</groupId>
-    <artifactId>dynamic-execution-implementation-1</artifactId>
+    <artifactId>dynamic-execution-2-implementation-B</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -23,7 +23,7 @@
         </dependency>
         <dependency>
             <groupId>com.archsoft</groupId>
-            <artifactId>dynamic-execution-api</artifactId>
+            <artifactId>dynamic-execution-2-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.archsoft</groupId>
-    <artifactId>dynamic-execution-implementation-1</artifactId>
+    <artifactId>dynamic-execution-2-api</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -20,11 +20,6 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit-jupiter-api.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.archsoft</groupId>
-            <artifactId>dynamic-execution-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

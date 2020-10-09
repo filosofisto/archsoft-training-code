@@ -26,6 +26,8 @@ string-common-methods/.idea/
 string-common-methods/target/
 string-builder/.idea/
 string-builder/target/
+string-regex-1/.idea/
+string-regex-1/target/
 format-number/.idea/
 format-number/target/
 format-datetime/.idea/

@@ -16,6 +16,4 @@ public class Main {
         String output = execution.process();
         out.println(output);
     }
-
-
 }

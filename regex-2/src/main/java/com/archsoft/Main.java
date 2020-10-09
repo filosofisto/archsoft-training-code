@@ -19,17 +19,17 @@ public class Main {
                 builder.append(sc.nextLine());
             }
 
-            String textToFind = builder.toString();
+            String site = builder.toString();
 
             Pattern pattern = Pattern.compile("https?:\\/\\/(www\\.)?[-a-zA-Z0-9.\\/]*");
-            showResult(pattern, textToFind);
+            showResult(pattern, site);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private static void showResult(Pattern pattern, String text) {
-        Matcher matcher = pattern.matcher(text);
+    private static void showResult(Pattern pattern, String site) {
+        Matcher matcher = pattern.matcher(site);
 
         while (matcher.find()) {
             out.println(matcher.group());

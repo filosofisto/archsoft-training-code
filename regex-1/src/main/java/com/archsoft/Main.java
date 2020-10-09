@@ -11,8 +11,8 @@ public class Main {
             "Exemplo de frase com palavras e numeros tais como 100, 200, 300 a ser processada usando Pattern and Matcher";
 
     public static void main(String[] args) {
-        Pattern patternNumbers = Pattern.compile("\\d+");
-        showResult(patternNumbers);
+//        Pattern patternNumbers = Pattern.compile("\\d+");
+//        showResult(patternNumbers);
 
         Pattern patternWords = Pattern.compile("\\w+", Pattern.CASE_INSENSITIVE);
         showResult(patternWords);

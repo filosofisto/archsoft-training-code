@@ -27,11 +27,11 @@
             <artifactId>dynamic-execution-1-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.archsoft</groupId>
             <artifactId>dynamic-execution-1-implementation-A</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.archsoft</groupId>
             <artifactId>dynamic-execution-1-implementation-B</artifactId>

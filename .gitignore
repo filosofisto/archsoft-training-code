@@ -94,6 +94,7 @@ io-5/.idea/
 io-5/target/
 io-6/.idea/
 io-6/target/
+io-6/teste.html
 io-7/.idea/
 io-7/target/
 io-7/pom.xml.gzip
@@ -113,3 +114,7 @@ extras/dynamic-execution-2/dynamic-execution-2-implementation-B/.idea/
 extras/dynamic-execution-2/dynamic-execution-2-implementation-B/target/
 extras/dynamic-execution-2/dynamic-execution-2-main/.idea/
 extras/dynamic-execution-2/dynamic-execution-2-main/target/
+regex-1/.idea
+regex-1/target
+regex-2/.idea
+regex-2/target

@@ -10,10 +10,7 @@ public class Project implements Serializable {
 
     private Person manager;
     private List<Task> tasks;
-    //private Equipe equipe;
-    private transient String bla;
-    private String novoAttr;
-    private int novoInt;
+    private Team team;
 
     public Person getManager() {
         return manager;
@@ -23,7 +20,7 @@ public class Project implements Serializable {
         this.manager = manager;
     }
 
-    public List<Task> getTarefas() {
+    public List<Task> getTasks() {
         if (tasks == null) {
             tasks = new ArrayList<>();
         }
@@ -31,45 +28,32 @@ public class Project implements Serializable {
         return tasks;
     }
 
-    public void setTarefas(List<Task> tasks) {
+    public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
-	/*public Equipe getEquipe() {
-		return equipe;
-	}
-	public void setEquipe(Equipe equipe) {
-		this.equipe = equipe;
-	}*/
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 
     public String toString() {
         StringBuilder b = new StringBuilder();
-        b.append("Gerente: " + getManager() + "\n");
-        b.append("Tarefas\n");
+        b.append("Manager: " + getManager() + "\n");
+        b.append("Tasks\n");
 
-        for (Task t : getTarefas()) {
+        for (Task t : getTasks()) {
             b.append("\t" + t + "\n");
         }
 
-        //b.append(getEquipe());
+        b.append(getTeam());
 
         return b.toString();
     }
 
-    public String getNovoAttr() {
-        return novoAttr;
-    }
-
-    public void setNovoAttr(String novoAttr) {
-        this.novoAttr = novoAttr;
-    }
-
-    public int getNovoInt() {
-        return novoInt;
-    }
-
-    public void setNovoInt(int novoInt) {
-        this.novoInt = novoInt;
-    }
 
 
 }

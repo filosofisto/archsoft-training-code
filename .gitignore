@@ -92,6 +92,11 @@ io-4/target/
 io-4/project.obj
 io-5/.idea/
 io-5/target/
+io-6/.idea/
+io-6/target/
+io-7/.idea/
+io-7/target/
+io-7/pom.xml.gzip
 extras/dynamic-execution-1/dynamic-execution-1-api/.idea/
 extras/dynamic-execution-1/dynamic-execution-1-api/target
 extras/dynamic-execution-1/dynamic-execution-1-implementation-A/.idea/

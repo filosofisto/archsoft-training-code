@@ -1,3 +1,3 @@
-# Coll 1
+# Coll 2
 ## Objetivo
-- Set, equals, hashCode
+- LinkedHashSet

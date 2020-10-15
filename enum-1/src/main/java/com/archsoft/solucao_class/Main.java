@@ -41,6 +41,7 @@ public class Main {
 	public static void main(String[] args) {
 		showDay(Day.FRIDAY);
 
-//		showDay(500);
+//		Day d = new Day(500);
+//		showDay(d);
 	}
 }

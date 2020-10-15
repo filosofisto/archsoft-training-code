@@ -9,5 +9,5 @@ package com.archsoft;
 public class MyAnnotadedClass {
 
 	@RequestForEnhancement(date="", id=2, synopsis="")
-	private int valor;
+	public int valor;
 }

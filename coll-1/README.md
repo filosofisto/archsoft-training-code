@@ -1,3 +1,3 @@
 # Coll 1
 ## Objetivo
-- Set, equals, hashCode
+- Iterable, Method Reference, Lambda Expression, Iterator

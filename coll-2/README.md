@@ -1,3 +1,3 @@
-# Coll 2
+# Coll 1
 ## Objetivo
-- LinkedHashSet
+- Iterable, Method Reference, Lambda Expression, Iterator

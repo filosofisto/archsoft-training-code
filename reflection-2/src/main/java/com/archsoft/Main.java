@@ -43,14 +43,14 @@ public class Main {
 		Veiculo v3 = new Veiculo("DGR1597", "32178333487", 2017);
 		Veiculo v4 = new Veiculo("XCF2374", "45868372488", 2010);
 
-		try {
-			out.println(
-					exportadorXML
-							.cabecalho()
-							.exportar(List.of(v1, v2, v3, v4))
-			);
-		} catch (Exception e) {
-			e.printStackTrace();
-		};
+//		try {
+//			out.println(
+//					exportadorXML
+//							.cabecalho()
+//							.exportar(List.of(v1, v2, v3, v4))
+//			);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		};
 	}
 }

@@ -42,8 +42,7 @@ public class Main {
 		}
 		
 		Constructor[] constructors = c.getConstructors();
-		out.println("Construtores ==================== "
-				+ constructors.length);
+		out.println("Construtores ==================== " + constructors.length);
 		for (Constructor constr: constructors) {
 			for (Class paramClass: constr.getParameterTypes()) {
 				out.printf("%s, ", paramClass.getName());
@@ -74,8 +73,7 @@ public class Main {
 		//System.out.printf("Superclass: %s\n", c.getSuperclass().getName());
 		
 		Class[] interfaces = c.getInterfaces();
-		out.println("Interfaces ================== "
-				+ interfaces.length);
+		out.println("Interfaces ================== " + interfaces.length);
 		for (Class intf: interfaces) {
 			out.printf("%s ", intf.getSimpleName());
 		}

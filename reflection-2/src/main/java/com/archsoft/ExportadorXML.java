@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ExportadorXML {
@@ -35,13 +36,26 @@ public class ExportadorXML {
 			"</" + pluralClassName + ">\n"
 		);
 		
-		return buf.toString();
+		String ret = buf.toString();
+		buf.setLength(0);
+
+		return ret;
 	}
 
 	private String plural(List<?> list) {
+		Objects.requireNonNull(list);
+
 		return Optional.of(list)
 				.map(l -> l.get(0).getClass().getSimpleName().toLowerCase() + "s" )
 				.orElse("Unnamed");
+
+//		Objects.requireNonNull(list);
+//
+//		if (list.isEmpty()) {
+//			return "unamed";
+//		}
+//
+//		return list.get(0).getClass().getSimpleName().toLowerCase() + "s";
 	}
 
 	private String exportarObj(Object obj) 
@@ -84,6 +98,8 @@ public class ExportadorXML {
 				NoSuchMethodException, 
 				SecurityException, 
 				InvocationTargetException {
+		StringBuilder buf = new StringBuilder();
+
 		Class cls = obj.getClass();
 		
 		buf.append(

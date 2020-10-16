@@ -23,7 +23,7 @@ public class Team implements Serializable {
 	}
 	
 	public String toString() {
-		StringBuilder b = new StringBuilder("Equipe\n");
+		StringBuilder b = new StringBuilder("Team\n");
 		
 		for (Person p: getMembers()) {
 			b.append("\t" + p + "\n");

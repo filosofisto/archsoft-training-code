@@ -17,14 +17,18 @@ public class Main {
 
 			@Override
 			public boolean accept(File file) {
-				return Objects.nonNull(file) && !file.isHidden() && file.isFile();
+				return !file.isHidden() && file.isFile();
 			}
 		};
 
 		folderFilter = new FileFilter() {
 			@Override
 			public boolean accept(File file) {
-				return Objects.nonNull(file) && file.isDirectory();
+				return !file.getName().startsWith(".")
+						&& !file.getName().equals("node_modules")
+						&& !file.getName().equals("AppData")
+						&& !file.getName().equals("Dropbox")
+						&& file.isDirectory();
 			}
 		};
 	}

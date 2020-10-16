@@ -21,6 +21,13 @@ public class Main {
 
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+//		Calendar c = Calendar.getInstance();
+//		c.set(Calendar.YEAR, 2020);
+//		c.set(Calendar.MONTH, Calendar.SEPTEMBER);
+//		c.set(Calendar.DAY_OF_MONTH, 20);
+//
+//		Date d = c.getTime();
+
 		LocalDate localDate1 = LocalDate.of(2020, 9, 20);
 		out.println(dateTimeFormatter.format(localDate1));
 

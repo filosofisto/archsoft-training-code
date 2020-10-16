@@ -1,7 +1,8 @@
 package com.archsoft.problema;
 
 public interface Day {
-    int SUNDAY = 0; 
+
+    int SUNDAY = 0;
     int MONDAY = 1; 
     int TUESDAY = 2; 
     int WEDNESDAY = 3; 

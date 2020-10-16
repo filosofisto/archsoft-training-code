@@ -38,10 +38,10 @@ public class Main {
 			out.print("Cansado...ufa");
 			break;
 		case FRIDAY:
-			out.print("Ta acabando, oba");
+			out.println("Ta acabando, oba");
 			break;
 		case SATURDAY:
-			out.print("Que maravilha!!!");
+			out.println("Que maravilha!!!");
 			break;
 		default:
 			break;

@@ -13,8 +13,10 @@ public class Entity {
 	public boolean equals(Object object) {
 		if (getClass().equals(object.getClass())) {
 			try {
-				Object myId = getGetterId().invoke(this);
-				Object otherId = getGetterId().invoke(object);
+				Method getter = getGetterId();
+
+				Object myId = getter.invoke(this);
+				Object otherId = getter.invoke(object);
 
 				if (myId == null && otherId == null) {
 					return true;

@@ -142,3 +142,11 @@ extras/JNI/jni-client/.idea/
 extras/JNI/jni-client/target
 extras/JNI/stat/cmake-build-debug/
 extras/JNI/stat/stale_outputs_checked
+extras/JNI/jni-client-fibonacci/.idea/
+extras/JNI/jni-client-fibonacci/target
+extras/JNI/Fibonacci/.vs/
+extras/JNI/Fibonacci/Fibonacci/.vs/
+extras/JNI/Fibonacci/Fibonacci/x64/
+extras/JNI/Fibonacci/Fibonacci/Debug/
+extras/JNI/Fibonacci/Fibonacci/Fibonacci/x64/
+extras/JNI/Fibonacci/Fibonacci/Fibonacci/Debug/

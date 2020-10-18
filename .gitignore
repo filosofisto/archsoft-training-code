@@ -138,3 +138,7 @@ reflection-2/.idea/
 reflection-2/target/
 extras/comparator-1/.idea/
 extras/comparator-1/target/
+extras/JNI/jni-client/.idea/
+extras/JNI/jni-client/target
+extras/JNI/stat/cmake-build-debug/
+extras/JNI/stat/stale_outputs_checked

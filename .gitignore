@@ -150,3 +150,11 @@ extras/JNI/Fibonacci/Fibonacci/x64/
 extras/JNI/Fibonacci/Fibonacci/Debug/
 extras/JNI/Fibonacci/Fibonacci/Fibonacci/x64/
 extras/JNI/Fibonacci/Fibonacci/Fibonacci/Debug/
+extras/JNI/jni-client-textcase/.idea/
+extras/JNI/jni-client-textcase/target
+extras/JNI/TextCase/.vs/
+extras/JNI/TextCase/TextCase/.vs/
+extras/JNI/TextCase/TextCase/x64/
+extras/JNI/TextCase/TextCase/Debug/
+extras/JNI/TextCase/TextCase/TextCase/x64/
+extras/JNI/TextCase/TextCase/TextCase/Debug/

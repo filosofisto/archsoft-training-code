@@ -158,3 +158,13 @@ extras/JNI/TextCase/TextCase/x64/
 extras/JNI/TextCase/TextCase/Debug/
 extras/JNI/TextCase/TextCase/TextCase/x64/
 extras/JNI/TextCase/TextCase/TextCase/Debug/
+lambda-1/.idea/
+lambda-1/target/
+lambda-2/.idea/
+lambda-2/target
+object-interface-3/.idea/
+object-interface-3/target/
+optional-1/.idea/
+optional-1/target
+stream-1/.idea/
+stream-1/target/

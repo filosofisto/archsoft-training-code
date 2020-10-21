@@ -2,6 +2,7 @@ package com.archsoft;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import static java.lang.System.out;
@@ -17,6 +18,8 @@ public class Main {
         List<User> users = Arrays.asList(u1, u2, u3);
 
         System.out.printf("Media: %.2f\n", calcAverage(users));
+
+//        calcAverage(new LinkedList<>());
     }
 
 //    static double calcAverage(List<User> users) {
@@ -52,6 +55,12 @@ public class Main {
         return users.stream()
                 .mapToInt(User::getPoints)
                 .average()
+//                .orElseThrow(new Supplier<Throwable>() {
+//                    @Override
+//                    public Throwable get() {
+//                        return new IllegalArgumentException("Lista vazia");
+//                    }
+//                })
                 .orElseThrow(() -> new ArithmeticException("Nao existem elementos para calcular"));
     }
 }

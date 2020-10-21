@@ -1,3 +1,3 @@
-# Coll 1
+# Coll 4
 ## Objetivo
 - Set, equals, hashCode

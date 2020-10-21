@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static java.lang.System.out;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -22,19 +24,19 @@ public class Main {
 //        users.forEach(new Consumer<User>() {
 //            @Override
 //            public void accept(User user) {
-//                System.out.println(user.getName());
+//                out.println(user.getName());
 //            }
 //        });
 
 //        3 - Lambda
 //        Consumer<User> shower = (User user) -> {
-//            System.out.println(user.getName());
+//            out.println(user.getName());
 //        };
 //        users.forEach(shower);
 
 //        4 - Lambda (ocultando o tipo do parametro)
 //        Consumer<User> shower = user -> {
-//            System.out.println(user.getName());
+//            out.println(user.getName());
 //        };
 //        users.forEach(shower);
 

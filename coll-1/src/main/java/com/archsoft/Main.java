@@ -1,6 +1,7 @@
 package com.archsoft;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -41,10 +42,12 @@ public class Main {
 
         list.forEach(out::println);
 
+        out.println("------------------------------------");
+
         // Usando Stream, filtrando e gerando uma nova colecao
         list.stream()
                 .filter(s -> s.length() >= 7)
-                .collect(Collectors.toList())
+//                .collect(Collectors.toList())
                 .forEach(out::println);
     }
 }

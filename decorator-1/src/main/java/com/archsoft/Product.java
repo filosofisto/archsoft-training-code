@@ -8,7 +8,7 @@ public interface Product {
 
     double price();
 
-    default void showPrice() {
+    default void show() {
         out.printf("%s - Price: %.2f\n", description(), price());
     }
 }

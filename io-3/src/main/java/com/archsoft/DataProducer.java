@@ -35,7 +35,7 @@ public class DataProducer {
     }
 
     public DataProducer produce(int number) throws IOException {
-        Objects.requireNonNull(target);
+        Objects.requireNonNull(out);
         Objects.requireNonNull(random);
 
         for (int i = 0; i < number; i++) {

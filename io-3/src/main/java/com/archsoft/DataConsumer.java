@@ -42,6 +42,7 @@ public class DataConsumer {
 
     private void prepareInput() throws FileNotFoundException {
         Objects.requireNonNull(source);
+
         in = new DataInputStream(new FileInputStream(source));
     }
 

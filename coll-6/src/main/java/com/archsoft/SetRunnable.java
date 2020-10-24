@@ -21,7 +21,7 @@ public class SetRunnable implements Runnable {
     private void populate() {
         int renavam;
 
-        for (int i = 1; i < 500; i++) {
+        for (int i = 1; i < 20; i++) {
             if (i % 2 == 0) {
                 renavam = i-1;
             } else {

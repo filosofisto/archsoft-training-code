@@ -30,6 +30,7 @@ public class SetRunnable implements Runnable {
 
             Veiculo v = new Veiculo(renavam);
             boolean adicionou = set.add(v);
+            set.add(null);
             out.printf("Adicionou veiculo %d, %b\n", renavam, adicionou);
         }
     }
@@ -46,5 +47,12 @@ public class SetRunnable implements Runnable {
         set.stream()
                 .filter(Objects::nonNull)
                 .forEach(veiculo -> out.printf("veiculo: %s\n", veiculo.getRenavam()));
+
+//        set.forEach(veiculo -> {
+//            Optional.ofNullable(veiculo)
+//                    .ifPresentOrElse(
+//                            v -> out.printf("veiculo: %s\n", v.getRenavam()),
+//                            () -> out.println("veiculo: null"));
+//        });
     }
 }

@@ -27,12 +27,16 @@ public class Main {
 				break;
 			}
 		}*/
-		Iterator<Veiculo> it = listVeiculos.iterator();
-		while (it.hasNext()) {
-			if (it.next().equals(1000000)) {
-				break;
-			}
-		}
+//		Iterator<Veiculo> it = listVeiculos.iterator();
+//		while (it.hasNext()) {
+//			if (it.next().equals(1000000)) {
+//				break;
+//			}
+//		}
+		listVeiculos.stream()
+				.filter(veiculo -> veiculo.getRenavam().equals(1000000))
+				.findFirst();
+
 		t2 = System.currentTimeMillis();
 		System.out.printf("Tempo para localizar o item(List): %dms", (t2-t1));
 	}

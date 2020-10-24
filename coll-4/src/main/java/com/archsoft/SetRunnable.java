@@ -53,11 +53,16 @@ public class SetRunnable implements Runnable {
 //        }
 
         set.forEach(veiculo -> {
-            if (Objects.nonNull(veiculo)) {
-                out.printf("veiculo: %s\n", veiculo.getRenavam());
-            } else {
-                out.println("veiculo: null");
-            }
+            Optional.ofNullable(veiculo)
+                    .ifPresentOrElse(
+                            v -> out.printf("veiculo: %s\n", v.getRenavam()),
+                            () -> out.println("veiculo: null"));
+
+//            if (Objects.nonNull(veiculo)) {
+//                out.printf("veiculo: %s\n", veiculo.getRenavam());
+//            } else {
+//                out.println("veiculo: null");
+//            }
         });
     }
 }

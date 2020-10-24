@@ -12,11 +12,11 @@ public class Main {
 		DataConsumer dataConsumer = new DataConsumer();
 
 		try {
-			dataProducer
-					.into(file)
-					.prepare()
-					.produce(100)
-					.close();
+//			dataProducer
+//					.into(file)
+//					.prepare()
+//					.produce(100)
+//					.close();
 
 			dataConsumer
 				.from(file)

@@ -19,8 +19,6 @@ public final class GZipUtil {
             while ((len = in.read(buf, off, len)) != -1) {
                 gzip.write(buf, off, len);
             }
-        } finally {
-            out.close();
         }
     }
 
@@ -33,8 +31,6 @@ public final class GZipUtil {
             while ((len = gzip.read(buf, off, len)) != -1) {
                 out.write(buf, off, len);
             }
-        } finally {
-            out.close();
         }
     }
 }

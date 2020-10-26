@@ -15,7 +15,7 @@ public class Main {
             GZipUtil.zip(new FileInputStream(fin), new FileOutputStream(fout));
             System.out.printf("Tamanho compactado: %d bytes\n", fout.length());
 
-            System.out.printf("Percentual Ganho %.2f%%", 100-(fout.length() * 1.0 / fin.length() * 100));
+            System.out.printf("Percentual Ganho: %.2f%%", 100-(fout.length() * 1.0 / fin.length() * 100));
         } catch (Exception e) {
             e.printStackTrace();
         }

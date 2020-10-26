@@ -3,8 +3,9 @@ package com.archsoft;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class PessoaDAO {
+public class PessoaDAO implements AutoCloseable {
 
 	private Connection connection;
 	
@@ -17,36 +18,54 @@ public class PessoaDAO {
 		this.connection = connection;
 	}
 
-	public void closeConnection() {
-		if (connection != null) {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// Ignore
-			}
-		}
+	public void close() throws Exception {
+		close(pInsert);
+		close(pUpdate);
+		close(pRead);
+		close(pDelete);
+		close(connection);
 	}
 
-	public void create(Pessoa pessoa) throws SQLException {
-		PreparedStatement p = null;
-
-		try {
-			p = getPInsert();
-
-			p.setString(1, pessoa.getCpf());
-			p.setString(2, pessoa.getNome());
-			p.setInt(3, pessoa.getIdade());
-
-			p.executeUpdate();
-		} finally {
-			if (p != null) {
-				try {
-					p.close();
-				} catch (SQLException e) {
-					// Ignore
-				}
+	private void close(Connection connection) {
+		Optional.ofNullable(connection).ifPresent(c -> {
+			try {
+				c.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-		}
+		});
+	}
+
+	private void close(Statement statement) {
+		Optional.ofNullable(statement).ifPresent(s -> {
+			try {
+				s.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		});
+	}
+
+	private void close(ResultSet resultSet) {
+		Optional.ofNullable(resultSet).ifPresent(r -> {
+			try {
+				r.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		});
+	}
+
+
+
+	public void create(Pessoa pessoa) throws SQLException {
+		PreparedStatement p = getPInsert();
+
+		p.setString(1, pessoa.getCpf());
+		p.setString(2, pessoa.getNome());
+		p.setInt(3, pessoa.getIdade());
+
+		p.executeUpdate();
 	}
 	
 	private PreparedStatement getPInsert() throws SQLException {
@@ -60,46 +79,41 @@ public class PessoaDAO {
 	}
 
 	public void delete(String cpf) throws SQLException {
-		PreparedStatement p = null;
+		PreparedStatement p = getPDelete();
 
-		try {
-			p = connection.prepareStatement(PessoaSQL.DELETE.sql());
+		p.setString(1, cpf);
 
-			p.setString(1, cpf);
+		p.executeUpdate();
+	}
 
-			p.executeUpdate();
-		} finally {
-			if (p != null) {
-				try {
-					p.close();
-				} catch (SQLException e) {
-					// Ignore
-				}
-			}
+	private PreparedStatement getPDelete() throws SQLException {
+		if (pDelete == null) {
+			pDelete = connection.prepareStatement(
+					PessoaSQL.DELETE.sql()
+			);
 		}
+
+		return pDelete;
 	}
 
 	public void update(Pessoa pessoa) throws SQLException {
-		PreparedStatement p = null;
+		PreparedStatement p = getPUpdate();
 
-		try {
-			p = connection.prepareStatement(
-					PessoaSQL.UPDATE.sql());
+		p.setString(1, pessoa.getNome());
+		p.setInt(2, pessoa.getIdade());
+		p.setString(3, pessoa.getCpf());
 
-			p.setString(1, pessoa.getNome());
-			p.setInt(2, pessoa.getIdade());
-			p.setString(3, pessoa.getCpf());
+		p.executeUpdate();
+	}
 
-			p.executeUpdate();
-		} finally {
-			if (p != null) {
-				try {
-					p.close();
-				} catch (SQLException e) {
-					// Ignore
-				}
-			}
+	private PreparedStatement getPUpdate() throws SQLException {
+		if (pUpdate == null) {
+			pUpdate = connection.prepareStatement(
+					PessoaSQL.UPDATE.sql()
+			);
 		}
+
+		return pUpdate;
 	}
 	
 	public Pessoa read(String cpf)
@@ -108,9 +122,7 @@ public class PessoaDAO {
 		ResultSet rs = null;
 
 		try {
-			stm = connection.prepareStatement(
-				PessoaSQL.READ.sql()
-			);
+			stm = getPRead();
 			
 			stm.setString(1, cpf);
 			
@@ -128,22 +140,18 @@ public class PessoaDAO {
 
 			return p;
 		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					// Ignore
-				}
-			}
-
-			if (stm != null) {
-				try {
-					stm.close();
-				} catch (SQLException e) {
-					// Ignore
-				}
-			}
+			close(rs);
 		}
+	}
+
+	private PreparedStatement getPRead() throws SQLException {
+		if (pRead == null) {
+			pRead = connection.prepareStatement(
+					PessoaSQL.READ.sql()
+			);
+		}
+
+		return pRead;
 	}
 
 	public List<Pessoa> listar() throws SQLException {
@@ -168,21 +176,8 @@ public class PessoaDAO {
 
 			return list;
 		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					// Ignore
-				}
-			}
-
-			if (stm != null) {
-				try {
-					stm.close();
-				} catch (SQLException e) {
-					// Ignore
-				}
-			}
+			close(rs);
+			close(stm);
 		}
 	}
 

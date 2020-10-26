@@ -20,6 +20,7 @@ public class TypeCommand implements Command {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
         return builder.toString();
     }
 }

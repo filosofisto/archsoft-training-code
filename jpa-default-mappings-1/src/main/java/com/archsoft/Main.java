@@ -19,13 +19,27 @@ public class Main {
             transaction.begin();
 
             Cubicle cubicle = new Cubicle();
-            entityManager.persist(cubicle);
 
             Employee employee = new Employee();
             employee.setAssignedCubicle(cubicle);
+            cubicle.setResidentEmployee(employee);
+
+            entityManager.persist(cubicle);
             entityManager.persist(employee);
 
             transaction.commit();
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+
+            e.printStackTrace();
+        }
+
+        try {
+            Cubicle cubicle = entityManager.find(Cubicle.class, 52L);
+
+            System.out.printf("Employee Id: %d\n", cubicle.getResidentEmployee().getId());
         } catch (Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();

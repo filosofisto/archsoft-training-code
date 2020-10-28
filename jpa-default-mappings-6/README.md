@@ -1,3 +1,3 @@
-# JPA Default Mappings 5
+# JPA Default Mappings 6
 ## Objetivo
 - Mapeamento default JPA

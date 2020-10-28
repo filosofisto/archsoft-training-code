@@ -15,6 +15,7 @@ public class Employee {
     public TravelProfile getProfile() {
         return profile;
     }
+
     public void setProfile(TravelProfile profile) {
         this.profile = profile;
     }

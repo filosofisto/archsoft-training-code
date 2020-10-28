@@ -36,16 +36,16 @@ public class Main {
             e.printStackTrace();
         }
 
-        try {
-            Cubicle cubicle = entityManager.find(Cubicle.class, 52L);
-
-            System.out.printf("Employee Id: %d\n", cubicle.getResidentEmployee().getId());
-        } catch (Exception e) {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
-
-            e.printStackTrace();
-        }
+//        try {
+//            Cubicle cubicle = entityManager.find(Cubicle.class, 1L);
+//
+//            System.out.printf("Employee Id: %d\n", cubicle.getResidentEmployee().getId());
+//        } catch (Exception e) {
+//            if (transaction.isActive()) {
+//                transaction.rollback();
+//            }
+//
+//            e.printStackTrace();
+//        }
     }
 }

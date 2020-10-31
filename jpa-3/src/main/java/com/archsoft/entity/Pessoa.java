@@ -14,7 +14,7 @@ public class Pessoa implements Serializable {
     @Column(name = "ID_PESSOA")
     private Long id;
 
-    @Column(name = "NOME", nullable = false)
+    @Column(name = "NOME", nullable = false, length = 50)
     private String nome;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})

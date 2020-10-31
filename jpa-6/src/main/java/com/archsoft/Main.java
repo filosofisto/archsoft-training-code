@@ -21,13 +21,11 @@ public class Main {
 			
 			Pessoa p = new Pessoa();
 			p.setNome("Jose da Silva");
-			
 			entityManager.persist(p);
 			
 			Funcionario f = new Funcionario();
 			f.setNome("Joao Trabalhador");
 			f.setSalario(10000.0);
-			
 			entityManager.persist(f);
 
 			TypedQuery<Pessoa> pessoasQuery = entityManager

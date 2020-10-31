@@ -14,19 +14,19 @@ public class Endereco implements Serializable {
     @Column(name = "ID_ENDERECO")
     private Long id;
 
-    @Column(name = "RUA", nullable = false)
+    @Column(name = "RUA", nullable = false, length = 30)
     private String rua;
 
-    @Column(name = "COMPLEMENTO")
+    @Column(name = "COMPLEMENTO", length = 30)
     private String complemento;
 
-    @Column(name = "CEP", nullable = false)
+    @Column(name = "CEP", nullable = false, length = 8)
     private String cep;
 
     @Column(name = "CIDADE", nullable = false)
     private String cidade;
 
-    @Column(name = "ESTADO", nullable = false)
+    @Column(name = "ESTADO", nullable = false, length = 2)
     private String estado;
 
     public Long getId() {

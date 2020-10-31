@@ -69,7 +69,7 @@ public class Main {
 			/*p.setEndereco(null);
 			p.getTelefones().clear();*/
 
-            p.getTelefones().stream().forEach(System.out::println);
+            p.getTelefones().forEach(System.out::println);
 
             entityManager.remove(p);
 

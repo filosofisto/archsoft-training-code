@@ -32,12 +32,12 @@ public class Main {
 
 			TypedQuery<Pessoa> pessoaQuery = entityManager.createQuery("select p from Pessoa p", Pessoa.class);
 			List<Pessoa> pessoas = pessoaQuery.getResultList();
-			pessoas.stream().forEach(out::println);
+			pessoas.forEach(out::println);
 			out.printf("Quantidade de pessas: %d\n", pessoas.size());
 
 			TypedQuery<Funcionario> funcionarioQuery = entityManager.createQuery("select f from Funcionario f", Funcionario.class);
 			List<Funcionario> funcionarios = funcionarioQuery.getResultList();
-			funcionarios.stream().forEach(out::println);
+			funcionarios.forEach(out::println);
 			out.printf("Quantidade de funcionarios: %d\n", funcionarios.size());
 
 			transaction.commit();

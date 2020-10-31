@@ -11,7 +11,7 @@ public class Message {
     @Column(name = "ID_MESSAGE")
     private Long id;
 
-    @Column(name = "TEXT_MESSAGE", nullable = false)
+    @Column(name = "TEXT_MESSAGE", nullable = false, length = 50)
     private String text;
 
     @ManyToOne(cascade = CascadeType.ALL)

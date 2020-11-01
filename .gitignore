@@ -14,8 +14,6 @@ object-oriented-figura/.idea/
 object-oriented-figura/target/
 object-interface/.idea/
 object-interface/target/
-object-oriented-2-strategy/.idea/
-object-oriented-2-strategy/target/
 object-interface-2/.idea/
 object-interface-2/target/
 object-oriented-equals/.idea/
@@ -211,3 +209,5 @@ jpa-default-mappings-6/target/
 spring-1/.idea/
 spring-1/target/
 spring-1/.mvn
+spring-2/.idea/
+spring-2/target/

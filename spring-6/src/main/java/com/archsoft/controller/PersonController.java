@@ -3,7 +3,7 @@ package com.archsoft.controller;
 import com.archsoft.model.Person;
 import com.archsoft.service.PersonService;
 import com.archsoft.to.PersonTO;
-import com.archsoft.util.ModelMapperConverter;
+import com.archsoft.util.converter.PersonConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,31 +16,31 @@ public class PersonController {
 
     private final PersonService personService;
 
-    private final ModelMapperConverter modelMapperConverter;
+    private final PersonConverter personConverter;
 
     @Autowired
-    public PersonController(PersonService personService, ModelMapperConverter modelMapperConverter) {
+    public PersonController(PersonService personService, PersonConverter personConverter) {
         this.personService = personService;
-        this.modelMapperConverter = modelMapperConverter;
+        this.personConverter = personConverter;
     }
 
     @PostMapping
     public ResponseEntity<PersonTO> create(@RequestBody PersonTO personTO) {
-        Person person = personService.create(modelMapperConverter.toEntity(personTO));
+        Person person = personService.create(personConverter.toEntity(personTO));
 
-        return ResponseEntity.ok(modelMapperConverter.toTO(person));
+        return ResponseEntity.ok(personConverter.toTransferObject(person));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<PersonTO> read(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(modelMapperConverter.toTO(personService.read(id)));
+        return ResponseEntity.ok(personConverter.toTransferObject(personService.read(id)));
     }
 
     @PutMapping
     public ResponseEntity<PersonTO> update(@RequestBody PersonTO personTO) {
-        Person person = personService.update(modelMapperConverter.toEntity(personTO));
+        Person person = personService.update(personConverter.toEntity(personTO));
 
-        return ResponseEntity.ok(modelMapperConverter.toTO(person));
+        return ResponseEntity.ok(personConverter.toTransferObject(person));
     }
 
     @DeleteMapping("/{id}")
@@ -51,7 +51,7 @@ public class PersonController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonTO>> list() {
-        return ResponseEntity.ok(modelMapperConverter.toTO(personService.findAll()));
+    public ResponseEntity<Iterable<PersonTO>> list() {
+        return ResponseEntity.ok(personConverter.toTransferObject(personService.findAll()));
     }
 }

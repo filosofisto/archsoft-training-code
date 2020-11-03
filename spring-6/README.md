@@ -1,6 +1,7 @@
 # Spring 6
 ## Objetivo
 - Lombok
-- ModelMapper
+- ModelMapper & Converter Solution
 - CRUD
+- JavaBeans Validation
    

@@ -1,11 +1,7 @@
 spring:
   profiles: dev
-server:
-  port: 8000
 url: http://localhost:8080/api/person/all
 ---
 spring:
   profiles: test
-server:
-  port: 9000
-url: http://localhost:8080/api/person/all
+url: http://localhost:9000/api/person/all

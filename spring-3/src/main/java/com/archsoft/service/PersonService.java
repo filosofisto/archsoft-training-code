@@ -17,8 +17,8 @@ public class PersonService {
         list.add(new Person(3L, "Francisco de Assis", 67));
         list.add(new Person(4L, "Joao Paulo II", 88));
         list.add(new Person(5L, "Martin Luter King", 55));
-//        list.add(new Person(6L, "Jesus Cristo", 33));
-//        list.add(new Person(7L, "Sidarta Gautama", 80));
+        list.add(new Person(6L, "Jesus Cristo", 33));
+        list.add(new Person(7L, "Sidarta Gautama", 80));
 
         return list;
     }

@@ -36,10 +36,10 @@
 			</exclusions>
 		</dependency>
 		<!-- to support Accept:application/xml -->
-		<!--<dependency>
+		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
-		</dependency>-->
+		</dependency>
 	</dependencies>
 
 	<build>

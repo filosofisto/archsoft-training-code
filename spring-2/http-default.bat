@@ -1,2 +1,2 @@
 @REM Using HttpPie
-http http://localhost:8080/api/person/all
+http http://localhost:8000/api/person/all

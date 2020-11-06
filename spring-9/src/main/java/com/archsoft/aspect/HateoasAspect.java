@@ -1,9 +1,9 @@
 package com.archsoft.aspect;
 
-import com.archsoft.to.PersonTO;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.Ordered;
 import org.springframework.data.domain.Page;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.PagedModel;
@@ -14,7 +14,7 @@ import java.util.Iterator;
 
 @Aspect
 @Component
-public class HateoasAspect {
+public class HateoasAspect implements Ordered {
 
     @Around("@annotation(Hateoas)")
     public Object aroundHateoas(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
@@ -56,5 +56,10 @@ public class HateoasAspect {
 
     private void applyHateoasSingle(ApplyHateoas applyHateoas) throws com.archsoft.exception.RecordNotFoundException {
         applyHateoas.apply();
+    }
+
+    @Override
+    public int getOrder() {
+        return 1;
     }
 }

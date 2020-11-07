@@ -4,7 +4,8 @@ project(stat)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_STANDARD 17)
-set(JAVA /usr/lib64/jvm/jdk1.8.0_251)
+#set(JAVA /usr/lib64/jvm/jdk1.8.0_251)
+set(JAVA /usr/lib/jvm/java-8-openjdk-amd64)
 
 include_directories(${JAVA}/include)
 include_directories(${JAVA}/include/linux)

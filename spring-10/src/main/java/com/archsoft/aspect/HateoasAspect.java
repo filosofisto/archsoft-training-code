@@ -20,41 +20,41 @@ public class HateoasAspect implements Ordered {
     public Object aroundHateoas(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object ret = proceedingJoinPoint.proceed();
 
-        applyHateoas(ret);
+        execute(ret);
 
         return ret;
     }
 
-    private void applyHateoas(Object ret) throws com.archsoft.exception.RecordNotFoundException {
+    private void execute(Object ret) throws com.archsoft.exception.RecordNotFoundException {
         if (ret instanceof ResponseEntity) {
             ResponseEntity responseEntity = (ResponseEntity) ret;
             Object body = responseEntity.getBody();
 
             if (body instanceof ApplyHateoas) {
-                applyHateoasSingle((ApplyHateoas) body);
+                applyHateoas((ApplyHateoas) body);
             } else if (body instanceof Page) {
-                applyHateoasPage((Page<ApplyHateoas>) body);
+                applyHateoas((Page<ApplyHateoas>) body);
             } else if (body instanceof PagedModel) {
-                applyHateoasPage((PagedModel<EntityModel<ApplyHateoas>>) body);
+                applyHateoas((PagedModel<EntityModel<ApplyHateoas>>) body);
             }
         }
     }
 
-    private void applyHateoasPage(PagedModel<EntityModel<ApplyHateoas>> pagedModel) throws com.archsoft.exception.RecordNotFoundException {
+    private void applyHateoas(PagedModel<EntityModel<ApplyHateoas>> pagedModel) throws com.archsoft.exception.RecordNotFoundException {
         Iterator<EntityModel<ApplyHateoas>> it = pagedModel.iterator();
         while (it.hasNext()) {
             it.next().getContent().apply();
         }
     }
 
-    private void applyHateoasPage(Page<ApplyHateoas> page) throws com.archsoft.exception.RecordNotFoundException {
+    private void applyHateoas(Page<ApplyHateoas> page) throws com.archsoft.exception.RecordNotFoundException {
         Iterator<ApplyHateoas> it = page.iterator();
         while (it.hasNext()) {
             it.next().apply();
         }
     }
 
-    private void applyHateoasSingle(ApplyHateoas applyHateoas) throws com.archsoft.exception.RecordNotFoundException {
+    private void applyHateoas(ApplyHateoas applyHateoas) throws com.archsoft.exception.RecordNotFoundException {
         applyHateoas.apply();
     }
 

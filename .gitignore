@@ -156,6 +156,10 @@ extras/JNI/TextCase/TextCase/x64/
 extras/JNI/TextCase/TextCase/Debug/
 extras/JNI/TextCase/TextCase/TextCase/x64/
 extras/JNI/TextCase/TextCase/TextCase/Debug/
+extras/JNI/spring-jni-monitor/.idea/
+extras/JNI/spring-jni-monitor/target/
+extras/JNI/spring-jni-server/.idea/
+extras/JNI/spring-jni-server/target/
 lambda-1/.idea/
 lambda-1/target/
 lambda-2/.idea/
@@ -227,3 +231,4 @@ spring-9/.idea/
 spring-9/target/
 spring-10/.idea/
 spring-10/target/
+

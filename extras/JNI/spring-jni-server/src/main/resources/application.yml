@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  datasource:
+    url: jdbc:mariadb://localhost:3306/jni_stat
+    username: jni_stat_user
+    password: socrates

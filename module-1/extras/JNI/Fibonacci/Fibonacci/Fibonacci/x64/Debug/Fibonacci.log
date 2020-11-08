@@ -1,0 +1,19 @@
+﻿  pch.cpp
+  dllmain.cpp
+  MathLibrary.cpp
+D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Fibonacci\MathLibrary.cpp(18,1): warning C4273: 'fibonacci_init': inconsistent dll linkage
+D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Fibonacci\MathLibrary.h(22,33): message : see previous definition of 'fibonacci_init'
+D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Fibonacci\MathLibrary.cpp(27,1): warning C4273: 'fibonacci_next': inconsistent dll linkage
+D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Fibonacci\MathLibrary.h(28,33): message : see previous definition of 'fibonacci_next'
+D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Fibonacci\MathLibrary.cpp(48,1): warning C4273: 'fibonacci_current': inconsistent dll linkage
+D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Fibonacci\MathLibrary.h(31,47): message : see previous definition of 'fibonacci_current'
+D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Fibonacci\MathLibrary.cpp(54,1): warning C4273: 'fibonacci_index': inconsistent dll linkage
+D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Fibonacci\MathLibrary.h(34,37): message : see previous definition of 'fibonacci_index'
+  Fibonacci.cpp
+  Generating Code...
+     Creating library D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\x64\Debug\Fibonacci.lib and object D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\x64\Debug\Fibonacci.exp
+LINK : warning LNK4217: symbol 'fibonacci_init' defined in 'MathLibrary.obj' is imported by 'Fibonacci.obj' in function 'Java_com_archsoft_Fibonacci_fibonacciInit'
+LINK : warning LNK4217: symbol 'fibonacci_next' defined in 'MathLibrary.obj' is imported by 'Fibonacci.obj' in function 'Java_com_archsoft_Fibonacci_fibonacciNext'
+LINK : warning LNK4217: symbol 'fibonacci_current' defined in 'MathLibrary.obj' is imported by 'Fibonacci.obj' in function 'Java_com_archsoft_Fibonacci_fibonacciCurrent'
+LINK : warning LNK4217: symbol 'fibonacci_index' defined in 'MathLibrary.obj' is imported by 'Fibonacci.obj' in function 'Java_com_archsoft_Fibonacci_fibonacciIndex'
+  Fibonacci.vcxproj -> D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\x64\Debug\Fibonacci.dll

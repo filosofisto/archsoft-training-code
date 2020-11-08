@@ -1,0 +1,7 @@
+﻿  Fibonacci.cpp
+     Creating library D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Debug\Fibonacci.lib and object D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Debug\Fibonacci.exp
+LINK : warning LNK4217: symbol '_fibonacci_init' defined in 'MathLibrary.obj' is imported by 'Fibonacci.obj' in function '_Java_com_archsoft_Fibonacci_fibonacciInit@24'
+LINK : warning LNK4217: symbol '_fibonacci_next' defined in 'MathLibrary.obj' is imported by 'Fibonacci.obj' in function '_Java_com_archsoft_Fibonacci_fibonacciNext@8'
+LINK : warning LNK4217: symbol '_fibonacci_current' defined in 'MathLibrary.obj' is imported by 'Fibonacci.obj' in function '_Java_com_archsoft_Fibonacci_fibonacciCurrent@8'
+LINK : warning LNK4217: symbol '_fibonacci_index' defined in 'MathLibrary.obj' is imported by 'Fibonacci.obj' in function '_Java_com_archsoft_Fibonacci_fibonacciIndex@8'
+  Fibonacci.vcxproj -> D:\Develop\archsoft-training-code\extras\JNI\Fibonacci\Fibonacci\Debug\Fibonacci.dll

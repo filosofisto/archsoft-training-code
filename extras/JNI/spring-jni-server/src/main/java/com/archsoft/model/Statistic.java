@@ -16,8 +16,8 @@ import javax.validation.constraints.NotNull;
 public class Statistic {
 
     @Id
-    @Column(name = "PERSON_ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "CPU_USAGE", nullable = false, length = 3)

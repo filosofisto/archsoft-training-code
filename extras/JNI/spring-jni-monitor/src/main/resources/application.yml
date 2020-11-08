@@ -1,0 +1,5 @@
+server:
+  port: 8000
+
+url: http://localhost:8080/api/statistic
+

@@ -2,6 +2,7 @@ package com.archsoft.controller;
 
 import com.archsoft.model.Statistic;
 import com.archsoft.service.StatisticService;
+import com.archsoft.to.StatisticAverageTO;
 import com.archsoft.to.StatisticTO;
 import com.archsoft.util.converter.StatisticConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,15 @@ public class StatController {
 
     @PostMapping
     public ResponseEntity<StatisticTO> create(@RequestBody StatisticTO statisticTO) {
-        Statistic person = statisticService.create(statisticConverter.toEntity(statisticTO));
+        Statistic statistic = statisticService.create(statisticConverter.toEntity(statisticTO));
 
-        return ResponseEntity.ok(statisticConverter.toTransferObject(person));
+        return ResponseEntity.ok(statisticConverter.toTransferObject(statistic));
+    }
+
+    @GetMapping(produces = {"application/json"})
+    public ResponseEntity<StatisticAverageTO> statistics() {
+        StatisticAverageTO statisticAverageTO = statisticService.average();
+
+        return ResponseEntity.ok(statisticAverageTO);
     }
 }

@@ -76,10 +76,6 @@ public class PersonController {
             @RequestParam(value = "sortBy", defaultValue = "name") String sortBy) throws RecordNotFoundException {
         Pageable pageable = PageRequest.of(page, size, DirectionConverter.from(direction), sortBy);
         Page<PersonTO> pageResult = personConverter.toTransferObject(personService.findAll(pageable));
-        for (PersonTO pessoa : pageResult) {
-            pessoa.apply();
-        }
-
         PagedModel<EntityModel<PersonTO>> pagedModel = assembler.toModel(pageResult);
 
         return ResponseEntity.ok(pagedModel);

@@ -28,6 +28,7 @@ public class StatisticService {
         return StatisticAverageTO.builder()
                 .cpuAverage(all.stream().mapToInt(Statistic::getCpuUsage).average().orElse(0.0))
                 .memoryAverage(all.stream().mapToInt(Statistic::getMemoryUsage).average().orElse(0.0))
-                .maxProcesses(all.stream().mapToInt(Statistic::getProcesses).max().orElse(0))               .build();
+                .maxProcesses(all.stream().mapToInt(Statistic::getProcesses).max().orElse(0))
+                .build();
     }
 }

@@ -26,6 +26,6 @@ export class AppComponent {
   }
 
   productWasSelected(product: Product): void {
-    console.log('Product selected: ' + product);
+    console.log(`Product selected: ${product.name}`);
   }
 }

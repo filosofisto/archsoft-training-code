@@ -1,0 +1,20 @@
+<div class="ui raised segment">
+  <h2 class="ui header">Demo Form:</h2>
+  <!--
+    NgForm nos da:
+    - Um FormGroup de nome ngForm
+    - Um Output (ngSubmit)
+
+    #f="ngForm" permite criar uma variavel f para o form
+
+    ngModel directiva cria um FormControl e adiciona a mesma ao FormGroup
+  -->
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="ui form">
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Digite seu nome aqui" name="name" ngModel/>
+    </div>
+
+    <button type="submit" class="ui button">Save</button>
+  </form>
+</div>

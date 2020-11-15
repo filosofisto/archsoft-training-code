@@ -1,0 +1,27 @@
+<h1>Attribute Directive Sample</h1>
+<h4>
+  <span>This span element does not use our great directive</span><br/>
+  <span appHighlight>But I use it</span> because I want.<br/>
+  <span appMouseHighlight>I am more sophisticated</span><br/>
+  <span appHighlightCustomColor color="white" backColor="red">I can stay red</span><br/>
+  <span appHighlightCustomColor>I don't like customizations</span>
+</h4>
+
+<h4>Pick a highlight color</h4>
+<div>
+  <input type="radio" name="colors" (click)="color='lightgreen'">Green
+  <input type="radio" name="colors" (click)="color='yellow'">Yellow
+  <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
+<h4>
+  <p appHighlightCustomColor color="{{ color }}" backColor="white">Highlight me!</p>
+</h4>
+
+<p *appUnless="condition" class="unless a">
+  (A) This paragraph is displayed because the condition is false.
+</p>
+
+<p *appUnless="!condition" class="unless b">
+  (B) Although the condition is true,
+  this paragraph is displayed because appUnless is set to false.
+</p>

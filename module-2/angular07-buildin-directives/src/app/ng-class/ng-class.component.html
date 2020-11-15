@@ -1,0 +1,43 @@
+<h2>ngClass</h2>
+<table class="ui celled padded table">
+  <thead>
+  <tr>
+    <th>Code</th>
+    <th>Effect</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <h4>
+        &lt;div [ngClass]=&quot;{{ '{' }} bordered: false {{ '}' }}&quot;&gt;This is never bordered&lt;/div&gt;<br/>
+        &lt;div [ngClass]=&quot;{{ '{' }} bordered: true {{ '}' }}&quot;&gt;This is always bordered&lt;/div&gt;
+      </h4>
+    </td>
+    <td>
+      <div [ngClass]="{bordered: false}">This is never bordered</div>
+      <div [ngClass]="{bordered: true}">This is always bordered</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>
+        &lt;div [ngClass]=&quot;classesObj&quot;&gt;
+        Border {{ '{' }}{{ '{' }} classesObj.bordered ? &quot;ON&quot; : &quot;OFF&quot; {{ '}' }}{{ '}' }}
+        &lt;/div&gt;
+      </h4>
+    </td>
+    <td>
+      <div [ngClass]="classesObj">
+        Border {{ classesObj.bordered ? "ON" : "OFF" }}
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div style="margin-top: 20px;">
+  <button class="ui primary button" (click)="toggleClick()">
+    Toggle Border
+  </button>
+</div>

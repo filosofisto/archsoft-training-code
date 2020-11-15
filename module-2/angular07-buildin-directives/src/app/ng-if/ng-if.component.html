@@ -1,0 +1,41 @@
+<h2>ngIf</h2>
+<table class="ui celled padded table">
+  <thead>
+  <tr>
+    <th>Code</th>
+    <th>Effect</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <h4>
+        &lt;div *ngIf=&quot;false&quot;&gt;I never will be here&lt;/div&gt;
+      </h4>
+    </td>
+    <td>
+      <div *ngIf="false">I never will be here</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>
+        &lt;div *ngIf=&quot;true&quot;&gt;I always will be here&lt;/div&gt;
+      </h4>
+    </td>
+    <td>
+      <div *ngIf="true">I always will be here</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>
+        &lt;div *ngIf=&quot;a &gt; b&quot;&gt;Show if a &gt; b&lt;/div&gt; =>
+      </h4>
+    </td>
+    <td>
+      <div *ngIf="a > b">Show if a > b</div>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,12 @@
+.bordered {
+  border: 1px dashed black;
+  background-color: #eee;
+}
+
+.ngNonBindableDemo .bordered {
+  border: 1px dashed black;
+  background-color: #eee;
+  padding: 10px; }
+
+.ngNonBindableDemo .pre {
+  font-family: monospace; }

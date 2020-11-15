@@ -1,0 +1,74 @@
+<h2>ngStyle</h2>
+<table class="ui celled padded table">
+  <thead>
+  <tr>
+    <th>Code</th>
+    <th>Effect</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <h4>
+        &lt;div [style.background-color]=&quot;'{{ currentColor }}'&quot;&lt;
+        This div is {{ currentColor }}
+        &lt;/div&lt;
+      </h4>
+    </td>
+    <td>
+      <div [style.background-color]="currentColor">
+        This div is {{ currentColor }}
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>
+        &lt;div [ngStyle]=&quot;{{ '{' }} 'color': {{ currentForecolor }}, 'background-color': {{ currentColor }} {{ '}'
+        }}&quot;&gt;
+        This div is {{ currentForecolor }} over {{ currentColor }}
+        &lt;/div&gt;
+      </h4>
+    </td>
+    <td>
+      <div [ngStyle]="{color: currentForecolor, 'background-color': currentColor }">
+        This div is currentForecolor over currentColor
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>
+        <form class="ui large form segment">
+          <div class="field">
+            <label for="color">Color:</label>
+            <input type="text" name="color" id="color" value="{{ color }}" #colorinput/>
+          </div>
+          <div class="field">
+            <label for="fontSize">Font Size:</label>
+            <input type="text" name="fontSize" id="fontSize" value="{{ fontSize }}" #fontinput/>
+          </div>
+          <button class="ui primary button" (click)="applyColorAndFontSize(colorinput, fontinput)">
+            Apply Color/FontSize
+          </button>
+        </form>
+      </h4>
+    </td>
+    <td>
+      <div>
+        <span [ngStyle]="{color: color}" [style.font-size.px]="fontSize">
+          Custom Color and FontSize.
+          px is pixel, but you could use others like em|%
+        </span>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div style="margin-top: 20px;">
+  <button class="ui primary button" (click)="randomColor()">
+    Random Color
+  </button>
+</div>
+

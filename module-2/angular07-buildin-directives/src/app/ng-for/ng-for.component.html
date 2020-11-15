@@ -1,0 +1,145 @@
+<h2>ngFor</h2>
+<table class="ui celled padded table">
+  <thead>
+  <tr>
+    <th>Code</th>
+    <th>Effect</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <h4>
+        &lt;h4 class=&quot;ui horizontal divider header&quot;&gt;
+        Cities
+        &lt;/h4&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngFor=&quot;let city of cities&quot; class=&quot;ui list&quot;&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;item&quot;&gt;{{ '{' }}{{ '{' }} city {{ '}' }}{{ '}' }}&lt;/div&gt;<br/>
+        &lt;/div&gt;
+      </h4>
+    </td>
+    <td>
+      <h4 class="ui horizontal divider header">
+        Cities
+      </h4>
+      <div *ngFor="let city of cities" class="ui list">
+        <div class="item">{{ city }}</div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>
+        &lt;h4 class=&quot;ui horizontal divider header&quot;&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;Person (list of objects)<br/>
+        &lt;/h4&gt;<br/>
+        &lt;table class=&quot;ui celled table&quot;&gt;<br/>
+        &nbsp;&nbsp;&lt;thead&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Name&lt;/th&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Age&lt;/th&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;City&lt;/th&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br/>
+        &nbsp;&nbsp;&lt;/thead&gt;<br/>
+        &nbsp;&nbsp;&lt;tbody&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr *ngFor=&quot;let person of people&quot;&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{ '{' }}{{ '{' }} person.name {{ '}' }}{{ '}' }}&lt;/td&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{ '{' }}{{ '{' }} person.age {{ '}' }}{{ '}' }}&lt;/td&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{ '{' }}{{ '{' }} person.city {{ '}' }}{{ '}' }}&lt;/td&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br/>
+        &nbsp;&nbsp;&lt;/tbody&gt;<br/>
+        &lt;/table&gt;
+      </h4>
+    </td>
+    <td>
+      <h4 class="ui horizontal divider header">
+        Person (list of objects)
+      </h4>
+      <table class="ui celled table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let person of people">
+          <td>{{ person.name }}</td>
+          <td>{{ person.age }}</td>
+          <td>{{ person.city }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>
+        &lt;div *ngFor=&quot;let item of peopleByCity&quot;&gt;<br/>
+        &nbsp;&nbsp;&lt;h4 class=&quot;ui header&quot;&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;{{ '{' }}{{ '{' }} item.city {{ '}' }}{{ '}' }}<br/>
+        &nbsp;&nbsp;&lt;/h4&gt;<br/>
+        &nbsp;&nbsp;&lt;table class=&quot;ui celled table&quot;&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Name&lt;/th&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Age&lt;/th&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/thead&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr *ngFor=&quot;let person of item.people&quot;&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{ '{' }}{{ '{' }} person.name {{ '}' }}{{ '}' }}&lt;/td&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{ '{' }}{{ '{' }} person.age {{ '}' }}{{ '}' }}&lt;/td&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tbody&gt;<br/>
+        &nbsp;&nbsp;&lt;/table&gt;<br/>
+        &nbsp;&nbsp;&lt;br/&gt;<br/>
+        &lt;/div&gt;
+      </h4>
+    </td>
+    <td>
+      <div *ngFor="let item of peopleByCity">
+        <h4 class="ui header">
+          {{ item.city }}
+        </h4>
+        <table class="ui celled table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let person of item.people">
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+          </tr>
+          </tbody>
+        </table>
+        <br/>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h4>
+        &lt;h4 class=&quot;ui horizontal divider header&quot;&gt;
+        Cities
+        &lt;/h4&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div *ngFor=&quot;let city of cities; let i = index&quot; class=&quot;ui list&quot;&gt;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;item&quot;&gt;{{ '{' }}{{ '{' }} i+1 {{ '}' }}{{ '}' }} - {{ '{' }}{{ '{' }} city {{ '}' }}{{ '}' }}&lt;/div&gt;<br/>
+        &lt;/div&gt;
+      </h4>
+    </td>
+    <td>
+      <h4 class="ui horizontal divider header">
+        Cities
+      </h4>
+      <div *ngFor="let city of cities; let i = index" class="ui list">
+        <div class="item">{{ i+1 }} - {{ city }}</div>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

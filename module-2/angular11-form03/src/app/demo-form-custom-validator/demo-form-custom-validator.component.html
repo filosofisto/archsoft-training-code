@@ -1,0 +1,29 @@
+<div class="ui raised segment">
+  <h2 class="ui header">Demo Form: Sku with Builder (no variable)</h2>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="ui form"
+        [class.error]="!formGroup.valid && formGroup.touched">
+    <!--<div *ngIf="!formGroup.valid && formGroup.touched" class="ui error">
+      There is error on form
+    </div>-->
+    <!--<div *ngIf="formGroup.hasError('required', 'sku') && sku.touched" class="ui error">
+      SKU is required
+    </div>-->
+
+    <div class="field" [class.error]="!sku.valid && sku.touched">
+      <label for="skuInput">SKU</label>
+      <input type="text" id="skuInput" placeholder="SKU"
+             [formControl]="formGroup.controls['sku']"/>
+      <div *ngIf="!formGroup.controls['sku'].valid && formGroup.controls['sku'].touched"
+           class="ui error message">
+        SKU is invalid
+      </div>
+      <div *ngIf="formGroup.controls['sku'].hasError('required') && formGroup.controls['sku'].touched" class="ui error message">
+        SKU is required
+      </div>
+      <div *ngIf="formGroup.controls['sku'].hasError('invalidSku') && formGroup.controls['sku'].touched" class="ui error message">
+        SKU have to start with 123
+      </div>
+    </div>
+    <button type="submit" class="ui button">Submit</button>
+  </form>
+</div>

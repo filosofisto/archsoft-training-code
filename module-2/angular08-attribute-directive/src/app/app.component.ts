@@ -10,5 +10,5 @@ export class AppComponent {
 
   color: string;
   backColor: string;
-  condition = false;
+  condition = true;
 }

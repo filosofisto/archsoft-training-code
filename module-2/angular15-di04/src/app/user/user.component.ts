@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 
 @Component({
@@ -9,8 +9,10 @@ import {UserService} from '../user.service';
 export class UserComponent implements OnInit {
 
   userName: string;
+  callApiRequestURL: string;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, @Inject('API_URL') apiUrl: string) {
+    this.callApiRequestURL = `${apiUrl}/user`;
   }
 
   ngOnInit(): void {

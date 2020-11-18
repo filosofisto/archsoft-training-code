@@ -9,15 +9,15 @@
       SKU is required
     </div>-->
 
-    <div class="field" [class.error]="!sku.valid && sku.touched">
+    <div class="field" [class.error]="checkControl('sku')">
       <label for="skuInput">SKU</label>
       <input type="text" id="skuInput" placeholder="SKU"
              [formControl]="formGroup.controls['sku']"/>
-      <div *ngIf="!formGroup.controls['sku'].valid && formGroup.controls['sku'].touched"
+      <div *ngIf="checkControl('sku')"
            class="ui error message">
         SKU is invalid
       </div>
-      <div *ngIf="formGroup.controls['sku'].hasError('required') && formGroup.controls['sku'].touched" class="ui error message">
+      <div *ngIf="checkControl('sku')" class="ui error message">
         SKU is required
       </div>
     </div>

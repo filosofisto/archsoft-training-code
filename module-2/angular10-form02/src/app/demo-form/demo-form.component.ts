@@ -12,7 +12,7 @@ export class DemoFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.formGroup = formBuilder.group({
-      'sku': ['ABC123']
+      sku: ['ABC123']
     });
   }
 

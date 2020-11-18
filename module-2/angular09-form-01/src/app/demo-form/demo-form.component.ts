@@ -13,6 +13,6 @@ export class DemoFormComponent implements OnInit {
   }
 
   onSubmit(form: any): void {
-    console.log(`form: ${form}, form.name: ${JSON.stringify(form)}`);
+    console.log(`form ${JSON.stringify(form)}`);
   }
 }

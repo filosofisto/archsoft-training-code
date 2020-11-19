@@ -1,0 +1,5 @@
+<p>GET</p>
+<button type="button" (click)="doGet()">{{ loading ? 'Loading...' : 'Press Here to do a GET' }}</button> |
+<button type="button" (click)="clear()">Clear</button>
+<div class="error" *ngIf="!!errorMessage">{{ errorMessage }}</div>
+<pre *ngIf="!!data">{{ data | json }}</pre>

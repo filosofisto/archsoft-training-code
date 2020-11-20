@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ export class UserService {
 
   user: any;
 
-  constructor() { }
+  constructor(@Inject('API_URL') private apiUrl: string) { }
 
   setUser(user): void {
     this.user = user;
@@ -15,5 +15,9 @@ export class UserService {
 
   getUser(): any {
     return this.user;
+  }
+
+  getPath(): string {
+    return `${this.apiUrl}/user`;
   }
 }

@@ -11,8 +11,8 @@ export class UserComponent implements OnInit {
   userName: string;
   callApiRequestURL: string;
 
-  constructor(private userService: UserService, @Inject('API_URL') apiUrl: string) {
-    this.callApiRequestURL = `${apiUrl}/user`;
+  constructor(private userService: UserService) {
+    this.callApiRequestURL = this.userService.getPath();
   }
 
   ngOnInit(): void {

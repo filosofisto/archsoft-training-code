@@ -14,7 +14,8 @@ import {UserService} from './user.service';
     BrowserModule
   ],
   providers: [
-    {provide: UserService, useClass: UserService},
+    // {provide: UserService, useClass: UserService},
+    UserService,
     {provide: 'API_URL', useValue: 'http://my.api.com/v1'}
   ],
   // providers: [UserService],

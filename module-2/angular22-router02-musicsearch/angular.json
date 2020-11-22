@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular22-route02-musicsearch": {
+    "angular22-router02-musicsearch": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular22-route02-musicsearch",
+            "outputPath": "dist/angular22-router02-musicsearch",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular22-route02-musicsearch:build"
+            "browserTarget": "angular22-router02-musicsearch:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular22-route02-musicsearch:build:production"
+              "browserTarget": "angular22-router02-musicsearch:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular22-route02-musicsearch:build"
+            "browserTarget": "angular22-router02-musicsearch:build"
           }
         },
         "test": {
@@ -110,18 +110,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular22-route02-musicsearch:serve"
+            "devServerTarget": "angular22-router02-musicsearch:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular22-route02-musicsearch:serve:production"
+              "devServerTarget": "angular22-router02-musicsearch:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "angular22-route02-musicsearch",
+  "defaultProject": "angular22-router02-musicsearch",
   "cli": {
     "analytics": false
   }

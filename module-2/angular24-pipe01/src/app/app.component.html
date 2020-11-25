@@ -1,0 +1,6 @@
+<h1>Custom Pipe</h1>
+<header>{{ employeeList | departmentList }}</header>
+<hr/>
+<div *ngFor="let employee of employeeList">
+  {{ employee.name }} [{{ employee.department.name }}] - {{ employee.startAt | date: 'dd/MM/yyyy' }}
+</div>

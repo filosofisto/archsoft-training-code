@@ -10,8 +10,8 @@ export class ProductComponent {
 
   id: string;
 
-  constructor(private route: ActivatedRoute) {
-    route.params.subscribe(params => { this.id = params['id']; });
+  constructor(private activatedRoute: ActivatedRoute) {
+    activatedRoute.params.subscribe(params => { this.id = params['id']; });
   }
 
 }

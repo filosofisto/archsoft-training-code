@@ -9,7 +9,7 @@ import {MessageNotificationService} from '../message-notification.service';
 })
 export class MessageComponent implements OnInit {
 
-  private message: string;
+  message = '';
   private subscription: Subscription;
 
   constructor(private messageNotificationService: MessageNotificationService) { }

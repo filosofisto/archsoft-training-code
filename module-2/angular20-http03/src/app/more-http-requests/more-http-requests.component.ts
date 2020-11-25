@@ -8,7 +8,7 @@ import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 })
 export class MoreHttpRequestsComponent implements OnInit {
 
-  data: Object;
+  data: any;
   loading: boolean;
 
   constructor(private http: HttpClient) { }
@@ -31,6 +31,7 @@ export class MoreHttpRequestsComponent implements OnInit {
         this.data = data;
         this.loading = false;
       }, error => {
+        this.loading = false;
         console.log(error);
       });
   }
@@ -42,10 +43,15 @@ export class MoreHttpRequestsComponent implements OnInit {
       .subscribe(data => {
         this.data = data;
         this.loading = false;
-      }, error => console.log(error));
+      }, error => {
+        this.loading = false;
+        console.log(error);
+      });
   }
 
   makeHeaders(): void {
+    this.loading = true;
+
     const headers: HttpHeaders = new HttpHeaders({
       'X-API-TOKEN': 'ng-book'
     });
@@ -54,12 +60,16 @@ export class MoreHttpRequestsComponent implements OnInit {
       'GET',
       'https://jsonplaceholder.typicode.com/posts/1',
       {
-        headers: headers
+        headers
       }
     );
 
     this.http.request(req).subscribe(data => {
+      this.loading = false;
       this.data = data['body'];
+    }, error => {
+      this.loading = false;
+      console.log(error);
     });
   }
 }

@@ -1,0 +1,26 @@
+<h2>People</h2>
+<table class="ui celled padded table">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let person of people">
+    <td>
+      <h4>
+        {{ person.id }}
+      </h4>
+    </td>
+    <td>
+      {{ person.name }}
+    </td>
+    <td>
+      {{ person.age }}
+    </td>
+  </tr>
+  </tbody>
+</table>
+

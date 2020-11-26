@@ -2,5 +2,17 @@
 <header>{{ employeeList | departmentList }}</header>
 <hr/>
 <div *ngFor="let employee of employeeList">
-  {{ employee.name }} [{{ employee.department.name }}] - {{ employee.startAt | date: 'dd/MM/yyyy' }}
+  {{ employee.name | uppercase }} -
+  [{{ employee.department.name | lowercase }}] -
+  {{ employee.startAt | date: 'dd/MM/yyyy' }} -
+  {{ employee.salary | currency:'BRL':'symbol':'4.2-2':'pt' }} -
+  {{ employee.productivity | percent }}
 </div>
+
+<!--
+currency_value|currency[:currencyCode[:display[:digitsInfo[:locale]]]]
+currencyCode =>	ISO 4217 currency code. Of type string default value undefined,Optional
+display	     => We can display Currency 'symbol' or 'code' or 'symbol-narrow' or our own string. Of type string, Optional Default value is 'symbol'
+digitsInfo	 => Represents Decimal representation of currency value.
+locale	     => represents locale format rules. Default value is our project locale if set or undefined
+-->

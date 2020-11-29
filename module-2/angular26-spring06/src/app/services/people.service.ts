@@ -1,12 +1,14 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {Person} from '../model/person';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeopleService {
+
+  notificationPerson: Subject<Person> = new Subject<Person>();
 
   constructor(private http: HttpClient, @Inject('API_URL') private apiUrl: string) { }
 
@@ -36,6 +38,10 @@ export class PeopleService {
       JSON.stringify(person),
       {headers: new HttpHeaders({'Content-Type': 'application/json'})}
     );
+  }
+
+  notify(person: Person): void {
+    this.notificationPerson.next(person);
   }
 }
 

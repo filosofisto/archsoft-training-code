@@ -22,7 +22,6 @@ export class MessageComponent implements OnInit {
   private subscribe(): void {
     this.subscription = this.messageNotificationService.notificationChange.subscribe(message => {
       this.message = message;
-      console.log('te peguei');
       setTimeout(() => this.message = null, 2500);
     });
   }

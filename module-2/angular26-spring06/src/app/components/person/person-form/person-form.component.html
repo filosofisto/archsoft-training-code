@@ -1,5 +1,5 @@
 <div class="ui raised segment">
-  <h2 class="ui header">Add Person</h2>
+  <h2 class="ui header">{{ editing ? 'Edit' : 'Add' }} Person</h2>
   <form [formGroup]="formGroup" (ngSubmit)="save(formGroup.value)" class="ui form">
     <div class="field" [class.error]="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
       <label for="nameInput">Name</label>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <button class="ui button primary" [disabled]="formGroup.invalid">
-      Create
+      {{ editing ? 'Save' : 'Create' }}
     </button> |
     <button class="ui button" (click)="clear()">
       Clear

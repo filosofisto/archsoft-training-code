@@ -12,7 +12,7 @@ export class PersonViewComponent implements OnInit {
 
   people: Person[] = [];
 
-  person: Person;
+  // person: Person;
 
   constructor(private peopleService: PeopleService,
               private messageNotificationService: MessageNotificationService) { }
@@ -28,13 +28,17 @@ export class PersonViewComponent implements OnInit {
   }
 
   save(person: Person): void {
-    this.create(person);
+    if (person.id) {
+      this.update(person);
+    } else {
+      this.create(person);
+    }
   }
 
   private create(person: Person): void {
     this.peopleService.create(person).subscribe(
       data => {
-        this.messageNotificationService.notifySuccess('Person saved');
+        this.messageNotificationService.notifySuccess('Person created');
         this.loadPeople();
       },
       error => {
@@ -45,8 +49,8 @@ export class PersonViewComponent implements OnInit {
 
   private update(person: Person): void {
     this.peopleService.update(person).subscribe(
-      data => {
-        this.messageNotificationService.notifySuccess('Person saved');
+      () => {
+        this.messageNotificationService.notifySuccess('Person updated');
         this.loadPeople();
       },
       error => {
@@ -67,7 +71,10 @@ export class PersonViewComponent implements OnInit {
 
   read(person: Person): void {
     this.peopleService.read(person.id).subscribe(
-      data => this.person = data,
+      data => {
+        // this.person = data;
+        this.peopleService.notify(data);
+      },
       error => this.messageNotificationService.notifyError(error.message)
     );
   }

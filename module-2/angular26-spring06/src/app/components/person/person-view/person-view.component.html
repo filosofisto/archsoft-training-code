@@ -2,5 +2,6 @@
 <br/>
 <app-person-list [people]="people"
                  (onRemove)="remove($event)"
-                 (onEdit)="read($event)">
+                 (onEdit)="read($event)"
+                 (onSave)="update($event)">
 </app-person-list>

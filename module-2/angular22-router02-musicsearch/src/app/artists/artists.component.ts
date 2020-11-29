@@ -13,10 +13,10 @@ export class ArtistsComponent implements OnInit {
   id: string;
   artist: any;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
               private spotifyService: SpotifyService,
               private location: Location) {
-    route.params.subscribe(params => {
+    activatedRoute.params.subscribe(params => {
       this.id = params['id'];
     });
   }

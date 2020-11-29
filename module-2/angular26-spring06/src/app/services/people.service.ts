@@ -1,8 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Person} from '../model/person';
-import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +12,18 @@ export class PeopleService {
 
   list(): Observable<Person[]> {
     return this.http.get<Person[]>(this.apiUrl);
+  }
+
+  create(person: Person): Observable<Person> {
+    return this.http.post<Person>(
+      this.apiUrl,
+      JSON.stringify(person),
+      {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+      );
+  }
+
+  delete(person: Person): Observable<Person> {
+    return this.http.delete<Person>(`${this.apiUrl}/${person.id}`);
   }
 }
 

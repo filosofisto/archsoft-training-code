@@ -1,26 +1,30 @@
-<h2>People</h2>
-<table class="ui celled padded table">
-  <thead>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let person of people">
-    <td>
-      <h4>
-        {{ person.id }}
-      </h4>
-    </td>
-    <td>
-      {{ person.name }}
-    </td>
-    <td>
-      {{ person.age }}
-    </td>
-  </tr>
-  </tbody>
-</table>
-
+<div *ngIf="people.length > 0">
+  <h2>List of People</h2>
+  <table class="ui celled padded table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let person of people">
+      <td>{{ person.id }}</td>
+      <td>{{ person.name }}</td>
+      <td>{{ person.age }}</td>
+      <td class="text-center">
+        <div class="btn-group" role="group" aria-label="actions column">
+          <!--<button class="btn btn-sm btn-light" (click)="edit(cargo)" aria-label="Editar registro">
+            <span class="fa fa-pencil"></span>
+          </button>-->
+          <button class="ui button negative" (click)="confirmRemove(person)" aria-label="Remover registro">
+            Remove
+          </button>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

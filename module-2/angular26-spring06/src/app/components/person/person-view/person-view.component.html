@@ -1,2 +1,3 @@
-<app-person-form></app-person-form>
-<app-person-list></app-person-list>
+<app-person-form (onSave)="loadPeople()"></app-person-form>
+<br/>
+<app-person-list [people]="people" (onRemove)="removePerson($event)"></app-person-list>

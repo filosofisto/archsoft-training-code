@@ -1,1 +1,31 @@
-<p>person-form works!</p>
+<div class="ui raised segment">
+  <h2 class="ui header">Add Person</h2>
+  <form [formGroup]="formGroup" (ngSubmit)="save(formGroup.value)" class="ui form"
+        [class.error]="!formGroup.valid && formGroup.touched">
+    <div class="field" [class.error]="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+      <label for="nameInput">Name</label>
+      <input type="text" id="nameInput" placeholder="Klark Kent" [formControl]="formGroup.controls['name']"/>
+      <div *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched"
+           class="ui error message">
+        Name invalid
+      </div>
+      <div *ngIf="formGroup.controls['name'].hasError('required') && formGroup.controls['name'].touched" class="ui error message">
+        Name required
+      </div>
+    </div>
+    <div class="field" [class.error]="!formGroup.controls['age'].valid && formGroup.controls['age'].touched">
+      <label for="ageInput">Name</label>
+      <input type="text" id="ageInput" placeholder="25" [formControl]="formGroup.controls['age']" mask="999"/>
+      <div *ngIf="!formGroup.controls['age'].valid && formGroup.controls['age'].touched"
+           class="ui error message">
+        Age invalid
+      </div>
+      <div *ngIf="formGroup.controls['age'].hasError('required') && formGroup.controls['age'].touched" class="ui error message">
+        Age required
+      </div>
+    </div>
+    <button type="submit" class="ui button primary">
+      Create
+    </button>
+  </form>
+</div>

@@ -1,23 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Person} from '../../../model/person';
-import {PeopleService} from '../../../services/people.service';
+import {ConfirmNotificationService} from '../../../services/confirm-notification.service';
+import {ConfirmConfig} from '../../commun/util/confirm-config';
 
 @Component({
   selector: 'app-person-list',
   templateUrl: './person-list.component.html',
   styleUrls: ['./person-list.component.css']
 })
-export class PersonListComponent implements OnInit {
+export class PersonListComponent {
 
-  people: Person[] = [];
+  @Input() people: Person[];
+  @Output() onRemove: EventEmitter<Person>;
 
-  constructor(private peopleService: PeopleService) { }
-
-  ngOnInit(): void {
-    this.loadPeople();
+  constructor(private confirmNotificationService: ConfirmNotificationService) {
+    this.onRemove = new EventEmitter<Person>();
   }
 
-  private loadPeople(): void {
-    this.peopleService.list().subscribe(data => this.people = data, error => console.log(error));
+  confirmRemove(person: Person): void {
+    this.confirmNotificationService.confirm(new ConfirmConfig({
+      message: `Confirm remove person ${person.name}?`,
+      actionAccept: () => this.onRemove.emit(person)
+    }));
   }
 }

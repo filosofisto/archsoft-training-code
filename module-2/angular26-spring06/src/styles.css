@@ -5832,11 +5832,7 @@ div .ui.modal {
   bottom: unset;
 }
 
-.center-screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
+.button-width {
+  width: 70px;
 }
+

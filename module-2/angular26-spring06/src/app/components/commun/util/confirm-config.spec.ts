@@ -1,7 +1,7 @@
 import { ConfirmConfig } from './confirm-config';
 
 describe('ConfirmConfig', () => {
-  it('should create an instance', () => {
+  it('should save an instance', () => {
     expect(new ConfirmConfig()).toBeTruthy();
   });
 });

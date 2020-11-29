@@ -25,6 +25,18 @@ export class PeopleService {
   delete(person: Person): Observable<Person> {
     return this.http.delete<Person>(`${this.apiUrl}/${person.id}`);
   }
+
+  read(id: number): Observable<Person> {
+    return this.http.get<Person>(`${this.apiUrl}/${id}`);
+  }
+
+  update(person: Person): Observable<Person> {
+    return this.http.put<Person>(
+      this.apiUrl,
+      JSON.stringify(person),
+      {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+    );
+  }
 }
 
 export const peopleServiceInjectables: Array<any> = [

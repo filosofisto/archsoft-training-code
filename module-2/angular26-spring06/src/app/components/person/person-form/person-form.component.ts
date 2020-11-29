@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PeopleService} from '../../../services/people.service';
 import {Person} from '../../../model/person';
@@ -35,14 +35,14 @@ export class PersonFormComponent {
       return;
     }
 
-    this.peopleService.create(new Person(formValue)).subscribe(
-      data => {
-        this.messageNotificationService.notifySuccess('Person saved');
-        this.onSave.emit(data);
-      },
-      error => {
-        this.messageNotificationService.notifyError(error.message);
-      }
-    );
+    this.onSave.emit(new Person(formValue));
+
+    this.clear();
+  }
+
+  clear(): boolean {
+    this.formGroup.reset();
+
+    return false;
   }
 }

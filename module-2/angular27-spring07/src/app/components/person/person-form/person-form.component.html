@@ -1,0 +1,27 @@
+<div class="ui raised segment">
+  <h2 class="ui header">{{ editing ? 'Edit' : 'Add' }} Person</h2>
+  <form [formGroup]="formGroup" (ngSubmit)="save(formGroup.value)" class="ui form">
+    <div class="field" [class.error]="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+      <label for="nameInput">Name</label>
+      <input type="text" id="nameInput" placeholder="Klark Kent" [formControl]="formGroup.controls['name']"/>
+      <div *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched"
+           class="ui error message">
+        Name invalid
+      </div>
+    </div>
+    <div class="field" [class.error]="!formGroup.controls['age'].valid && formGroup.controls['age'].touched">
+      <label for="ageInput">Name</label>
+      <input type="text" id="ageInput" placeholder="25" [formControl]="formGroup.controls['age']" mask="999"/>
+      <div *ngIf="!formGroup.controls['age'].valid && formGroup.controls['age'].touched"
+           class="ui error message">
+        Age invalid
+      </div>
+    </div>
+    <button class="ui button primary" [disabled]="formGroup.invalid">
+      {{ editing ? 'Save' : 'Create' }}
+    </button> |
+    <button class="ui button" (click)="clear()">
+      Clear
+    </button>
+  </form>
+</div>

@@ -46,12 +46,6 @@ public class PersonController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        
         personService.delete(id);
 
         return ResponseEntity.ok().build();

@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="field" [class.error]="!formGroup.controls['age'].valid && formGroup.controls['age'].touched">
-      <label for="ageInput">Name</label>
+      <label for="ageInput">Age</label>
       <input type="text" id="ageInput" placeholder="25" [formControl]="formGroup.controls['age']" mask="999"/>
       <div *ngIf="!formGroup.controls['age'].valid && formGroup.controls['age'].touched"
            class="ui error message">

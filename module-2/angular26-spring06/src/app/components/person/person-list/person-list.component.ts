@@ -10,7 +10,7 @@ import {ConfirmConfig} from '../../commun/util/confirm-config';
 })
 export class PersonListComponent {
 
-  @Input() people: Person[];
+  @Input() people: Person[] = [];
   @Output() onRemove: EventEmitter<Person>;
   @Output() onEdit: EventEmitter<Person>;
 

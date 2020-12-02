@@ -13,7 +13,7 @@ export class MessageComponent implements OnInit {
 
   constructor(private messageNotificationService: MessageNotificationService) { }
 
-  message: Message;
+  messages: Message[] = [];
   private subscription: Subscription;
 
   private static timeoutByType(message: Message): number {
@@ -30,8 +30,8 @@ export class MessageComponent implements OnInit {
 
   private subscribe(): void {
     this.subscription = this.messageNotificationService.notificationChange.subscribe(message => {
-      this.message = message;
-      setTimeout(() => this.message = null, MessageComponent.timeoutByType(message));
+      this.messages.push(message);
+      setTimeout(() => this.messages.length = 0, MessageComponent.timeoutByType(message));
     });
   }
 }

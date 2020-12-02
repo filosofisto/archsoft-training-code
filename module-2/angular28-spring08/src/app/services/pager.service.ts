@@ -7,11 +7,11 @@ import {PagerData} from '../components/commun/util/pager-data';
 })
 export class PagerService {
 
-  notificationChange: Subject<PagerData<any>> = new Subject<PagerData<any>>();
+  notificationChange: Subject<PagerData> = new Subject<PagerData>();
 
   constructor() { }
 
-  notify(pagerData: PagerData<any>): void {
+  notify(pagerData: PagerData): void {
     this.notificationChange.next(pagerData);
   }
 }

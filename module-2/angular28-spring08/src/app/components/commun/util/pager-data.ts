@@ -19,7 +19,7 @@ export class PagerData {
   }
 
   hasBefore(): boolean {
-    return this.data['page']['number'] > 0;
+    return this.currentPage() > 0;
   }
 
   isFirst(): boolean {

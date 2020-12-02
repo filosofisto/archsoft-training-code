@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {MessageNotificationService} from '../../../services/message-notification.service';
 import {Message} from '../util/message';
+import {MessageSeverity} from '../util/message-severity.enum';
 
 @Component({
   selector: 'app-message',
@@ -10,10 +11,18 @@ import {Message} from '../util/message';
 })
 export class MessageComponent implements OnInit {
 
+  constructor(private messageNotificationService: MessageNotificationService) { }
+
   message: Message;
   private subscription: Subscription;
 
-  constructor(private messageNotificationService: MessageNotificationService) { }
+  private static timeoutByType(message: Message): number {
+    if (message.severity === MessageSeverity.ERROR) {
+      return 3500;
+    }
+
+    return 2500;
+  }
 
   ngOnInit(): void {
     this.subscribe();
@@ -22,7 +31,7 @@ export class MessageComponent implements OnInit {
   private subscribe(): void {
     this.subscription = this.messageNotificationService.notificationChange.subscribe(message => {
       this.message = message;
-      setTimeout(() => this.message = null, 2500);
+      setTimeout(() => this.message = null, MessageComponent.timeoutByType(message));
     });
   }
 }

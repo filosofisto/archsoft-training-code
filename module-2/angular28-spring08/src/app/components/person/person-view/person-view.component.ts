@@ -37,11 +37,7 @@ export class PersonViewComponent implements OnInit {
       () => {
         this.messageNotificationService.notifySuccess('Person created');
         this.loadPeopleFirst();
-      },
-      error => {
-        this.messageNotificationService.notifyError(error.message);
-      }
-    );
+      });
   }
 
   private update(person: Person): void {
@@ -49,11 +45,7 @@ export class PersonViewComponent implements OnInit {
       () => {
         this.messageNotificationService.notifySuccess('Person updated');
         this.loadPeopleFirst();
-      },
-      error => {
-        this.messageNotificationService.notifyError(error.message);
-      }
-    );
+      });
   }
 
   remove(person: Person): void {
@@ -61,18 +53,11 @@ export class PersonViewComponent implements OnInit {
       () => {
         this.messageNotificationService.notifyWarn(`Person ${person.name} removed successful`);
         this.loadPeopleFirst();
-      },
-      error => this.messageNotificationService.notifyError(error.message)
-      );
+      });
   }
 
   read(person: Person): void {
-    this.peopleService.read(person.id).subscribe(
-      data => {
-        this.peopleService.notify(data);
-      },
-      error => this.messageNotificationService.notifyError(error.message)
-    );
+    this.peopleService.read(person.id).subscribe(data => this.peopleService.notify(data));
   }
 
   loadPaged(page: number): void {
@@ -81,9 +66,7 @@ export class PersonViewComponent implements OnInit {
         this.people = data['_embedded']['personTOList'];
         this.pagerData = new PagerData(data);
         this.pagerService.notify(data);
-      },
-      error => this.messageNotificationService.notifyError(error.message)
-    );
+      });
   }
 
   loadPeopleFirst(): void {

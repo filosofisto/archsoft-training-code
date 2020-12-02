@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PeopleService} from '../../../services/people.service';
 import {Person} from '../../../model/person';
 import {MessageNotificationService} from '../../../services/message-notification.service';
+import {PagerData} from '../../commun/util/pager-data';
+import {PagerService} from '../../../services/pager.service';
 
 @Component({
   selector: 'app-person-view',
@@ -12,20 +14,14 @@ export class PersonViewComponent implements OnInit {
 
   people: Person[] = [];
 
-  // person: Person;
+  private pagerData: PagerData;
 
   constructor(private peopleService: PeopleService,
+              private pagerService: PagerService,
               private messageNotificationService: MessageNotificationService) { }
 
   ngOnInit(): void {
-    this.loadPeople();
-  }
-
-  loadPeople(): void {
-    console.log('loadPeople');
-    this.peopleService.list().subscribe(
-      data => this.people = data,
-        error => this.messageNotificationService.notifyError(error.message));
+    this.loadPeopleFirst();
   }
 
   save(person: Person): void {
@@ -38,9 +34,9 @@ export class PersonViewComponent implements OnInit {
 
   private create(person: Person): void {
     this.peopleService.create(person).subscribe(
-      data => {
+      () => {
         this.messageNotificationService.notifySuccess('Person created');
-        this.loadPeople();
+        this.loadPeopleFirst();
       },
       error => {
         this.messageNotificationService.notifyError(error.message);
@@ -52,7 +48,7 @@ export class PersonViewComponent implements OnInit {
     this.peopleService.update(person).subscribe(
       () => {
         this.messageNotificationService.notifySuccess('Person updated');
-        this.loadPeople();
+        this.loadPeopleFirst();
       },
       error => {
         this.messageNotificationService.notifyError(error.message);
@@ -64,7 +60,7 @@ export class PersonViewComponent implements OnInit {
     this.peopleService.delete(person).subscribe(
       () => {
         this.messageNotificationService.notifyWarn(`Person ${person.name} removed successful`);
-        this.loadPeople();
+        this.loadPeopleFirst();
       },
       error => this.messageNotificationService.notifyError(error.message)
       );
@@ -73,10 +69,40 @@ export class PersonViewComponent implements OnInit {
   read(person: Person): void {
     this.peopleService.read(person.id).subscribe(
       data => {
-        // this.person = data;
         this.peopleService.notify(data);
       },
       error => this.messageNotificationService.notifyError(error.message)
     );
+  }
+
+  loadPaged(page: number): void {
+    this.peopleService.list(page).subscribe(
+      data => {
+        this.people = data['_embedded']['personTOList'];
+        this.pagerData = new PagerData(data);
+        this.pagerService.notify(data);
+      },
+      error => this.messageNotificationService.notifyError(error.message)
+    );
+  }
+
+  loadPeopleFirst(): void {
+    this.loadPaged(0);
+  }
+
+  loadPeopleBefore(): void {
+    if (this.pagerData.hasBefore()) {
+      this.loadPaged(this.pagerData.currentPage() - 1);
+    }
+  }
+
+  loadPeopleNext(): void {
+    if (this.pagerData.hasNext()) {
+      this.loadPaged(this.pagerData.nextPage());
+    }
+  }
+
+  loadPeopleLast(): void {
+    this.loadPaged(this.pagerData.lastPage());
   }
 }

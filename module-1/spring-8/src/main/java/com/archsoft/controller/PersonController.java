@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/person")
 public class PersonController {
@@ -68,7 +69,7 @@ public class PersonController {
     @GetMapping
     public ResponseEntity<PagedModel<EntityModel<PersonTO>>> list(
             @RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "size", defaultValue = "5") int size,
+            @RequestParam(value = "size", defaultValue = "3") int size,
             @RequestParam(value = "direction", defaultValue = "asc") String direction,
             @RequestParam(value = "sortBy", defaultValue = "name") String sortBy) throws RecordNotFoundException {
         Pageable pageable = PageRequest.of(page, size, DirectionConverter.from(direction), sortBy);

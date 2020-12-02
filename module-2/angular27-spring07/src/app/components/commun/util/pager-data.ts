@@ -16,12 +16,12 @@ export class PagerData<T> {
               // public number_: number,
               public empty: boolean) { }
 
-  static default(context: string): PagerData {
+  /*static default(context: string): PagerData {
     return new PagerData(
       context,
       [],
       new Pageable(new Sort(false, true, true), 0, 0, 0, true, false),
       0, 0, false, 0, new Sort(false, true, true), 0, false, true
     );
-  }
+  }*/
 }

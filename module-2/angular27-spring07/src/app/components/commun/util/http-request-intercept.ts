@@ -3,13 +3,15 @@ import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,
 import {Observable} from 'rxjs';
 import {LoadingNotificationService} from '../../../services/loading-notification.service';
 import {catchError, map} from 'rxjs/operators';
+import {MessageNotificationService} from '../../../services/message-notification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpRequestIntercept implements HttpInterceptor {
 
-  constructor(private loadingNotificationService: LoadingNotificationService) { }
+  constructor(private loadingNotificationService: LoadingNotificationService,
+              private messageNotificationService: MessageNotificationService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.loadingNotificationService.start(req.url);
@@ -18,6 +20,8 @@ export class HttpRequestIntercept implements HttpInterceptor {
       .pipe(
         catchError((err) => {
           this.loadingNotificationService.stop(req.url);
+          this.messageNotificationService.notifyError(err.message);
+
           return err;
         })
       )

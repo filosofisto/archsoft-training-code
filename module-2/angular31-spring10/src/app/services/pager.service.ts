@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {PagerData} from '../components/commun/util/pager-data';
 import {HttpClient} from '@angular/common/http';
 
@@ -16,23 +16,23 @@ export class PagerService {
     this.notificationChange.next(data);
   }
 
-  first(pagerData: any): void {
-    this.request(pagerData['_links']['first']['href']);
+  first(pagerData: any): Observable<any> {
+    return this.request(pagerData['_links']['first']['href']);
   }
 
-  before(pagerData: any): void {
-    this.request(pagerData['_links']['prev']['href']);
+  before(pagerData: any): Observable<any> {
+    return this.request(pagerData['_links']['prev']['href']);
   }
 
-  next(pagerData: any): void {
-    this.request(pagerData['_links']['next']['href']);
+  next(pagerData: any): Observable<any> {
+    return this.request(pagerData['_links']['next']['href']);
   }
 
-  last(pagerData: any): void {
-    this.request(pagerData['_links']['last']['href']);
+  last(pagerData: any): Observable<any> {
+    return this.request(pagerData['_links']['last']['href']);
   }
 
-  private request(url: string): void {
-    this.http.get<PagerData>(`${url}`).subscribe(data => this.notify(data));
+  private request(url: string): Observable<any> {
+    return this.http.get<any>(`${url}`);
   }
 }

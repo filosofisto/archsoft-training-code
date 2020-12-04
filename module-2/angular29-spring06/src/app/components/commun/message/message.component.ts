@@ -18,10 +18,10 @@ export class MessageComponent implements OnInit {
 
   private static timeoutByType(message: Message): number {
     if (message.severity === MessageSeverity.ERROR) {
-      return 3500;
+      return 5500;
     }
 
-    return 2500;
+    return 3500;
   }
 
   ngOnInit(): void {

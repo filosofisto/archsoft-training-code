@@ -3,6 +3,7 @@ import {AuthService} from './services/auth.service';
 import {User} from './model/user';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {MessageNotificationService} from './services/message-notification.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
   private subscription: Subscription;
 
   constructor(private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private messageNotificationService: MessageNotificationService) {
     this.subscription = this.authService.currentUserSubject.subscribe(
       user => this.currentUser = user);
   }
@@ -29,5 +31,6 @@ export class AppComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
+    this.messageNotificationService.notifyInfo('Have a nice day');
   }
 }

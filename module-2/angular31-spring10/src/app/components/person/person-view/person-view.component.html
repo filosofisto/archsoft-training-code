@@ -4,4 +4,4 @@
                  (onRemove)="remove($event)"
                  (onEdit)="read($event)">
 </app-person-list>
-<app-pager (onGoto)="loadPaged($event)"></app-pager>
+<app-pager (onGoto)="loadPaged($event)" (onPagerData)="updatePagerData($event)"></app-pager>

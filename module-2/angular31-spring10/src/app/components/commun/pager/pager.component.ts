@@ -13,16 +13,25 @@ export class PagerComponent implements OnInit {
   pagerData: PagerData;
   pages: number[] = [];
   private subscription: Subscription;
+  private updatePager = (data) => {
+    this.onPagerData.emit(data);
+    this.initPager(data);
+  }
 
   @Output() onGoto: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onPagerData: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private pagerService: PagerService) { }
 
   ngOnInit(): void {
-    this.subscription = this.pagerService.notificationChange.subscribe(data => {
-      this.pagerData = new PagerData(data);
-      this.calcPages();
-    });
+    this.subscription = this.pagerService.notificationChange.subscribe(
+      data => this.initPager(data)
+    );
+  }
+
+  private initPager(data: any): void {
+    this.pagerData = new PagerData(data);
+    this.calcPages();
   }
 
   private calcPages(): void {
@@ -43,19 +52,19 @@ export class PagerComponent implements OnInit {
   }
 
   first(): void {
-    this.pagerService.first(this.pagerData.data);
+    this.pagerService.first(this.pagerData.data).subscribe(this.updatePager);
   }
 
   next(): void {
-    this.pagerService.next(this.pagerData.data);
+    this.pagerService.next(this.pagerData.data).subscribe(this.updatePager);
   }
 
   before(): void {
-    this.pagerService.before(this.pagerData.data);
+    this.pagerService.before(this.pagerData.data).subscribe(this.updatePager);
   }
 
   last(): void {
-    this.pagerService.last(this.pagerData.data);
+    this.pagerService.last(this.pagerData.data).subscribe(this.updatePager);
   }
 
   isLast(): boolean {

@@ -5,7 +5,6 @@ import {LoadingNotificationService} from '../../../services/loading-notification
 import {catchError, map} from 'rxjs/operators';
 import {MessageNotificationService} from '../../../services/message-notification.service';
 import {AuthService} from '../../../services/auth.service';
-import {Location} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'

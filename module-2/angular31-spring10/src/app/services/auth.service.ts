@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../model/user';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 
@@ -22,7 +22,7 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  public login(username: string, password: string) {
+  public login(username: string, password: string): Observable<User> {
     return this.http.post<any>(
       `${environment.api}/login`,
       { username, password },

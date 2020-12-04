@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {PeopleService} from '../../../services/people.service';
 import {Person} from '../../../model/person';
 import {MessageNotificationService} from '../../../services/message-notification.service';
-import {PagerData} from '../../commun/util/pager-data';
 import {PagerService} from '../../../services/pager.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-person-view',
@@ -13,8 +13,6 @@ import {PagerService} from '../../../services/pager.service';
 export class PersonViewComponent implements OnInit {
 
   people: Person[] = [];
-
-  private pagerData: PagerData;
 
   constructor(private peopleService: PeopleService,
               private pagerService: PagerService,
@@ -64,12 +62,15 @@ export class PersonViewComponent implements OnInit {
     this.peopleService.list(page).subscribe(
       data => {
         this.people = data['_embedded']['personTOList'];
-        this.pagerData = new PagerData(data);
         this.pagerService.notify(data);
       });
   }
 
   loadPeopleFirst(): void {
     this.loadPaged(0);
+  }
+
+  updatePagerData(data: any): void {
+    this.people = data['_embedded']['personTOList'];
   }
 }

@@ -17,7 +17,7 @@ export class InputTextComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.id = this.label.toLowerCase() + 'Input';
+    // this.id = this.label.toLowerCase() + 'Input';
     this.invalidMessage = this.invalidMessage || this.label + ' invalid';
 
   }

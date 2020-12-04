@@ -4,19 +4,18 @@ import com.archsoft.model.User;
 import com.archsoft.security.JwtTokenProvider;
 import com.archsoft.service.UserService;
 import com.archsoft.to.UserTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/login")
 public class AuthController {
@@ -52,7 +51,9 @@ public class AuthController {
 
             return ResponseEntity.ok(map);
         } catch (AuthenticationException e) {
-            throw new BadCredentialsException("Invalid username/password");
+//            throw new BadCredentialsException("Invalid username/password");
+//            throw new org.springframework.security.authentication.AuthenticationCredentialsNotFoundException("Invalid username/password");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
 }

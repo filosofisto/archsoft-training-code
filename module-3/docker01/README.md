@@ -25,9 +25,21 @@
 
   Executa um servico do container (download, instala e executa a aplicacao)
 
+- ps -elf
+
+  Dentro do container para verificar os processos em execucao
+
+- docker container exec -it <container id> <command ex: bash>
+
+  Conectar ao termial de um container
+
 - docker ps
 
   Lista os containers em execucao
+
+- docker container stop <container id>
+
+  Parar um container (por id)
 
 - Multiplas tags
 
@@ -39,4 +51,23 @@
 
 - Filtrando
 
-  docker image ls --filter dangling=true  
+  docker image ls --filter dangling=true    
+
+## Criando Aplicacao Angular e usar um NGINX em um Container Docker
+
+- ng new angular-nginx-docker --minimal
+- cd angular-nginx-dockerng build --prod
+- ng build --prod
+- docker run -it -p 80:80 \
+    -v /$PWD/dist/angular-nginx-docker://usr/share/nginx/html:ro \
+    nginx:alpine
+
+## Customizando configuracao do NGNIX
+
+- docker run -it -p 80:80 \
+    -v /$PWD/dist/angular-nginx-docker://usr/share/nginx/html:ro \
+    -v /$PWD/.nginx/nginx.conf://etc/nginx/nginx.conf:ro \
+    nginx:alpine
+  
+
+

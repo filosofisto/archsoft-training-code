@@ -1,1 +1,0 @@
-INSERT INTO public.tb03_permission (permission_id, description) VALUES (1, 'admin');

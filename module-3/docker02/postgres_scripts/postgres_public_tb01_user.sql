@@ -1,1 +1,0 @@
-INSERT INTO public.tb01_user (user_id, account_non_expired, account_non_locked, credentials_non_expired, enabled, password, user_name) VALUES (1, true, true, true, true, '$2a$10$0PnU8CBeLym0k7xd71zJ.OmM8A9ixm93HaIhCau1Vi0rXtH1Exbim', 'admin');

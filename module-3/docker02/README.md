@@ -34,3 +34,7 @@
 
 - docker container run -p 80:80 filosofisto/angular-nginx-dockerized:0.0.1 &
 
+## Container Postgres
+
+- docker create -v $PWD/postgresql/data --name PostgresData alpine
+- docker run -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=admin -d --volumes-from PostgresData postgres

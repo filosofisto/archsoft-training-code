@@ -2,7 +2,9 @@
 
 ## Comandos
 
-- docker version
+```
+docker version
+```
   
   Exibe a versao do docker (Client e Server)
 

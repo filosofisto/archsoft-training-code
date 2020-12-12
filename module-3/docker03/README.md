@@ -10,7 +10,7 @@ docker exec -it dev-postgres psql -U postgres
 ```
 
 - Commands psql:
-  \l          => List Databases
-  \c postgres => Switch to postgres database
-  \dt         => Show tables
+  - \l          => List Databases
+  - \c postgres => Switch to postgres database
+  - \dt         => Show tables
 

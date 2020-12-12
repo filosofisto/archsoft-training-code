@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+    <deployment type="dockerfile">
+      <settings>
+        <option name="imageTag" value="" />
+        <option name="buildCliOptions" value="" />
+        <option name="command" value="java -jar debug01-1.0-SNAPSHOT.jar" />
+        <option name="containerName" value="debug01" />
+        <option name="entrypoint" value="" />
+        <option name="commandLineOptions" value="" />
+        <option name="sourceFilePath" value="Dockerfile" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>

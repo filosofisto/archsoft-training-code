@@ -8,51 +8,65 @@
 docker version
 ```
 
+- Lista as imagens
 
-
-- docker image ls | docker images
+```
+docker image ls | docker images
+```  
   
-  Lista as imagens
+- Pull images (download de imagens)
 
-- docker image pull ubuntu:latest
-  docker image pull redis:latest
-  docker image pull gcr.io/google-containers/git-sync:v3.1.5
+```
+docker image pull ubuntu:latest
+docker image pull redis:latest
+docker image pull gcr.io/google-containers/git-sync:v3.1.5
+```
+
+Obtem um imagem do DockerHub.
+Neste primeiro exemplo carrega a ultima versao do ubuntu
+No segundo carrega a ultima versao do redis
+No terceiro carrega uma imagem da Google 
+
+- Executando comandos no container
+
+```
+docker container run -it ubuntu:latest /bin/bash
+docker container run -it mcr.microsoft.com/powershell:lts-nanoserver-1903 pwsh.exe
+docker container run --name ctr1 -it alpine:latest sh
+```
+
+- Conectando a um container em execucao
+
+```
+docker container exec -it <container id> <command ex: bash>
+```
   
-  Obtem um imagem do DockerHub.
-  Neste primeiro exemplo carrega a ultima versao do ubuntu
-  No segundo carrega a ultima versao do redis
-  No terceiro carrega uma imagem da Google 
+- Listando containers em execucao
 
-- docker container run -it ubuntu:latest /bin/bash
-  docker container run -it mcr.microsoft.com/powershell:lts-nanoserver-1903 pwsh.exe [ *** apenas host windows *** ]
-  docker container run --name ctr1 -it alpine:latest sh
+```
+docker ps
+```
 
-  Executa um servico do container (download, instala e executa a aplicacao)
+- Parando um container
 
-- ps -elf
+```
+docker stop <container id>
+```
+  
+- Pulling de todas as imagens (tags) de uma imagem
 
-  Dentro do container para verificar os processos em execucao
+```
+docker image pull -a nigelpoulton/tu-demo
+```
 
-- docker container exec -it <container id> <command ex: bash>
+- Removendo todos os container parados, networks nao utilizadas e imagens dangling
 
-  Conectar ao termial de um container
+```
+docker system prune
+```
 
-- docker ps
+- Filtrando Imagens
 
-  Lista os containers em execucao
-
-- docker container stop <container id>
-
-  Parar um container (por id)
-
-- Multiplas tags
-
-  docker image pull -a nigelpoulton/tu-demo
-
-- Removendo Images
-
-  docker system prune
-
-- Filtrando
-
-  docker image ls --filter dangling=true    
+```
+docker image ls --filter dangling=true    
+```

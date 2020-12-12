@@ -22,7 +22,7 @@ docker run -v $PWD:/usr/src/cppweb -ti cppbox:latest bash
 
 Cria um volume, que permite adicionar/editar arquivos e compartilha-los entre o host e o container (host <-> container)
 
-## Build
+### Build
 
 ```
 docker run -v $PWD:/usr/src/cppweb -ti cppbox:latest bash
@@ -31,7 +31,7 @@ cmake ..
 make
 ```
 
-## Execute
+### Execute
 
 ```
 docker run -v $PWD:/usr/src/cppweb -p 8080:8080 -e PORT=8080 cppbox:latest /usr/src/cppweb/hello_crow/build/hello_crow
@@ -80,17 +80,4 @@ docker push filosofisto/angular-nginx-dockerized:0.0.1
 docker container run -d -p 80:80 filosofisto/angular-nginx-dockerized:0.0.1
 ```
 
-## Container Postgres
-
-```
-docker pull postgres
-docker run -d --name dev-postgres -e POSTGRES_PASSWORD=admin -v ${PWS}/postgresql/data/:/var/lib/postgresql/data -p 5432:5432 postgres
-cat dump.sql | docker exec -i dev-postgres psql -U postgres
-docker exec -it dev-postgres psql -U postgres
-```
-
-- Commands psql:
-  \l          => List Databases
-  \c postgres => Switch to postgres database
-  \dt         => Show tables
 

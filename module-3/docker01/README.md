@@ -2,9 +2,13 @@
 
 ## Comandos
 
-- docker version
-  
-  Exibe a versao do docker (Client e Server)
+- Exibe a versao do docker (Client e Server)
+
+```
+docker version
+```
+
+
 
 - docker image ls | docker images
   

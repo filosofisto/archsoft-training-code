@@ -1,0 +1,29 @@
+version: '3'
+services:
+
+  redis:
+    image: redis
+
+  mongodb:
+    image: mongo
+    volumes:
+      - /tmp/mongo:/data/db
+
+  mosca:
+    image: matteocollina/mosca
+    volumes:
+      - /tmp/mosca:/db
+
+  publisher:
+    build: publisher
+    depends_on:
+      - "mosca"
+      - "subscriber"
+
+  subscriber:
+    build: subscriber
+    depends_on:
+      - "redis"
+      - "mongodb"
+      - "mosca"
+

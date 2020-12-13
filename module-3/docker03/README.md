@@ -125,3 +125,50 @@ docker-compose stop
 ```
 docker-compose down
 ```
+
+### Travel Sample
+
+Thanks to: https://www.digitalocean.com/community/meetup_kits/how-to-create-php-development-environments-with-docker-compose-a-digitalocean-workshop-kit
+
+- Download do projeto
+
+```
+curl -L https://github.com/do-community/travellist-laravel-demo/archive/tutorial-4.0.3.zip --output travellist.zip
+```
+
+- Instalar Unzip (caso nao esteja instalado)
+
+```
+sudo apt install unzip
+```
+
+- Descomactar projeto
+
+```
+unzip travellist.zip
+cd travellist-laravel-demo-tutorial-4.0.3
+```
+
+- Customizar Configuracoes
+
+```
+cp .env.example .env
+```
+
+- Subir os servicos
+
+```
+docker-compose up -d
+```
+
+- Finalizar a instalacao da aplicacao (composer install)
+
+```
+docker-compose exec app composer install
+```
+
+- Gerar chave com artisan Laravel
+
+```
+docker-compose exec app php artisan key:generate
+```

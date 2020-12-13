@@ -175,3 +175,20 @@ docker-compose exec app php artisan key:generate
 
 ## MQTTApp
 
+- Construir os servicos
+
+```
+./build.sh
+```
+
+- Subir os servicos
+
+```
+docker-compose up -d
+```
+
+- Remover servicos (containers), volumes, networs
+
+```
+docker-compose down
+```

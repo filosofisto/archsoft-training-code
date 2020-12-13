@@ -69,3 +69,59 @@ java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005 -jar d
 </component>
 ```
   
+- Mais detalhes em: https://www.jetbrains.com/help/idea/debug-a-java-application-using-a-dockerfile.html#create-remote-debug-config
+
+## Docker Compose
+
+### Instalacao (Linux)
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+### Hello World Docker Compose
+
+Thanks to Erika Heidi: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04
+
+- Executar o servico do docker-compose (pasta composer-demo)
+
+```
+docker-compose up -d
+```
+
+- Exibir a lista de servicos iniciados pelo docker-compose
+
+```
+docker-compose ps
+```
+
+- Exibir logs
+
+```
+docker-compose logs
+```
+
+- Fazer uma pausa no ambiente
+
+```
+docker-compose pause
+```
+
+- Cancelar a pausa
+
+```
+docker-compose unpause
+```
+
+- Parar ambiente (composicao)
+
+```
+docker-compose stop
+```
+
+- Desmontar containers, networks e volumes associados ao ambiente
+
+```
+docker-compose down
+```

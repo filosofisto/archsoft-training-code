@@ -52,11 +52,35 @@ docker ps
 ```
 docker stop <container id>
 ```
+
+- Parando todos os containers
+
+```
+docker container stop $(docker container ls –aq)
+```
+
+- Removendo um container
+
+```
+docker container rm <container id>
+```
+
+- Removendo todos os containers
+
+```
+docker container stop $(docker container ls –aq) && docker system prune –af ––volumes
+```
   
 - Pulling de todas as imagens (tags) de uma imagem
 
 ```
 docker image pull -a nigelpoulton/tu-demo
+```
+
+- Removendo todas as imagens
+
+```
+docker rmi $(docker images -a -q)
 ```
 
 - Removendo todos os container parados, networks nao utilizadas e imagens dangling

@@ -40,7 +40,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
   ],
   providers: [
     peopleServiceInjectables,
-    {provide: 'API_URL', useValue: 'http://backend:8080/api/person'},
+    {provide: 'API_URL', useValue: 'http://localhost:8080/api/person'},
     messageNotificationServiceInjectables,
     httpRequestInterceptInjectables
   ],

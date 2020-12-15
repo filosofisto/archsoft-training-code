@@ -38,8 +38,6 @@ services:
       dockerfile: Dockerfile
     container_name: angular29-spring06
     restart: unless-stopped
-    #volumes:
-    #s  - ./angular29-spring06/dist/angular29-spring06:/usr/share/nginx/html:ro
     expose:
       - 80
     ports:
@@ -48,6 +46,8 @@ services:
       - angular29-spring06
     links:
       - backend      
+    depends_on: 
+      - backend
 
 volumes:
   postgres-data:

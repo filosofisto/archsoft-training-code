@@ -1,8 +1,0 @@
-com/archsoft/util/converter/PersonConverter.class
-com/archsoft/Spring6Application.class
-com/archsoft/repository/PersonRepository.class
-com/archsoft/controller/PersonController.class
-com/archsoft/service/PersonService.class
-com/archsoft/util/converter/Converter.class
-com/archsoft/model/Person.class
-com/archsoft/to/PersonTO.class

@@ -83,6 +83,12 @@ docker image pull -a nigelpoulton/tu-demo
 docker rmi $(docker images -a -q)
 ```
 
+- Removento todas as "dangling" images
+
+```
+docker rmi -f $(docker images -f "dangling=true" -q)
+```
+
 - Removendo todos os container parados, networks nao utilizadas e imagens dangling
 
 ```

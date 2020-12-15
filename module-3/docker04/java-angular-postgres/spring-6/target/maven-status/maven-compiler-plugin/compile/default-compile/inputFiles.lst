@@ -1,0 +1,8 @@
+/home/eduardo/Develop/archsoft-training-code/module-3/docker04/java-angular-postgres/spring-6/src/main/java/com/archsoft/model/Person.java
+/home/eduardo/Develop/archsoft-training-code/module-3/docker04/java-angular-postgres/spring-6/src/main/java/com/archsoft/Spring6Application.java
+/home/eduardo/Develop/archsoft-training-code/module-3/docker04/java-angular-postgres/spring-6/src/main/java/com/archsoft/to/PersonTO.java
+/home/eduardo/Develop/archsoft-training-code/module-3/docker04/java-angular-postgres/spring-6/src/main/java/com/archsoft/service/PersonService.java
+/home/eduardo/Develop/archsoft-training-code/module-3/docker04/java-angular-postgres/spring-6/src/main/java/com/archsoft/util/converter/PersonConverter.java
+/home/eduardo/Develop/archsoft-training-code/module-3/docker04/java-angular-postgres/spring-6/src/main/java/com/archsoft/util/converter/Converter.java
+/home/eduardo/Develop/archsoft-training-code/module-3/docker04/java-angular-postgres/spring-6/src/main/java/com/archsoft/repository/PersonRepository.java
+/home/eduardo/Develop/archsoft-training-code/module-3/docker04/java-angular-postgres/spring-6/src/main/java/com/archsoft/controller/PersonController.java

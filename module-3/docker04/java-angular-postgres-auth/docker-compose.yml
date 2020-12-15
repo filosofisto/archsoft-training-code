@@ -11,22 +11,20 @@ services:
       - 5432
     ports:
       - "5432:5432"
-    networks: 
-      - angular29-spring06
+    network_mode: bridge
     restart: unless-stopped  
 
   backend:
     build:
-      context: ./spring-6
+      context: ./spring-10
       dockerfile: Dockerfile
-    container_name: spring-6
+    container_name: spring-10
     restart: unless-stopped
     expose:
       - 8080
     ports:
       - "8080:8080"
-    networks: 
-      - angular29-spring06
+    network_mode: bridge  
     depends_on: 
       - db
     links:
@@ -34,25 +32,25 @@ services:
 
   frontend:
     build:      
-      context: ./angular29-spring06
+      context: ./angular31-spring10
       dockerfile: Dockerfile
-    container_name: angular29-spring06
+    # image: nginx:alpine
+    container_name: angular31-spring10
     restart: unless-stopped
-    #volumes:
-    #s  - ./angular29-spring06/dist/angular29-spring06:/usr/share/nginx/html:ro
+    # working_dir: /var/www/
+    volumes:
+      - ./angular31-spring10/dist/angular31-spring10:/usr/share/nginx/html
     expose:
       - 80
     ports:
-      - "80:80"
-    networks: 
-      - angular29-spring06
-    links:
-      - backend      
+      - "80:80"  
+    # depends_on: 
+      # - backend
 
 volumes:
   postgres-data:
 
-networks: 
-  angular29-spring06:
-      driver: bridge      
+# networks: 
+  # angular31-spring10:
+      # driver: bridge      
 

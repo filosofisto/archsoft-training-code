@@ -23,8 +23,10 @@ services:
     restart: unless-stopped
     expose:
       - 8080
+      - 5005
     ports:
       - "8080:8080"
+      - "5005:5005"
     networks: 
       - angular29-spring06
     depends_on: 

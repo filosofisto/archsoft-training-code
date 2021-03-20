@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    hikari:
+      connectionTimeout: 10000
+      maximumPoolSize: 5
+    url: jdbc:postgresql://postgres:5432/postgres
+    username: postgres
+    password: socrates

@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: "socrates"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    expose:
+      - 5432
+    ports:
+      - "5432:5432"
+    networks:
+      - hibernate-cache-l2
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./hibernate-cache-l2
+      dockerfile: Dockerfile
+    container_name: hibernate-cache-l2
+    restart: unless-stopped
+    expose:
+      - 8080
+      - 5005
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    networks:
+      - hibernate-cache-l2
+    depends_on:
+      - db
+    links:
+      - db
+
+volumes:
+  postgres-data:
+
+networks:
+  hibernate-cache-l2:
+    driver: bridge
+

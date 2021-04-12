@@ -1,0 +1,6 @@
+<app-person-form (onSave)="save($event)"></app-person-form>
+<br/>
+<app-person-list [people]="people"
+                 (onRemove)="remove($event)"
+                 (onEdit)="read($event)">
+</app-person-list>

@@ -1,0 +1,60 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: "socrates"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    expose: 
+      - 5432
+    ports:
+      - "5432:5432"
+    networks: 
+      - angular29-spring06
+    restart: unless-stopped  
+
+  backend:
+    build:
+      context: ./spring-6
+      dockerfile: Dockerfile
+    container_name: spring-6
+    restart: unless-stopped
+    expose:
+      - 8080
+      - 5005
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    networks: 
+      - angular29-spring06
+    depends_on: 
+      - db
+    links:
+      - db
+
+  frontend:
+    build:      
+      context: ./angular29-spring06
+      dockerfile: Dockerfile
+    container_name: angular29-spring06
+    restart: unless-stopped
+    expose:
+      - 80
+    ports:
+      - "80:80"
+    networks: 
+      - angular29-spring06
+    links:
+      - backend      
+    depends_on: 
+      - backend
+
+volumes:
+  postgres-data:
+
+networks: 
+  angular29-spring06:
+      driver: bridge      
+

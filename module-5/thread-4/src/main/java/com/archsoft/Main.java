@@ -1,28 +1,22 @@
 package com.archsoft;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
- * Exemplo utilizando threads em paralelas, mas utilizando
- * a interface Runnable.
- * 
- * @author eduardo
- *
+ * Sincronizando Threads com join.
  */
 public class Main {
 
 	public static void main(String[] args) {
-		MyRunnable[] runnables = new MyRunnable[10];
-		Thread[] threads = new Thread[10];
+		List<Integer> list = new ArrayList<Integer>();
+		PopulatorThread populatorThread = new PopulatorThread(list);
+		SortThread sortThread = new SortThread(list, populatorThread);
+		SearchThread search = new SearchThread(list, sortThread);
 		
-		//Constrói as runnables e threads
-		for (int i = 0; i < runnables.length; i++) {
-			runnables[i] = new MyRunnable();
-			threads[i] = new Thread(runnables[i]);
-		}
-		
-		//Starta as threads
-		for (int i = 0; i < threads.length; i++) {
-			threads[i].start();
-		}
+		search.start();
+		sortThread.start();
+		populatorThread.start();
 	}
 }

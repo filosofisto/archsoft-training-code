@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  Shows an animated bouncing ball.
@@ -28,7 +29,6 @@ public class BounceThread {
  A runnable that animates a bouncing ball.
  */
 class BallRunnable implements Runnable {
-    public static final int STEPS = 1000;
     public static final int DELAY = 5;
     private final Ball ball;
     private final Component component;
@@ -44,7 +44,7 @@ class BallRunnable implements Runnable {
 
     public void run() {
         try {
-            for (int i = 1; i <= STEPS; i++) {
+            for (;;) {
                 ball.move(component.getBounds());
                 component.repaint();
                 Thread.sleep(DELAY);
@@ -61,10 +61,11 @@ class BallRunnable implements Runnable {
 class Ball {
     private static final int XSIZE = 15;
     private static final int YSIZE = 15;
-    private double x = 0;
-    private double y = 0;
-    private double dx = 1;
-    private double dy = 1;
+    private Random r = new Random();
+    private double x = r.nextInt(50);
+    private double y = r.nextInt(50);
+    private double dx = r.nextInt(5) + 1;
+    private double dy = r.nextInt(5) + 1;
 
     /**
      Moves the ball to the next position, reversing direction

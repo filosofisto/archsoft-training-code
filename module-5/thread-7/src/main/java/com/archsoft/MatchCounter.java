@@ -14,9 +14,8 @@ import java.util.concurrent.FutureTask;
 
 public class MatchCounter implements Callable<Integer> {
 
-    private File directory;
-    private String keyword;
-    private int count;
+    private final File directory;
+    private final String keyword;
 
     public MatchCounter(File directory, String keyword) {
         this.directory = directory;
@@ -24,17 +23,17 @@ public class MatchCounter implements Callable<Integer> {
     }
 
     public Integer call() {
-        count = 0;
+        int count = 0;
         try {
             File[] files = directory.listFiles();
             if (Objects.isNull(files)) return 0;
-            
+
             List<Future<Integer>> results = new ArrayList<>();
 
             for (File file : files) {
                 if (file.isDirectory()) {
                     MatchCounter counter = new MatchCounter(file, keyword);
-                    FutureTask<Integer> task = new FutureTask<Integer>(counter);
+                    FutureTask<Integer> task = new FutureTask<>(counter);
                     results.add(task);
                     Thread t = new Thread(task);
                     t.start();

@@ -7,7 +7,7 @@ public class Veiculo {
     private String fabricante;
 
     public Veiculo(Integer renavam) {
-        setRenavam(renavam);
+        this.renavam = renavam;
     }
 
     @Override
@@ -15,7 +15,7 @@ public class Veiculo {
         if (obj instanceof Veiculo) {
             Veiculo other = (Veiculo) obj;
 
-            return getRenavam().equals(other.getRenavam());
+            return renavam.equals(other.renavam);
         }
 
         return false;
@@ -28,10 +28,6 @@ public class Veiculo {
 
     public Integer getRenavam() {
         return renavam;
-    }
-
-    public void setRenavam(Integer renavam) {
-        this.renavam = renavam;
     }
 
     public String getMarca() {

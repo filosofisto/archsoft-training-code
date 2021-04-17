@@ -1,0 +1,8 @@
+amazon:
+  url: http://localhost:8081/api/product
+
+manning:
+  url: http://localhost:8082/api/product
+
+badbooks:
+  url: http://localhost:8083/api/product

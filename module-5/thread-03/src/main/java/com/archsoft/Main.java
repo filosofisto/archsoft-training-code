@@ -14,7 +14,7 @@ public class Main {
 		MyRunnable[] runnables = new MyRunnable[10];
 		Thread[] threads = new Thread[10];
 		
-		//Constrói as runnables e threads
+		//Constroi as runnables e threads
 		for (int i = 0; i < runnables.length; i++) {
 			runnables[i] = new MyRunnable();
 			threads[i] = new Thread(runnables[i]);

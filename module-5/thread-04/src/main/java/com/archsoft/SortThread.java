@@ -28,9 +28,9 @@ public class SortThread extends Thread {
 		try {
 			out.printf("%s started\n", getName());
 
-			out.println("Aguardando preenchimento da lista");
+			out.println("Waiting fill the list");
 			populatorThread.join();
-			out.println("Lista preenchida, iniciando meu trabalho");
+			out.println("List filled, starting my work");
 
 			out.println("Sorting...");
 			list.sort(Comparator.naturalOrder());

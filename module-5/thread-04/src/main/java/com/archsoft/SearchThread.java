@@ -18,10 +18,11 @@ public class SearchThread extends Thread {
 	
 	public void run() {
 		try {
-			sortThread.join();
-			
 			out.printf("%s started\n", getName());
-			
+			out.println("Aguardando ordenacao da lista");
+			sortThread.join();
+			out.println("Lista ordenada, iniciando meu trabalho");
+
 			Random random = new Random();
 			Integer searchFor = random.nextInt(1000);
 			Integer item;

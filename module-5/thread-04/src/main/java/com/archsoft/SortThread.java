@@ -26,10 +26,12 @@ public class SortThread extends Thread {
 
 	public void run() {
 		try {
-			populatorThread.join();
-			
 			out.printf("%s started\n", getName());
-			
+
+			out.println("Aguardando preenchimento da lista");
+			populatorThread.join();
+			out.println("Lista preenchida, iniciando meu trabalho");
+
 			out.println("Sorting...");
 			list.sort(Comparator.naturalOrder());
 

@@ -11,8 +11,6 @@ public class ConnectionPool {
 	private int maxConn;
 
 	public ConnectionPool(int maxConn) {
-		assert maxConn > 0 : "Numero maximo de conexoes invalido";
-		
 		this.maxConn = maxConn;
 		createConnections();
 	}

@@ -9,12 +9,13 @@ public class PopulatorThread extends Thread {
 	
 	private List<Integer> list;
 	
-	public PopulatorThread(List<Integer> list) {
+	public PopulatorThread(String name, List<Integer> list) {
+		super(name);
 		this.list = list;
 	}
 
 	public void run() {
-		out.println(getClass().getName() + " started");
+		out.printf("%s started\n", getName());
 		
 		Random rnd = new Random();
 		int value;
@@ -22,6 +23,7 @@ public class PopulatorThread extends Thread {
 			value = rnd.nextInt(1000);
 			list.add(value);
 			out.printf("\tAdicionado item %d\n", value);
+
 			try {
 				Thread.sleep(20);
 			} catch (InterruptedException e) {
@@ -29,6 +31,6 @@ public class PopulatorThread extends Thread {
 			}
 		}
 		
-		out.println(getClass().getName() + " - ok");
+		out.printf("%s finished\n", getName());
 	}
 }

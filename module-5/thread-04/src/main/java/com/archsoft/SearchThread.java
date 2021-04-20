@@ -10,7 +10,8 @@ public class SearchThread extends Thread {
 	private List<Integer> list;
 	private SortThread sortThread;
 	
-	public SearchThread(List<Integer> list, SortThread sortThread) {
+	public SearchThread(String name, List<Integer> list, SortThread sortThread) {
+		super(name);
 		this.list = list;
 		this.sortThread = sortThread;
 	}
@@ -19,26 +20,27 @@ public class SearchThread extends Thread {
 		try {
 			sortThread.join();
 			
-			out.println(getClass().getName() + " started");
+			out.printf("%s started\n", getName());
 			
 			Random random = new Random();
-			Integer x = random.nextInt(1000);
+			Integer searchFor = random.nextInt(1000);
 			Integer item;
+
 			for (int i = 0; i < list.size(); i++) {
 				item = list.get(i);
-				out.printf("\tPesquisando...valor atual: %d\n", item);
-				if (list.get(i).equals(x)) {
-					out.printf("Achei na posicao %d", i);
+				out.printf("\tSearching...current value: %d\n", item);
+				if (item.equals(searchFor)) {
+					out.printf("Found at %d\n", i);
 					break;
 				} else {
-					if (item > x) {
-						out.printf("\tNao encontrei o item %d\n", x);
+					if (item > searchFor) {
+						out.printf("\tItem %d not found\n", searchFor);
 						break;
 					}
 				}
 			}
 			
-			out.println(getClass().getName() + " - ok");
+			out.printf("%s - finished\n", getName());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

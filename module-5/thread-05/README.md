@@ -1,5 +1,7 @@
-# Thread 3
+# Thread 5
 
 ## Objetivo
-- Creating Threads
-- Starting Threads
+- synchronized
+- wait
+- notify
+- notifyAll

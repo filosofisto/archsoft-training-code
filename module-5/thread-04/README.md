@@ -1,5 +1,4 @@
-# Thread 3
+# Thread 4
 
 ## Objetivo
-- Creating Threads
-- Starting Threads
+- Threads join

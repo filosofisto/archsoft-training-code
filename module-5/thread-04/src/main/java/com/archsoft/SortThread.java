@@ -1,6 +1,7 @@
 package com.archsoft;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static java.lang.System.out;
@@ -17,21 +18,24 @@ public class SortThread extends Thread {
 	private List<Integer> list;
 	private PopulatorThread populatorThread;
 	
-	public SortThread(List<Integer> list, PopulatorThread populatorThread) {
+	public SortThread(String name, List<Integer> list, PopulatorThread populatorThread) {
+		super(name);
 		this.list = list;
 		this.populatorThread = populatorThread;
 	}
 
 	public void run() {
 		try {
+			out.printf("%s started\n", getName());
+
+			out.println("Waiting fill the list");
 			populatorThread.join();
-			
-			out.println(getClass().getName() + " started");
-			
-			out.print("Iniciando ordenacao dos dados...");
-			Collections.sort(list); 
-			
-			out.println(" - ok " + getClass().getName());
+			out.println("List filled, starting my work");
+
+			out.println("Sorting...");
+			list.sort(Comparator.naturalOrder());
+
+			out.printf("%s finished\n", getName());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

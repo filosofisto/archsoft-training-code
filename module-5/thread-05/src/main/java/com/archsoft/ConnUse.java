@@ -15,7 +15,8 @@ public class ConnUse extends Thread {
 	public ConnUse(ConnectionPool pool) {
 		this.pool = pool;
 	}
-	
+
+	@Override
 	public void run() {
 		try {
 			out.printf("Thread: %d - obtendo conexao\n", getId());
@@ -26,7 +27,7 @@ public class ConnUse extends Thread {
 			useConn(conn);
 			
 			out.printf("Thread: %d - retornando conexao ao pool\n", getId());
-			pool.returnConnection(conn);
+			pool.releaseConnection(conn);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

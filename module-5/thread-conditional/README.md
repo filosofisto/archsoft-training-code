@@ -1,0 +1,4 @@
+# Thread Conditional
+
+## Objetivo
+- Conditional

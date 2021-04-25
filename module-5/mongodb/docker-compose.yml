@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - mongodb_data_container:/data/db
+    ports:
+      - 27017:27017
+    networks: 
+      - mongo_to_backend
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./spring-mongodb-1
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: unless-stopped
+    expose:
+      - 8080
+      - 5005
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    networks: 
+      - mongo_to_backend
+    depends_on: 
+      - mongodb
+    # links:
+      # - mongodb
+
+volumes:
+  mongodb_data_container:
+
+networks: 
+  mongo_to_backend:
+      driver: bridge 

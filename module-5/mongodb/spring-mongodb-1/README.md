@@ -97,4 +97,12 @@ Delete samples
 
     db.recipes.deleteOne({"_id" : ObjectId("608650c5825efff7599de84b")})
 
+Indexes
+
+    db.recipes.find({}, { "title": 1 }).explain("executionStats")
+    db.recipes.find({ "title": "Tacos" }, { "title": 1 }).explain("executionStats")
+    db.recipes.getIndexes()
+    db.recipes.createIndex({ "title": 1 })
+    db.recipes.createIndex({ "cook_time": -1 })
+    db.recipes.dropIndex("title_1")
 [comment]: <> (    db.recipes.find&#40;{ $or: [{"cook_time": { $lte: 32 }, "prep_time": { $lte: 10 }}], { "title": 1, "cook_time": 1, "prep_time": 1 }&#41;)

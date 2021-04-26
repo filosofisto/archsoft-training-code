@@ -3,7 +3,7 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      authentication-database: admin
       database: appdb
-      username: root
-      password: root
+#      authentication-database: admin
+#      username: root
+#      password: socrates

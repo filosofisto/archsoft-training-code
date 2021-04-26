@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepository extends MongoRepository<Product, String> {
 
     // uses regex
-    @Query(value = "{ 'description': /?0/ }", fields="{ 'name': 1, 'description': 2}")
+    @Query(value = "{ 'description': /?0/ }", fields="{ 'name': 1, 'description': 1}")
     Iterable<Product> findBaseFieldsByDescriptionLike(String description);
 }

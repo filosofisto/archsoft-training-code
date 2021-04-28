@@ -1,0 +1,14 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: appdb
+#      authentication-database: admin
+#      username: root
+#      password: socrates
+
+graphql:
+  spqr:
+    gui:
+      enabled: true

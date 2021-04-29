@@ -55,16 +55,6 @@
             <artifactId>spring-data-commons</artifactId>
             <version>2.4.8</version>
         </dependency>
-        <!--<dependency>
-            <groupId>com.mysema.querydsl</groupId>
-            <artifactId>querydsl-mongodb</artifactId>
-            <version>3.7.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.querydsl</groupId>
-            <artifactId>querydsl-jpa</artifactId>
-            <version>4.4.0</version>
-        </dependency>-->
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>

@@ -1,0 +1,14 @@
+spring:
+#  main:
+#    allow-bean-definition-overriding: true
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: appdb
+#      authentication-database: admin
+#      username: root
+#      password: socrates
+
+
+

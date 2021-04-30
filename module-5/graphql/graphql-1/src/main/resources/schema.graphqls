@@ -1,6 +1,7 @@
 type Query {
     readProduct(id: String): Product!
     listProducts: [Product!]!
+    listCustomers: [Customer!]!
 }
 
 type Mutation {
@@ -8,6 +9,8 @@ type Mutation {
     updateProduct(input: ProductInput!): Product!
     changeProductPrice(input: ChangePriceInput!): Product!
     deleteProduct(id: String): Product!
+
+    createCustomer(name: String!, email: String!): Customer!
 }
 
 type Product {
@@ -31,3 +34,8 @@ input ChangePriceInput {
     price: Float
 }
 
+type Customer {
+    id: String
+    name: String
+    email: String
+}

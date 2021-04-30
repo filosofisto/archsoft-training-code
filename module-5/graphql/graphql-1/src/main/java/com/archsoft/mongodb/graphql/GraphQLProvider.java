@@ -8,7 +8,6 @@ import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -21,10 +20,16 @@ import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 @Component
 public class GraphQLProvider {
 
-    @Autowired
-    GraphQLDataFetchers graphQLDataFetchers;
+    private final ProductDataFetchers productDataFetchers;
+
+    private final CustomerDataFetchers customerDataFetchers;
 
     private GraphQL graphQL;
+
+    public GraphQLProvider(ProductDataFetchers productDataFetchers, CustomerDataFetchers customerDataFetchers) {
+        this.productDataFetchers = productDataFetchers;
+        this.customerDataFetchers = customerDataFetchers;
+    }
 
     @PostConstruct
     public void init() throws IOException {
@@ -44,13 +49,19 @@ public class GraphQLProvider {
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query")
-                        .dataFetcher("readProduct", graphQLDataFetchers.readProductDataFetcher())
-                        .dataFetcher("listProducts", graphQLDataFetchers.listProductsDataFetcher()))
+                        // Product
+                        .dataFetcher("readProduct", productDataFetchers.readProductDataFetcher())
+                        .dataFetcher("listProducts", productDataFetchers.listProductsDataFetcher())
+                        // Customer
+                        .dataFetcher("listCustomers", customerDataFetchers.listCustomersDataFetcher()))
                 .type(newTypeWiring("Mutation")
-                        .dataFetcher("createProduct", graphQLDataFetchers.createProduct())
-                        .dataFetcher("updateProduct", graphQLDataFetchers.updateProduct())
-                        .dataFetcher("changeProductPrice", graphQLDataFetchers.changeProductPrice())
-                        .dataFetcher("deleteProduct", graphQLDataFetchers.deleteProduct()))
+                        // Product
+                        .dataFetcher("createProduct", productDataFetchers.createProduct())
+                        .dataFetcher("updateProduct", productDataFetchers.updateProduct())
+                        .dataFetcher("changeProductPrice", productDataFetchers.changeProductPrice())
+                        .dataFetcher("deleteProduct", productDataFetchers.deleteProduct())
+                        // Customer
+                        .dataFetcher("createCustomer", customerDataFetchers.createCustomer()))
                 .build();
     }
 

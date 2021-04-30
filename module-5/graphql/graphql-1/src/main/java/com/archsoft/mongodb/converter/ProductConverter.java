@@ -27,7 +27,7 @@ public class ProductConverter extends Converter<Product, ProductTO> {
         product.setPrice(new BigDecimal(Optional.ofNullable(map.get("price"))
                 .map(x -> (Double) x)
                 .orElse(0d)));
-        product.setDescription(Optional.ofNullable(map.get("category"))
+        product.setCategory(Optional.ofNullable(map.get("category"))
                 .map(Objects::toString)
                 .orElse(null));
         return product;

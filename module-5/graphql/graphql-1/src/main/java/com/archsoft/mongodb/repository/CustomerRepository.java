@@ -1,17 +1,17 @@
 package com.archsoft.mongodb.repository;
 
-import com.archsoft.mongodb.model.Product;
-import org.springframework.data.repository.CrudRepository;
+import com.archsoft.mongodb.model.Customer;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigInteger;
+import java.util.Optional;
 
 @Repository
-public interface CustomerRepository extends CrudRepository<Product, BigInteger> {
+public interface CustomerRepository extends MongoRepository<Customer, String> {
 
 //    Customer findOne(Long id);
 
-//    Customer findByEmail(String email);
+    Optional<Customer> findByEmail(String email);
 
 //    Customer save(Customer customer);
 }

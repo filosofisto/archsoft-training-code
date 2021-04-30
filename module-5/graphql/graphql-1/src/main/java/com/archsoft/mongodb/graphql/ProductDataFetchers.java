@@ -12,13 +12,13 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Component
-public class GraphQLDataFetchers {
+public class ProductDataFetchers {
 
     private final ProductService productService;
 
     private final ProductConverter productConverter;
 
-    public GraphQLDataFetchers(ProductService productService, ProductConverter productConverter) {
+    public ProductDataFetchers(ProductService productService, ProductConverter productConverter) {
         this.productService = productService;
         this.productConverter = productConverter;
     }
@@ -39,7 +39,9 @@ public class GraphQLDataFetchers {
             Map<String, Object> map = dataFetchingEnvironment.getArgument("input");
             Product product = productConverter.fromMapToEntity(map);
 
-            return productService.create(product);
+            Product productSaved = productService.create(product);
+
+            return productConverter.toTransferObject(productSaved);
         };
     }
 
@@ -48,7 +50,9 @@ public class GraphQLDataFetchers {
             Map<String, Object> map = dataFetchingEnvironment.getArgument("input");
             Product product = productConverter.fromMapToEntity(map);
 
-            return productService.update(product);
+            Product productSaved = productService.update(product);
+
+            return productConverter.toTransferObject(productSaved);
         };
     }
 
@@ -70,7 +74,9 @@ public class GraphQLDataFetchers {
         return dataFetchingEnvironment -> {
             String id = dataFetchingEnvironment.getArgument("id");
 
-            return productService.delete(id);
+            Product productDeleted = productService.delete(id);
+
+            return productConverter.toTransferObject(productDeleted);
         };
     }
 }

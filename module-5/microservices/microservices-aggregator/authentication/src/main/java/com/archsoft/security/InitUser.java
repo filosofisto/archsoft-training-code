@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collections;
 import java.util.Objects;
 
-@Component
+//@Component
 public class InitUser implements CommandLineRunner {
 
     private final UserService userService;

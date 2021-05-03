@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
 
     private final UserRepository userRepository;
 
@@ -25,12 +25,6 @@ public class UserService implements UserDetailsService {
     public User findByUsername(String username) throws RecordNotFoundException {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new RecordNotFoundException(username));
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User " + username + " not found"));
     }
 
     public User registerUser(User user) throws UserAlreadyExistsException {

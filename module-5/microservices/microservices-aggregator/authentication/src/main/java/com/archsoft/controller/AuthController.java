@@ -12,10 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -73,5 +70,13 @@ public class AuthController {
 
         // TODO: Should return 201 (created)
         return ResponseEntity.ok(userTOSaved);
+    }
+
+    @GetMapping("/findByUsername/{username}")
+    public ResponseEntity<?> findByUsername(@PathVariable("username") String username) throws RecordNotFoundException {
+        User user = userService.findByUsername(username);
+        UserTO userTO = userConverter.toTransferObject(user);
+        userTO.setPassword(null);
+        return ResponseEntity.ok(userTO);
     }
 }

@@ -18,5 +18,6 @@
         <module>service-registry</module>
         <module>gateway</module>
         <module>authentication</module>
+        <module>product</module>
     </modules>
 </project>

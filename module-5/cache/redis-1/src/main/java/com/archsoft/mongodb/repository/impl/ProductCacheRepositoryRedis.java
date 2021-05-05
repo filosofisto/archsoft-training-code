@@ -16,7 +16,6 @@ public class ProductCacheRepositoryRedis implements ProductCacheRepository {
 
     private final RedisTemplate<String, Object> redisTemplate;
 
-    @Autowired
     public ProductCacheRepositoryRedis(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }

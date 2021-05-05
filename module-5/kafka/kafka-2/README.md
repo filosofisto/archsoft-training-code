@@ -1,7 +1,7 @@
-# Projeto Kafka-1
+# Projeto Kafka-2
 
 ##Objetivo
-- KafkaProducer
+- KafkaProducer com Callback
 
 ##Instruções
 

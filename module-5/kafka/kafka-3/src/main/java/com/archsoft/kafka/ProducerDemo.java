@@ -12,6 +12,8 @@ public class ProducerDemo {
 
     private static final Logger log = LoggerFactory.getLogger(ProducerDemo.class);
 
+    private static final String TOPIC = "first_topic";
+
     public static void main(String[] args) {
         // Create properties
         Properties properties = new Properties();
@@ -24,8 +26,13 @@ public class ProducerDemo {
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
 
         for (int i = 1; i < 11; i++) {
+            String key = "id_" + i;
+            String value = "Hello World " + i;
+
+            log.info("Key: {}", key);
+
             // Create ProducerRecord
-            ProducerRecord<String, String> record = new ProducerRecord<>("first_topic", "Hello World " + i);
+            ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC, key, value);
 
             // Send data asynchronous
             producer.send(record, (recordMetadata, e) -> {
@@ -35,7 +42,8 @@ public class ProducerDemo {
                                 // error
                                 exception -> log.error("Error in produce record", exception),
                                 // success
-                                () -> log.info("Received new metadata\n Topic: {}\n Partition: {}\n Offset: {}\n Timestamp: {}",
+                                () -> log.info("Received new metadata\n Key: {}, Topic: {}\n Partition: {}\n Offset: {}\n Timestamp: {}",
+                                        record.key(),
                                         recordMetadata.topic(),
                                         recordMetadata.partition(),
                                         recordMetadata.offset(),

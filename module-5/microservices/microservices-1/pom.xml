@@ -23,5 +23,6 @@
         <module>authentication-client</module>
         <module>product</module>
         <module>customer</module>
+        <module>order</module>
     </modules>
 </project>

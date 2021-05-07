@@ -24,6 +24,10 @@ public class Customer extends AbstractDocument {
 
     @Getter
     @Setter
+    private boolean enabled;
+
+    @Getter
+    @Setter
     private Set<Address> addresses = new HashSet<>();
 
     public void addAddress(Address address) {

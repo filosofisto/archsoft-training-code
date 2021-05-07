@@ -14,5 +14,7 @@ public class CustomerTO {
 
     private String name;
 
+    private boolean enabled;
+
     private Set<AddressTO> addresses = new HashSet<>();
 }

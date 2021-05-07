@@ -57,4 +57,10 @@ public class CustomerService {
 
         return customer;
     }
+
+    public boolean validate(String customerId) {
+        Optional<Customer> customerOptional = customerRepository.findById(customerId);
+
+        return customerOptional.isPresent() && customerOptional.get().isEnabled();
+    }
 }

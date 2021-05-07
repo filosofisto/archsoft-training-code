@@ -68,4 +68,11 @@ public class CustomerController {
 
         return ResponseEntity.ok(customerConverter.toTransferObject(list));
     }
+
+    @GetMapping("/validate/{customerId}")
+    public ResponseEntity<Boolean> validate(@PathVariable("customerId") String customerId) {
+        boolean valid = customerService.validate(customerId);
+
+        return ResponseEntity.ok(valid);
+    }
 }

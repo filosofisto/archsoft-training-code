@@ -2,7 +2,7 @@ package com.archsoft.controller;
 
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.exception.UserAlreadyExistsException;
-import com.archsoft.authentication.model.User;
+import com.archsoft.model.User;
 import com.archsoft.security.JwtTokenProvider;
 import com.archsoft.service.UserService;
 import com.archsoft.to.UserTO;

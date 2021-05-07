@@ -1,6 +1,6 @@
 package com.archsoft.repository;
 
-import com.archsoft.authentication.model.User;
+import com.archsoft.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

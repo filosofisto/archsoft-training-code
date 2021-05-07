@@ -1,4 +1,4 @@
-package com.archsoft.authentication.model;
+package com.archsoft.model;
 
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;

@@ -1,6 +1,6 @@
 package com.archsoft.authentication.client;
 
-import com.archsoft.authentication.model.User;
+import com.archsoft.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,12 +1,10 @@
-package com.archsoft.authentication.model;
+package com.archsoft.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -16,7 +14,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Document
 @Getter
 @Setter
 @ToString
@@ -46,7 +43,7 @@ public class User implements UserDetails, Serializable {
         }
     }
 
-    @Id
+//    @Id
     private String id;
 
     private String username;

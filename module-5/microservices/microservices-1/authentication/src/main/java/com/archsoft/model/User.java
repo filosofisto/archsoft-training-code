@@ -1,4 +1,4 @@
-package com.archsoft.authentication.model;
+package com.archsoft.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package com.archsoft.service;
 
 import com.archsoft.exception.RecordNotFoundException;
-import com.archsoft.authentication.model.Product;
+import com.archsoft.model.Product;
 import com.archsoft.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

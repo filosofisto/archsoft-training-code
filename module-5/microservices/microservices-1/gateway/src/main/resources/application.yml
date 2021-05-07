@@ -29,6 +29,12 @@ zuul:
       strip-prefix: false
       custom-sensitive-headers: true
 
+    customer:
+      path: /customer/**
+      service-id: customer
+      strip-prefix: false
+      custom-sensitive-headers: true
+
 # Increase the Hystrix timeout to 60s (globally)
 #hystrix:
 #  command:

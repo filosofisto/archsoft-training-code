@@ -1,10 +1,11 @@
 package com.archsoft.controller;
 
 import com.archsoft.exception.RecordNotFoundException;
-import com.archsoft.authentication.model.Product;
+import com.archsoft.model.Product;
 import com.archsoft.service.ProductService;
 import com.archsoft.to.ProductTO;
 import com.archsoft.util.converter.ProductConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,9 @@ import java.util.List;
 
 @RestController
 public class ProductController {
+
+//    @Value("${server.port}")
+//    private Integer port;
 
     private final ProductService productService;
 
@@ -63,8 +67,9 @@ public class ProductController {
     @GetMapping("/list")
     public ResponseEntity<Iterable<ProductTO>> list() {
         List<Product> list = productService.list();
-
-        return ResponseEntity.ok(productConverter.toTransferObject(list));
+        Iterable<ProductTO> productTOS = productConverter.toTransferObject(list);
+//        productTOS.forEach(p -> p.setPort(port));
+        return ResponseEntity.ok(productTOS);
     }
 
     @GetMapping("/findByDescription")

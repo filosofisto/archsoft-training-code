@@ -20,7 +20,8 @@
         <module>service-registry</module>
         <module>gateway</module>
         <module>authentication</module>
-        <module>product</module>
         <module>authentication-client</module>
+        <module>product</module>
+        <module>customer</module>
     </modules>
 </project>

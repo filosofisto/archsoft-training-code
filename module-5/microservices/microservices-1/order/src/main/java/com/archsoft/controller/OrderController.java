@@ -1,14 +1,13 @@
 package com.archsoft.controller;
 
 import com.archsoft.exception.CustomerInvalidException;
+import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.Order;
 import com.archsoft.service.OrderService;
 import com.archsoft.to.OrderTO;
 import com.archsoft.util.converter.OrderConverter;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class OrderController {
@@ -22,9 +21,18 @@ public class OrderController {
         this.orderConverter = orderConverter;
     }
 
-    @PostMapping("/createOrder")
-    public ResponseEntity<OrderTO> create(@RequestBody String customerId) throws CustomerInvalidException {
-        Order order = orderService.create(customerId);
+    @PostMapping("/create")
+    public ResponseEntity<OrderTO> create(@RequestBody String customerId,
+                                          @RequestHeader("Authorization") String token) throws CustomerInvalidException {
+        Order order = orderService.create(customerId, token);
+        OrderTO orderTO = orderConverter.toTransferObject(order);
+
+        return ResponseEntity.ok(orderTO);
+    }
+
+    @PutMapping("/cancel")
+    public ResponseEntity<OrderTO> cancel(@RequestBody String orderId) throws RecordNotFoundException {
+        Order order = orderService.cancel(orderId);
         OrderTO orderTO = orderConverter.toTransferObject(order);
 
         return ResponseEntity.ok(orderTO);

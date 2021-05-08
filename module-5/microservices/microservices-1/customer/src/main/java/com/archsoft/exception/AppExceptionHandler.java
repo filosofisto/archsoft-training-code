@@ -33,7 +33,7 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(
                 ExceptionResponse.builder()
                         .date(LocalDateTime.now())
-                        .message("Sorry, have no idea what is going on :(")
+                        .message(exception.getMessage())
                         .status(INTERNAL_SERVER_ERROR.value())
                         .exception(exception.getClass().getName())
                         .build(),

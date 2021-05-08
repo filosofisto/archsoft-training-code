@@ -1,16 +1,16 @@
 server:
-  port: 8082
+  port: 8084
   servlet:
-    context-path: /product
+    context-path: /order
 
 spring:
   application:
-    name: product
+    name: order
   data:
     mongodb:
       host: localhost
       port: 27017
-      database: product
+      database: order
 
 security:
   jwt:

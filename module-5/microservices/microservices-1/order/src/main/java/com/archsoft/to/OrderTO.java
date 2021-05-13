@@ -2,11 +2,13 @@ package com.archsoft.to;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
-public class OrderTO {
+public class OrderTO implements Serializable {
 
     private String id;
     private LocalDateTime dateTime;
@@ -16,4 +18,5 @@ public class OrderTO {
     private String status;
     private String paymentId;
     private Integer percent;
+    private List<OrderItemTO> items;
 }

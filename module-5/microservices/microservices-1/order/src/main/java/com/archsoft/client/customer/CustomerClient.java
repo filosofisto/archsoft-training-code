@@ -1,4 +1,4 @@
-package com.archsoft.client;
+package com.archsoft.client.customer;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -3,20 +3,15 @@ package com.archsoft.controller;
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.Product;
 import com.archsoft.service.ProductService;
+import com.archsoft.to.CheckAvailabilityRequestTO;
+import com.archsoft.to.CheckAvailabilityResponseTO;
 import com.archsoft.to.ProductTO;
 import com.archsoft.util.converter.ProductConverter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -77,5 +72,23 @@ public class ProductController {
         Iterable<Product> list = productService.findByDescription(description);
 
         return ResponseEntity.ok(productConverter.toTransferObject(list));
+    }
+
+    @PostMapping("/checkAvailability")
+    public ResponseEntity<CheckAvailabilityResponseTO> checkAvailability(
+            @RequestBody CheckAvailabilityRequestTO checkAvailabilityRequestTO) {
+        try {
+            Product product = productService.checkAvailability(
+                    checkAvailabilityRequestTO.getProductId(),
+                    checkAvailabilityRequestTO.getQuantity());
+            CheckAvailabilityResponseTO checkAvailabilityResponseTO = new CheckAvailabilityResponseTO(
+                    product.getPrice(), true);
+
+            return ResponseEntity.ok(checkAvailabilityResponseTO);
+        } catch (RecordNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return ResponseEntity.ok(new CheckAvailabilityResponseTO(new BigDecimal(0d), false));
     }
 }

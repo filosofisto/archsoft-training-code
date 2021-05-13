@@ -1,7 +1,11 @@
 package com.archsoft.service;
 
-import com.archsoft.client.CustomerClient;
+import com.archsoft.client.customer.CustomerClient;
+import com.archsoft.client.product.ProductClient;
+import com.archsoft.client.product.ProductAvailabilityRequest;
+import com.archsoft.client.product.ProductAvailabilityResponse;
 import com.archsoft.exception.CustomerInvalidException;
+import com.archsoft.exception.ProductNotAvailable;
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.Order;
 import com.archsoft.model.Status;
@@ -10,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -19,9 +22,14 @@ public class OrderService {
 
     private final CustomerClient customerClient;
 
-    public OrderService(OrderRepository orderRepository, CustomerClient customerClient) {
+    private final ProductClient productClient;
+
+    public OrderService(OrderRepository orderRepository,
+                        CustomerClient customerClient,
+                        ProductClient productClient) {
         this.orderRepository = orderRepository;
         this.customerClient = customerClient;
+        this.productClient = productClient;
     }
 
     public Order create(String customerId, String token) throws CustomerInvalidException {
@@ -39,6 +47,25 @@ public class OrderService {
         order.setPercent(0);
 
         return orderRepository.insert(order);
+    }
+
+    public Order addProduct(String orderId, String productId, Integer quantity, String token)
+            throws RecordNotFoundException, ProductNotAvailable {
+        ProductAvailabilityResponse productAvailabilityResponse = productClient.checkAvailability(
+                new ProductAvailabilityRequest(productId, quantity), token);
+
+        if (!productAvailabilityResponse.isAvailable()) {
+            throw new ProductNotAvailable(productId);
+        }
+
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RecordNotFoundException(orderId));
+
+        // TODO: Disconto?
+        Integer discount = 0;
+
+        order.addItem(productId, quantity, productAvailabilityResponse.getPrice(), discount);
+        return orderRepository.save(order);
     }
 
     public Order cancel(String orderId) throws RecordNotFoundException {

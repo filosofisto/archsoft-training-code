@@ -31,3 +31,5 @@ eureka:
 integration:
   customer:
     url: http://localhost:8080/api/customer
+  product:
+    url: http://localhost:8080/api/product

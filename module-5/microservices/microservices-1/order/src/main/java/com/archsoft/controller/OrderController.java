@@ -1,9 +1,11 @@
 package com.archsoft.controller;
 
 import com.archsoft.exception.CustomerInvalidException;
+import com.archsoft.exception.ProductNotAvailable;
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.Order;
 import com.archsoft.service.OrderService;
+import com.archsoft.to.AddProductRequestTO;
 import com.archsoft.to.OrderTO;
 import com.archsoft.util.converter.OrderConverter;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,7 @@ public class OrderController {
         Order order = orderService.create(customerId, token);
         OrderTO orderTO = orderConverter.toTransferObject(order);
 
+        //TODO: 201
         return ResponseEntity.ok(orderTO);
     }
 
@@ -38,5 +41,18 @@ public class OrderController {
         return ResponseEntity.ok(orderTO);
     }
 
+    @PostMapping("/addProduct")
+    public ResponseEntity<OrderTO> addProduct(@RequestBody AddProductRequestTO addProductRequestTO,
+                                              @RequestHeader("Authorization") String token) throws RecordNotFoundException, ProductNotAvailable {
+        Order order = orderService.addProduct(
+                addProductRequestTO.getOrderId(),
+                addProductRequestTO.getProductId(),
+                addProductRequestTO.getQuantity(),
+                token);
+
+        OrderTO orderTO = orderConverter.toTransferObject(order);
+
+        return ResponseEntity.ok(orderTO);
+    }
 
 }

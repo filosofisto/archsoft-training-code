@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
+import javax.annotation.PostConstruct;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +12,21 @@ import java.util.Objects;
 
 public abstract class Converter<E, T> {
 
-    private ModelMapper modelMapper;
-    private Class<E> classEntity;
-    private Class<T> classTO;
+    protected ModelMapper modelMapper;
+    protected Class<E> classEntity;
+    protected Class<T> classTO;
 
     public Converter() {
         modelMapper = new ModelMapper();
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        customMapping();
+    }
+
+    protected void customMapping() {
+
     }
 
     public E toEntity(T to) {

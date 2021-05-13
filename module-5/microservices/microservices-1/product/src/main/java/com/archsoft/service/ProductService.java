@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -46,5 +47,23 @@ public class ProductService {
 
     public Iterable<Product> findByDescription(String description) {
         return productRepository.findBaseFieldsByDescriptionLike(description);
+    }
+
+    public Product checkAvailability(String productId, Integer quantity)
+            throws RecordNotFoundException {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RecordNotFoundException(productId));
+
+        int stock = Optional.ofNullable(product.getAttributes())
+                .map(m -> m.get("stock"))
+                .map(Integer::parseInt)
+                .orElse(0);
+
+        if (stock >= quantity) {
+            product.setAttribute("stock", String.valueOf(stock - quantity));
+            return productRepository.save(product);
+        }
+
+        return null;
     }
 }

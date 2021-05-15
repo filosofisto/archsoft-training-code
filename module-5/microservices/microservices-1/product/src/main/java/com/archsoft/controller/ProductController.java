@@ -3,6 +3,7 @@ package com.archsoft.controller;
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.Product;
 import com.archsoft.service.ProductService;
+import com.archsoft.to.AddStockRequestTO;
 import com.archsoft.to.CheckAvailabilityRequestTO;
 import com.archsoft.to.CheckAvailabilityResponseTO;
 import com.archsoft.to.ProductTO;
@@ -90,5 +91,15 @@ public class ProductController {
         }
 
         return ResponseEntity.ok(new CheckAvailabilityResponseTO(new BigDecimal(0d), false));
+    }
+
+    @PostMapping("/addStock")
+    public ResponseEntity<?> addStock(
+            @RequestBody AddStockRequestTO addStockRequestTO) throws RecordNotFoundException {
+        productService.addStock(
+                addStockRequestTO.getProductId(),
+                addStockRequestTO.getQuantity());
+
+        return ResponseEntity.ok().build();
     }
 }

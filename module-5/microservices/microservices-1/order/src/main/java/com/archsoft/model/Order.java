@@ -7,6 +7,7 @@ import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class Order extends AbstractDocument {
@@ -54,5 +55,13 @@ public class Order extends AbstractDocument {
         return items.stream()
                 .mapToDouble(item -> item.getQuantity() * item.getPrice().doubleValue())
                 .sum();
+    }
+
+    public void removeProduct(String productId) {
+        items = items.stream()
+                .filter(orderItem -> !orderItem.getProductId().equals(productId))
+                .collect(Collectors.toList());
+        setTotal(new BigDecimal(calcTotal()));
+        setTotalNet(total);
     }
 }

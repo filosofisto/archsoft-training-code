@@ -1,15 +1,19 @@
 package com.archsoft.controller;
 
+import com.archsoft.client.customer.CustomerClient;
+import com.archsoft.client.product.ProductClient;
 import com.archsoft.exception.CustomerInvalidException;
 import com.archsoft.exception.ProductNotAvailable;
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.Order;
 import com.archsoft.service.OrderService;
-import com.archsoft.to.AddProductRequestTO;
-import com.archsoft.to.OrderTO;
+import com.archsoft.to.*;
 import com.archsoft.util.converter.OrderConverter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class OrderController {
@@ -18,9 +22,15 @@ public class OrderController {
 
     private final OrderConverter orderConverter;
 
-    public OrderController(OrderService orderService, OrderConverter orderConverter) {
+    private final CustomerClient customerClient;
+
+    private final ProductClient productClient;
+
+    public OrderController(OrderService orderService, OrderConverter orderConverter, CustomerClient customerClient, ProductClient productClient) {
         this.orderService = orderService;
         this.orderConverter = orderConverter;
+        this.customerClient = customerClient;
+        this.productClient = productClient;
     }
 
     @PostMapping("/create")
@@ -33,9 +43,40 @@ public class OrderController {
         return ResponseEntity.ok(orderTO);
     }
 
+    @GetMapping("/read/{orderId}")
+    public ResponseEntity<Map<String, Object>> read(@PathVariable("orderId") String orderId,
+                                        @RequestHeader("Authorization") String token)
+            throws RecordNotFoundException {
+        Order order = orderService.read(orderId);
+        OrderTO orderTO = orderConverter.toTransferObject(order);
+
+        orderTO.getItems().forEach(orderItemTO -> {
+            try {
+                ProductTO productTO = productClient.read(orderItemTO.getProductId(), token);
+
+                orderItemTO.setName(productTO.getName());
+                orderItemTO.setDescription(productTO.getDescription());
+                orderItemTO.setCategory(productTO.getCategory());
+            } catch (Exception e) {
+                orderItemTO.setName("???");
+                orderItemTO.setDescription("???");
+                orderItemTO.setCategory("???");
+            }
+        });
+
+        CustomerTO customerTO = customerClient.read(order.getCustomerId(), token);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("order", orderTO);
+        result.put("customer", customerTO);
+
+        return ResponseEntity.ok(result);
+    }
+
     @PutMapping("/cancel")
-    public ResponseEntity<OrderTO> cancel(@RequestBody String orderId) throws RecordNotFoundException {
-        Order order = orderService.cancel(orderId);
+    public ResponseEntity<OrderTO> cancel(@RequestBody String orderId,
+                                          @RequestHeader("Authorization") String token) throws RecordNotFoundException {
+        Order order = orderService.cancel(orderId, token);
         OrderTO orderTO = orderConverter.toTransferObject(order);
 
         return ResponseEntity.ok(orderTO);
@@ -48,6 +89,19 @@ public class OrderController {
                 addProductRequestTO.getOrderId(),
                 addProductRequestTO.getProductId(),
                 addProductRequestTO.getQuantity(),
+                token);
+
+        OrderTO orderTO = orderConverter.toTransferObject(order);
+
+        return ResponseEntity.ok(orderTO);
+    }
+
+    @PostMapping("/removeProduct")
+    public ResponseEntity<OrderTO> removeProduct(@RequestBody RemoveProductRequestTO removeProductRequestTO,
+                                                 @RequestHeader("Authorization") String token) throws RecordNotFoundException, ProductNotAvailable {
+        Order order = orderService.removeProduct(
+                removeProductRequestTO.getOrderId(),
+                removeProductRequestTO.getProductId(),
                 token);
 
         OrderTO orderTO = orderConverter.toTransferObject(order);

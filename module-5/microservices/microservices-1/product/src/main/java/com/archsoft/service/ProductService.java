@@ -66,4 +66,18 @@ public class ProductService {
 
         return null;
     }
+
+    public void addStock(String productId, Integer quantity) throws RecordNotFoundException {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RecordNotFoundException(productId));
+
+        int stock = Optional.ofNullable(product.getAttributes())
+                .map(m -> m.get("stock"))
+                .map(Integer::parseInt)
+                .orElse(0);
+
+        product.setAttribute("stock", String.valueOf(stock + quantity));
+
+        productRepository.save(product);
+    }
 }

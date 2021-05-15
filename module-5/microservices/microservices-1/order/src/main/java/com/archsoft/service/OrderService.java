@@ -1,9 +1,10 @@
 package com.archsoft.service;
 
 import com.archsoft.client.customer.CustomerClient;
-import com.archsoft.client.product.ProductClient;
+import com.archsoft.client.product.AddStockRequest;
 import com.archsoft.client.product.ProductAvailabilityRequest;
 import com.archsoft.client.product.ProductAvailabilityResponse;
+import com.archsoft.client.product.ProductClient;
 import com.archsoft.exception.CustomerInvalidException;
 import com.archsoft.exception.ProductNotAvailable;
 import com.archsoft.exception.RecordNotFoundException;
@@ -49,6 +50,11 @@ public class OrderService {
         return orderRepository.insert(order);
     }
 
+    public Order read(String orderId) throws RecordNotFoundException {
+        return orderRepository.findById(orderId)
+                .orElseThrow(() -> new RecordNotFoundException(orderId));
+    }
+
     public Order addProduct(String orderId, String productId, Integer quantity, String token)
             throws RecordNotFoundException, ProductNotAvailable {
         ProductAvailabilityResponse productAvailabilityResponse = productClient.checkAvailability(
@@ -61,17 +67,38 @@ public class OrderService {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RecordNotFoundException(orderId));
 
-        // TODO: Disconto?
+        // TODO: Desconto?
         Integer discount = 0;
 
         order.addItem(productId, quantity, productAvailabilityResponse.getPrice(), discount);
         return orderRepository.save(order);
     }
 
-    public Order cancel(String orderId) throws RecordNotFoundException {
+    public Order cancel(String orderId, String token) throws RecordNotFoundException {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RecordNotFoundException(orderId));
         order.setStatus(Status.CANCELED.name());
+
+        order.getItems().forEach(orderItem -> productClient.addStock(
+                new AddStockRequest(orderItem.getProductId(), orderItem.getQuantity()), token));
+
+        return orderRepository.save(order);
+    }
+
+    public Order removeProduct(String orderId, String productId, String token) throws RecordNotFoundException {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RecordNotFoundException(orderId));
+
+        int sum = order.getItems().stream()
+                .filter(orderItem -> orderItem.getProductId().equals(productId))
+                .mapToInt(orderItem -> orderItem.getQuantity())
+                .sum();
+
+        if (sum > 0) {
+            productClient.addStock(new AddStockRequest(productId, sum), token);
+        }
+
+        order.removeProduct(productId);
 
         return orderRepository.save(order);
     }

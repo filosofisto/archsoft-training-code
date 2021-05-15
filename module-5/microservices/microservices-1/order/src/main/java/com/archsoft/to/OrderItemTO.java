@@ -12,4 +12,9 @@ public class OrderItemTO implements Serializable {
     private BigDecimal price;
     private Integer quantity;
     private Integer discount;
+
+    //------- Additional info about Product
+    private String name;
+    private String description;
+    private String category;
 }

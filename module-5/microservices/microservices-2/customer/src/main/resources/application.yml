@@ -1,0 +1,28 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /customer
+
+spring:
+  application:
+    name: customer
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: customer
+
+security:
+  jwt:
+    token:
+      secret-key: asoiuiey8723389uiajnmc*&%^^#$^&*092183797hj
+      expire-length: 3600000
+  auth:
+    url: http://localhost:8080/api/auth
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/registry/eureka

@@ -1,0 +1,54 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/registry/eureka
+
+zuul:
+  prefix: /api
+  ignored-services: "*"
+
+  routes:
+    auth:
+      path: /auth/**
+      service-id: auth
+      strip-prefix: false
+      custom-sensitive-headers: true
+
+    product:
+      path: /product/**
+      service-id: product
+      strip-prefix: false
+      custom-sensitive-headers: true
+
+    customer:
+      path: /customer/**
+      service-id: customer
+      strip-prefix: false
+      custom-sensitive-headers: true
+
+    order:
+      path: /order/**
+      service-id: order
+      strip-prefix: false
+      custom-sensitive-headers: true
+
+# Increase the Hystrix timeout to 60s (globally)
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 60000
+
+ribbon:
+  ReadTimeout: 60000

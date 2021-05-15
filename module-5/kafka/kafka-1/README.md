@@ -23,3 +23,7 @@
 ###Create a topic
 
     ./kafka-topics.sh --zookeeper localhost:2181 --create --topic first_topic --partitions 3 --replication-factor 1
+
+###Kafka Service Failed
+
+    rm kafka/logs/meta.properties

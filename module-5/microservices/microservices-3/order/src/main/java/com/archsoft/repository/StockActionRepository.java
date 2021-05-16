@@ -1,6 +1,6 @@
 package com.archsoft.repository;
 
-import com.archsoft.model.StockAction;
+import com.archsoft.model.order.StockAction;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -2,7 +2,7 @@ package com.archsoft.controller;
 
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.exception.UserAlreadyExistsException;
-import com.archsoft.model.User;
+import com.archsoft.model.user.User;
 import com.archsoft.security.JwtTokenProvider;
 import com.archsoft.service.UserService;
 import com.archsoft.to.UserTO;
@@ -12,7 +12,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.HashMap;

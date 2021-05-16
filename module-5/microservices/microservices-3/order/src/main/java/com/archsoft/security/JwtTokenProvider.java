@@ -1,7 +1,7 @@
 package com.archsoft.security;
 
 import com.archsoft.authentication.client.AuthClient;
-import com.archsoft.model.User;
+import com.archsoft.model.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;

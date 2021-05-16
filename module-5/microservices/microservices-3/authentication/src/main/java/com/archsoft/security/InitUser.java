@@ -2,7 +2,7 @@ package com.archsoft.security;
 
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.exception.UserAlreadyExistsException;
-import com.archsoft.model.User;
+import com.archsoft.model.user.User;
 import com.archsoft.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

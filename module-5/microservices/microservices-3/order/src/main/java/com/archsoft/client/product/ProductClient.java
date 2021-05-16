@@ -1,6 +1,6 @@
 package com.archsoft.client.product;
 
-import com.archsoft.to.ProductTO;
+import com.archsoft.to.product.ProductTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 

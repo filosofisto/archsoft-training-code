@@ -2,7 +2,7 @@ package com.archsoft.service;
 
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.exception.UserAlreadyExistsException;
-import com.archsoft.model.User;
+import com.archsoft.model.user.User;
 import com.archsoft.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,20 +1,23 @@
 package com.archsoft.service;
 
-import com.archsoft.client.customer.CustomerClient;
 import com.archsoft.client.product.AddStockRequest;
 import com.archsoft.client.product.ProductAvailabilityRequest;
 import com.archsoft.client.product.ProductAvailabilityResponse;
+import com.archsoft.config.KafkaConsumerConfig;
 import com.archsoft.exception.CustomerInvalidException;
 import com.archsoft.exception.ProductNotAvailable;
 import com.archsoft.exception.RecordNotFoundException;
-import com.archsoft.model.Order;
-import com.archsoft.model.Status;
+import com.archsoft.model.order.Order;
+import com.archsoft.model.order.Status;
 import com.archsoft.repository.OrderRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Slf4j
 @Service
 public class OrderService {
 
@@ -100,5 +103,12 @@ public class OrderService {
         order.removeProduct(productId);
 
         return orderRepository.save(order);
+    }
+
+    @KafkaListener(topics = "${kafka.product.topic}", groupId = KafkaConsumerConfig.GROUP)
+    public void productListener(String message) {
+        log.info("ProductListener received message: {}", message);
+
+//        Product product = JSONUtil.toObject(message)
     }
 }

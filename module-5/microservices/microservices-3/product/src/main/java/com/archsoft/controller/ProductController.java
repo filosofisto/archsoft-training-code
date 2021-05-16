@@ -1,12 +1,12 @@
 package com.archsoft.controller;
 
 import com.archsoft.exception.RecordNotFoundException;
-import com.archsoft.model.Product;
+import com.archsoft.model.product.Product;
 import com.archsoft.service.ProductService;
 import com.archsoft.to.AddStockRequestTO;
 import com.archsoft.to.CheckAvailabilityRequestTO;
 import com.archsoft.to.CheckAvailabilityResponseTO;
-import com.archsoft.to.ProductTO;
+import com.archsoft.to.product.ProductTO;
 import com.archsoft.util.converter.ProductConverter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +18,6 @@ import java.util.List;
 
 @RestController
 public class ProductController {
-
-//    @Value("${server.port}")
-//    private Integer port;
 
     private final ProductService productService;
 

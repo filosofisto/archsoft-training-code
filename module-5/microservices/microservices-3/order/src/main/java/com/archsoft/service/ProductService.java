@@ -4,9 +4,9 @@ import com.archsoft.client.product.AddStockRequest;
 import com.archsoft.client.product.ProductAvailabilityRequest;
 import com.archsoft.client.product.ProductAvailabilityResponse;
 import com.archsoft.client.product.ProductClient;
-import com.archsoft.model.StockAction;
+import com.archsoft.model.order.StockAction;
 import com.archsoft.repository.StockActionRepository;
-import com.archsoft.to.ProductTO;
+import com.archsoft.to.product.ProductTO;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.stereotype.Service;
 
@@ -57,6 +57,7 @@ public class ProductService {
                 "???",
                 "???",
                 new BigDecimal(0d),
+                null,
                 null);
     }
 }

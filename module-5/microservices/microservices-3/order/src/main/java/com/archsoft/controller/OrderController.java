@@ -1,17 +1,26 @@
 package com.archsoft.controller;
 
-import com.archsoft.client.customer.CustomerClient;
 import com.archsoft.exception.CustomerInvalidException;
 import com.archsoft.exception.ProductNotAvailable;
 import com.archsoft.exception.RecordNotFoundException;
-import com.archsoft.model.Order;
+import com.archsoft.model.order.Order;
 import com.archsoft.service.CustomerService;
 import com.archsoft.service.OrderService;
 import com.archsoft.service.ProductService;
-import com.archsoft.to.*;
+import com.archsoft.to.AddProductRequestTO;
+import com.archsoft.to.RemoveProductRequestTO;
+import com.archsoft.to.customer.CustomerTO;
+import com.archsoft.to.order.OrderTO;
+import com.archsoft.to.product.ProductTO;
 import com.archsoft.util.converter.OrderConverter;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;

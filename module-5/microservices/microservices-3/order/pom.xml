@@ -21,6 +21,8 @@
 		<jjwt.version>0.9.0</jjwt.version>
 		<modelmapper.version>2.3.8</modelmapper.version>
 		<spring-data-mongodb.version>3.1.8</spring-data-mongodb.version>
+		<jackson-databind.version>2.11.1</jackson-databind.version>
+		<spring-kafka.version>2.7.0</spring-kafka.version>
 	</properties>
 
 	<dependencies>
@@ -37,11 +39,16 @@
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
 			<version>2.2.8.RELEASE</version>
 		</dependency>
-		<!--<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-hystrix</artifactId>
-			&lt;!&ndash;<version>1.4.7.RELEASEb</version>&ndash;&gt;
-		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+			<version>${spring-kafka.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-databind.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -108,6 +115,11 @@
 			<groupId>com.archsoft</groupId>
 			<artifactId>authentication-client</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.archsoft</groupId>
+			<artifactId>commons</artifactId>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

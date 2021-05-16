@@ -2,7 +2,7 @@ package com.archsoft.service;
 
 import com.archsoft.event.EventType;
 import com.archsoft.event.ProductEvent;
-import com.archsoft.model.Product;
+import com.archsoft.model.product.Product;
 import com.archsoft.util.JSONUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -36,7 +36,7 @@ public class MessageBrokerService {
 
     private void sendEvent(Product product, EventType eventType) throws IOException {
         ProductEvent productEvent = new ProductEvent(product, eventType);
-        String json = JSONUtil.toJSON(product);
+        String json = JSONUtil.toJSON(productEvent);
         kafkaTemplate.send(topic, json);
     }
 }

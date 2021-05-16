@@ -1,6 +1,6 @@
 package com.archsoft.repository;
 
-import com.archsoft.model.Order;
+import com.archsoft.model.order.Order;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

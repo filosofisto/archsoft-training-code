@@ -1,6 +1,6 @@
 package com.archsoft.security;
 
-import com.archsoft.model.User;
+import com.archsoft.model.user.User;
 import com.archsoft.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

@@ -1,7 +1,7 @@
 package com.archsoft.service;
 
 import com.archsoft.exception.RecordNotFoundException;
-import com.archsoft.model.Product;
+import com.archsoft.model.product.Product;
 import com.archsoft.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 

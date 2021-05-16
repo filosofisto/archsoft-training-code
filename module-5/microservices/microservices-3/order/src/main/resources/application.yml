@@ -33,3 +33,10 @@ integration:
     url: http://localhost:8080/api/customer
   product:
     url: http://localhost:8080/api/product
+
+kafka:
+  bootstrap:
+    host: 127.0.0.1
+    port: 9092
+  product:
+    topic: product

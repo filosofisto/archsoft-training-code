@@ -1,6 +1,6 @@
 package com.archsoft.repository;
 
-import com.archsoft.model.Customer;
+import com.archsoft.model.customer.Customer;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

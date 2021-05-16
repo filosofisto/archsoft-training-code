@@ -1,7 +1,7 @@
 package com.archsoft.service;
 
 import com.archsoft.client.customer.CustomerClient;
-import com.archsoft.to.CustomerTO;
+import com.archsoft.to.customer.CustomerTO;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.stereotype.Service;
 

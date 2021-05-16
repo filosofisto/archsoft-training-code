@@ -1,6 +1,6 @@
 package com.archsoft.client.customer;
 
-import com.archsoft.to.CustomerTO;
+import com.archsoft.to.customer.CustomerTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

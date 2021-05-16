@@ -1,6 +1,6 @@
 package com.archsoft.util.converter;
 
-import com.archsoft.model.User;
+import com.archsoft.model.user.User;
 import com.archsoft.to.UserTO;
 import org.springframework.stereotype.Component;
 

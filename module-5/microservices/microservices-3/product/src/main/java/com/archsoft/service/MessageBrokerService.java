@@ -10,11 +10,16 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+import static com.archsoft.util.JSONUtil.toJSON;
+
 @Service
 public class MessageBrokerService {
 
-    @Value("${kafka.topic}")
+    @Value("${kafka.topic.product}")
     private String topic;
+
+    @Value("${kafka.topic.addProductToOrder}")
+    private String topicAddProductToOrder;
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
@@ -36,7 +41,7 @@ public class MessageBrokerService {
 
     private void sendEvent(Product product, EventType eventType) throws IOException {
         ProductEvent productEvent = new ProductEvent(product, eventType);
-        String json = JSONUtil.toJSON(productEvent);
+        String json = toJSON(productEvent);
         kafkaTemplate.send(topic, json);
     }
 }

@@ -1,14 +1,24 @@
 package com.archsoft.service;
 
+import com.archsoft.config.KafkaConsumerConfig;
+import com.archsoft.event.AddProductToOrderEvent;
+import com.archsoft.event.ProductEvent;
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.product.Product;
 import com.archsoft.repository.ProductRepository;
+import com.archsoft.util.JSONUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+import static com.archsoft.util.JSONUtil.toObject;
+
+@Slf4j
 @Service
 public class ProductService {
 
@@ -91,6 +101,25 @@ public class ProductService {
                 .orElse(0);
 
         product.setAttribute("stock", String.valueOf(stock + quantity));
+
+        Product productUpdated = productRepository.save(product);
+        messageBrokerService.sendUpdateEvent(productUpdated);
+    }
+
+    @KafkaListener(topics = "${kafka.topic.addProductToOrder}", groupId = KafkaConsumerConfig.GROUP)
+    public void addProductToOrderListener(String message) throws IOException, RecordNotFoundException {
+        log.info("AddProductToOrderEvent received: {}", message);
+
+        AddProductToOrderEvent event = toObject(message, AddProductToOrderEvent.class);
+
+        Product product = productRepository.findById(event.getProductId())
+                .orElseThrow(() -> new RecordNotFoundException(event.getProductId()));
+        int stock = Optional.ofNullable(product.getAttributes())
+                .map(m -> m.get("stock"))
+                .map(Integer::parseInt)
+                .orElse(0);
+
+        product.setAttribute("stock", String.valueOf(stock-event.getQuantity()));
 
         Product productUpdated = productRepository.save(product);
         messageBrokerService.sendUpdateEvent(productUpdated);

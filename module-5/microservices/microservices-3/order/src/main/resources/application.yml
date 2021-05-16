@@ -40,3 +40,5 @@ kafka:
     port: 9092
   product:
     topic: product
+  order:
+    addProduct: addProductToOrder

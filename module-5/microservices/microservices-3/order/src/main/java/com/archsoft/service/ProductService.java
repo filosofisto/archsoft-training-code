@@ -1,63 +1,84 @@
 package com.archsoft.service;
 
-import com.archsoft.client.product.AddStockRequest;
-import com.archsoft.client.product.ProductAvailabilityRequest;
-import com.archsoft.client.product.ProductAvailabilityResponse;
-import com.archsoft.client.product.ProductClient;
-import com.archsoft.model.order.StockAction;
-import com.archsoft.repository.StockActionRepository;
-import com.archsoft.to.product.ProductTO;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.archsoft.config.KafkaConsumerConfig;
+import com.archsoft.event.ProductEvent;
+import com.archsoft.exception.RecordNotFoundException;
+import com.archsoft.model.product.Product;
+import com.archsoft.repository.ProductRepository;
+import com.archsoft.util.JSONUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
+import java.util.Optional;
 
+@Slf4j
 @Service
 public class ProductService {
 
-    private final ProductClient productClient;
+    private final ProductRepository productRepository;
 
-    private final StockActionRepository stockActionRepository;
-
-    public ProductService(ProductClient productClient, StockActionRepository stockActionRepository) {
-        this.productClient = productClient;
-        this.stockActionRepository = stockActionRepository;
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
-    @HystrixCommand(fallbackMethod = "checkAvailabilityFallback")
-    public ProductAvailabilityResponse checkAvailability(
-            ProductAvailabilityRequest productAvailabilityRequest,
-            String token) {
-        return productClient.checkAvailability(productAvailabilityRequest, token);
+    @KafkaListener(topics = "${kafka.product.topic}", groupId = KafkaConsumerConfig.GROUP)
+    public void productListener(String message) throws JsonProcessingException {
+        log.info("ProductListener received message: {}", message);
+
+        ProductEvent productEvent = JSONUtil.toObject(message, ProductEvent.class);
+        Product product = productEvent.getProduct();
+
+        switch (productEvent.getEventType()) {
+            case INSERT:
+                processInsert(product);
+                break;
+            case UPDATE:
+                processUpdate(product);
+                break;
+            case DELETE:
+                processDelete(product);
+        }
     }
 
-    public ProductAvailabilityResponse checkAvailabilityFallback(ProductAvailabilityRequest productAvailabilityRequest,
-                                                                 String token) {
-        return new ProductAvailabilityResponse(new BigDecimal(0d), false);
+    private void processInsert(Product product) {
+        product.setOriginalId(product.getId());
+        product.setId(null);
+
+        productRepository.save(product);
     }
 
-    @HystrixCommand(fallbackMethod = "addStockFallback")
-    public void addStock(AddStockRequest addStockRequest, String token) {
-        productClient.addStock(addStockRequest, token);
+    private void processUpdate(Product product) {
+        Optional<Product> optionalProduct = productRepository.findByOriginalId(product.getId());
+
+        if (optionalProduct.isPresent()) {
+            Product productSaved = optionalProduct.get();
+
+            productSaved.setName(product.getName());
+            productSaved.setDescription(product.getDescription());
+            productSaved.setCategory(product.getCategory());
+            productSaved.setPrice(product.getPrice());
+            productSaved.setAttributes(product.getAttributes());
+
+            productRepository.save(productSaved);
+        } else {
+            processInsert(product);
+        }
     }
 
-    public void addStockFallback(AddStockRequest addStockRequest, String token) {
-        stockActionRepository.save(new StockAction(addStockRequest.getProductId(), addStockRequest.getQuantity()));
+    private void processDelete(Product product) {
+        productRepository.findByOriginalId(product.getId())
+                .ifPresent(productSaved -> productRepository.delete(productSaved));
     }
 
-    @HystrixCommand(fallbackMethod = "readFallback")
-    public ProductTO read(String productId, String token) {
-        return productClient.read(productId, token);
+    public Product readByOriginalId(String productId) throws RecordNotFoundException {
+        return productRepository.findByOriginalId(productId)
+                .orElseThrow(() -> new RecordNotFoundException(productId));
     }
 
-    public ProductTO readFallback(String productId, String token) {
-        return new ProductTO(
-                productId,
-                "???",
-                "???",
-                "???",
-                new BigDecimal(0d),
-                null,
-                null);
+    public Product read(String productId) throws RecordNotFoundException {
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new RecordNotFoundException(productId));
     }
 }

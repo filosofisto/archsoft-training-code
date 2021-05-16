@@ -32,7 +32,9 @@ kafka:
   bootstrap:
     host: 127.0.0.1
     port: 9092
-  topic: product
+  topic:
+    product: product
+    addProductToOrder: addProductToOrder
 
 logging:
   level:

@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ProductApplication" type="Application" factoryName="Application" nameIsGenerated="true">
-    <option name="MAIN_CLASS_NAME" value="com.archsoft.ProductApplication" />
+    <option name="MAIN_CLASS_NAME" value="com.archsoft.PaymentApplication" />
     <module name="product" />
     <extension name="coverage">
       <pattern>

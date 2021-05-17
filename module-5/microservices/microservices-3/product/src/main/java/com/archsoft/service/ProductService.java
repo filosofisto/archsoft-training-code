@@ -2,12 +2,9 @@ package com.archsoft.service;
 
 import com.archsoft.config.KafkaConsumerConfig;
 import com.archsoft.event.AddProductToOrderEvent;
-import com.archsoft.event.ProductEvent;
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.product.Product;
 import com.archsoft.repository.ProductRepository;
-import com.archsoft.util.JSONUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -68,42 +65,6 @@ public class ProductService {
 
     public Iterable<Product> findByDescription(String description) {
         return productRepository.findBaseFieldsByDescriptionLike(description);
-    }
-
-    public Product checkAvailability(String productId, Integer quantity)
-            throws RecordNotFoundException, IOException {
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new RecordNotFoundException(productId));
-
-        int stock = Optional.ofNullable(product.getAttributes())
-                .map(m -> m.get("stock"))
-                .map(Integer::parseInt)
-                .orElse(0);
-
-        if (stock >= quantity) {
-            product.setAttribute("stock", String.valueOf(stock - quantity));
-            Product productUpdated = productRepository.save(product);
-            messageBrokerService.sendUpdateEvent(productUpdated);
-
-            return productUpdated;
-        }
-
-        return null;
-    }
-
-    public void addStock(String productId, Integer quantity) throws RecordNotFoundException, IOException {
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new RecordNotFoundException(productId));
-
-        int stock = Optional.ofNullable(product.getAttributes())
-                .map(m -> m.get("stock"))
-                .map(Integer::parseInt)
-                .orElse(0);
-
-        product.setAttribute("stock", String.valueOf(stock + quantity));
-
-        Product productUpdated = productRepository.save(product);
-        messageBrokerService.sendUpdateEvent(productUpdated);
     }
 
     @KafkaListener(topics = "${kafka.topic.addProductToOrder}", groupId = KafkaConsumerConfig.GROUP)

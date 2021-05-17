@@ -3,9 +3,6 @@ package com.archsoft.controller;
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.product.Product;
 import com.archsoft.service.ProductService;
-import com.archsoft.to.AddStockRequestTO;
-import com.archsoft.to.CheckAvailabilityRequestTO;
-import com.archsoft.to.CheckAvailabilityResponseTO;
 import com.archsoft.to.product.ProductTO;
 import com.archsoft.util.converter.ProductConverter;
 import org.springframework.http.HttpStatus;
@@ -13,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -71,33 +67,5 @@ public class ProductController {
         Iterable<Product> list = productService.findByDescription(description);
 
         return ResponseEntity.ok(productConverter.toTransferObject(list));
-    }
-
-    @PostMapping("/checkAvailability")
-    public ResponseEntity<CheckAvailabilityResponseTO> checkAvailability(
-            @RequestBody CheckAvailabilityRequestTO checkAvailabilityRequestTO) {
-        try {
-            Product product = productService.checkAvailability(
-                    checkAvailabilityRequestTO.getProductId(),
-                    checkAvailabilityRequestTO.getQuantity());
-            CheckAvailabilityResponseTO checkAvailabilityResponseTO = new CheckAvailabilityResponseTO(
-                    product.getPrice(), true);
-
-            return ResponseEntity.ok(checkAvailabilityResponseTO);
-        } catch (RecordNotFoundException | IOException e) {
-            e.printStackTrace();
-        }
-
-        return ResponseEntity.ok(new CheckAvailabilityResponseTO(new BigDecimal(0d), false));
-    }
-
-    @PostMapping("/addStock")
-    public ResponseEntity<?> addStock(
-            @RequestBody AddStockRequestTO addStockRequestTO) throws RecordNotFoundException, IOException {
-        productService.addStock(
-                addStockRequestTO.getProductId(),
-                addStockRequestTO.getQuantity());
-
-        return ResponseEntity.ok().build();
     }
 }

@@ -24,6 +24,7 @@
         <module>product</module>
         <module>customer</module>
         <module>order</module>
+        <module>payment</module>
         <module>commons</module>
     </modules>
 </project>

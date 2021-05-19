@@ -17,7 +17,8 @@ public class AppConfig {
 
     @Bean
     RedisConnectionFactory lettuceConnectionFactory() {
-        List<String> nodes = Collections.singletonList("random-claro-id-ro.oozcd4.ng.0001.euc1.cache.amazonaws.com:6379");
+//        List<String> nodes = Collections.singletonList("random-claro-id-ro.oozcd4.ng.0001.euc1.cache.amazonaws.com:6379");
+        List<String> nodes = Collections.singletonList("random-claro-id-001.oozcd4.0001.euc1.cache.amazonaws.com:6379");
         RedisClusterConfiguration clusterConfiguration = new RedisClusterConfiguration(nodes);
 //        clusterConfiguration.setUsername("randomicclaroid-user");
 //        clusterConfiguration.setPassword(RedisPassword.of("EduardoRibeiroSilva"));

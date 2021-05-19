@@ -15,5 +15,4 @@ public class ProductTO {
     private String category;
     private BigDecimal price;
     private Map<String, String> attributes = new HashMap<String, String>();
-    private Integer port;
 }

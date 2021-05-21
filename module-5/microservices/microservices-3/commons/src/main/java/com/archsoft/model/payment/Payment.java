@@ -4,12 +4,12 @@ import com.archsoft.model.AbstractDocument;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class Payment extends AbstractDocument {
 
-    private LocalDateTime dateTime;
+    private Date dateTime;
     private String orderId;
     private String creditCardNumber;
     private String nameOnCard;

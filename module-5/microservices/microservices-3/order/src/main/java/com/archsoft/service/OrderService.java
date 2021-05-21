@@ -1,20 +1,29 @@
 package com.archsoft.service;
 
+import com.archsoft.config.KafkaConsumerConfig;
+import com.archsoft.event.EventType;
+import com.archsoft.event.PaymentEvent;
 import com.archsoft.exception.CustomerInvalidException;
 import com.archsoft.exception.ProductNotAvailable;
 import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.order.Order;
 import com.archsoft.model.order.OrderItem;
-import com.archsoft.model.order.Status;
+import com.archsoft.model.order.StatusOrder;
+import com.archsoft.model.payment.Payment;
+import com.archsoft.model.payment.StatusPayment;
 import com.archsoft.model.product.Product;
 import com.archsoft.repository.OrderRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
+
+import static com.archsoft.util.JSONUtil.toObject;
 
 @Slf4j
 @Service
@@ -47,7 +56,7 @@ public class OrderService {
 
         order.setDateTime(LocalDateTime.now());
         order.setCustomerId(customerId);
-        order.setStatus(Status.OPENED.name());
+        order.setStatus(StatusOrder.OPENED.name());
         order.setTotal(new BigDecimal(0d));
         order.setTotalNet(new BigDecimal(0d));
         order.setPercent(0);
@@ -94,7 +103,7 @@ public class OrderService {
     public Order cancel(String orderId) throws RecordNotFoundException, IOException {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RecordNotFoundException(orderId));
-        order.setStatus(Status.CANCELED.name());
+        order.setStatus(StatusOrder.CANCELED.name());
 
         for (OrderItem orderItem: order.getItems()) {
             Product product = productService.read(orderItem.getProductId());
@@ -123,5 +132,32 @@ public class OrderService {
         order.removeProduct(product.getId());
 
         return orderRepository.save(order);
+    }
+
+    @KafkaListener(topics = "${kafka.payment.topic}", groupId = KafkaConsumerConfig.GROUP)
+    public void paymentListener(String message) throws IOException, RecordNotFoundException {
+        log.info("PaymentListener received message: {}", message);
+
+        PaymentEvent paymentEvent = toObject(message, PaymentEvent.class);
+
+        if (paymentEvent.getEvent() == EventType.UPDATE) {
+            Payment payment = paymentEvent.getPayment();
+            Order order = read(payment.getOrderId());
+
+            if (payment.getStatus().equals(StatusPayment.ACCEPT.name())) {
+                order.setStatus(StatusOrder.CLOSED.name());
+            } else if (payment.getStatus().equals(StatusPayment.REJECT.name())) {
+                // Reject the order by payment reasons
+                order.setStatus(StatusOrder.REJECTED.name());
+
+                // It gives back the quantities of products to stock
+                for (OrderItem orderItem: order.getItems()) {
+                    Product product = productService.read(orderItem.getProductId());
+                    messageBrokerService.sendAddProduct(product.getOriginalId(), -orderItem.getQuantity());
+                }
+            }
+
+            orderRepository.save(order);
+        }
     }
 }

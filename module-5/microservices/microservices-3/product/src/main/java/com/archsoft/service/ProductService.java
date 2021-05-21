@@ -31,7 +31,7 @@ public class ProductService {
     public Product create(Product product) throws IOException {
         Product productSaved = productRepository.insert(product);
 
-        messageBrokerService.sendInsertEvent(product);
+        messageBrokerService.sendInsertEvent(productSaved);
 
         return productSaved;
     }

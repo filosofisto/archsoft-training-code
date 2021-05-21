@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static com.archsoft.util.JSONUtil.toObject;
+
 @Slf4j
 @Service
 public class ProductService {
@@ -27,7 +29,7 @@ public class ProductService {
     public void productListener(String message) throws JsonProcessingException {
         log.info("ProductListener received message: {}", message);
 
-        ProductEvent productEvent = JSONUtil.toObject(message, ProductEvent.class);
+        ProductEvent productEvent = toObject(message, ProductEvent.class);
         Product product = productEvent.getProduct();
 
         switch (productEvent.getEventType()) {

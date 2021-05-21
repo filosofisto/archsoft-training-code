@@ -42,3 +42,5 @@ kafka:
     topic: product
   order:
     addProduct: addProductToOrder
+  payment:
+    topic: payment

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -25,14 +26,14 @@ public class PaymentService {
     }
 
     public Payment create(Payment payment) throws IOException {
-        payment.setDateTime(LocalDateTime.now());
+        payment.setDateTime(new Date());
         payment.setStatus(StatusPayment.PENDING.name());
 
         Payment paymentInserted = paymentRepository.insert(payment);
 
         // Here it communicates with some real CreditCard service
 
-//        messageBrokerService.sendInsertEvent(payment);
+        messageBrokerService.sendInsertEvent(payment);
 
         return paymentInserted;
     }
@@ -47,7 +48,7 @@ public class PaymentService {
                 .orElseThrow(() -> new RecordNotFoundException(payment.getId()));
 
         Payment paymentUpdated = paymentRepository.save(payment);
-//        messageBrokerService.sendUpdateEvent(paymentUpdated);
+        messageBrokerService.sendUpdateEvent(paymentUpdated);
 
         return paymentUpdated;
     }
@@ -57,29 +58,11 @@ public class PaymentService {
                 .orElseThrow(() -> new RecordNotFoundException(id));
         paymentRepository.delete(payment);
 
-//        messageBrokerService.sendDeleteEvent(payment);
+        messageBrokerService.sendDeleteEvent(payment);
     }
 
     public List<Payment> list() {
         return paymentRepository.findAll();
     }
 
-//    @KafkaListener(topics = "${kafka.topic.addProductToOrder}", groupId = KafkaConsumerConfig.GROUP)
-//    public void addProductToOrderListener(String message) throws IOException, RecordNotFoundException {
-//        log.info("AddProductToOrderEvent received: {}", message);
-//
-//        AddProductToOrderEvent event = toObject(message, AddProductToOrderEvent.class);
-//
-//        Product product = paymentRepository.findById(event.getProductId())
-//                .orElseThrow(() -> new RecordNotFoundException(event.getProductId()));
-//        int stock = Optional.ofNullable(product.getAttributes())
-//                .map(m -> m.get("stock"))
-//                .map(Integer::parseInt)
-//                .orElse(0);
-//
-//        product.setAttribute("stock", String.valueOf(stock-event.getQuantity()));
-//
-//        Product productUpdated = paymentRepository.save(product);
-//        messageBrokerService.sendUpdateEvent(productUpdated);
-//    }
 }

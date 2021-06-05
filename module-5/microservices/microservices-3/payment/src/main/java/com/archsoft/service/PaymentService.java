@@ -33,7 +33,7 @@ public class PaymentService {
 
         // Here it communicates with some real CreditCard service
 
-        messageBrokerService.sendInsertEvent(payment);
+        messageBrokerService.sendInsertEvent(paymentInserted);
 
         return paymentInserted;
     }

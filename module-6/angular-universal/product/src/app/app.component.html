@@ -1,0 +1,10 @@
+<h1>CRUD Product</h1>
+<h3 *ngIf="currentUser">
+  User: {{ currentUser.username }} |
+  <button class="ui button secondary" (click)="logout()" *ngIf="currentUser">Logout</button>
+</h3>
+
+<app-loading></app-loading>
+<app-confirm></app-confirm>
+<app-message></app-message>
+<router-outlet></router-outlet>

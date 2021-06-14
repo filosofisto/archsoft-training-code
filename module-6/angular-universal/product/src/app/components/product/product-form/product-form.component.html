@@ -1,0 +1,37 @@
+<div class="ui raised segment">
+  <h2 class="ui header">{{ editing ? 'Edit' : 'Add' }} Product</h2>
+  <form [formGroup]="formGroup" (ngSubmit)="save(formGroup.value)" class="ui form">
+    <app-input-text id="name"
+                    [control]="formGroup.controls['name']"
+                    label="Name"
+                    placeholder="Product name here"
+                    invalidMessage="Name invalid">
+    </app-input-text>
+    <app-input-text id="description"
+                    [control]="formGroup.controls['description']"
+                    label="Description"
+                    placeholder="Product description here"
+                    invalidMessage="Description invalid">
+    </app-input-text>
+    <app-input-mask id="price"
+                    [control]="formGroup.controls['price']"
+                    label="Price"
+                    placeholder="Product price here"
+                    invalidMessage="Price invalid"
+                    mask="99.99">
+    </app-input-mask>
+    <app-input-text id="category"
+                    [control]="formGroup.controls['category']"
+                    label="Category"
+                    placeholder="Product category here"
+                    invalidMessage="Category invalid">
+    </app-input-text>
+    <br/>
+    <button class="ui button primary" [disabled]="formGroup.invalid">
+      {{ editing ? 'Save' : 'Create' }}
+    </button> |
+    <button class="ui button" (click)="clear()">
+      Clear
+    </button>
+  </form>
+</div>

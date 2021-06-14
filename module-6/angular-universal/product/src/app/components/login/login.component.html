@@ -1,0 +1,19 @@
+<div class="ui raised segment">
+  <h2 class="ui header">Login</h2>
+  <form [formGroup]="formGroup" (ngSubmit)="login(formGroup.value)" class="ui form">
+    <app-input-text id="username"
+                    [control]="formGroup.controls['username']"
+                    label="Username"
+                    placeholder="john"
+                    invalidMessage="Username invalid">
+    </app-input-text>
+    <app-input-secret id="age"
+                      [control]="formGroup.controls['password']"
+                      label="Password"
+                      placeholder="*********"
+                      invalidMessage="Password invalid">
+    </app-input-secret>
+    <br/>
+    <button class="ui button primary" [disabled]="formGroup.invalid">Login</button>
+  </form>
+</div>

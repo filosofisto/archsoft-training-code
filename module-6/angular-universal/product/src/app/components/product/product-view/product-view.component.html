@@ -1,0 +1,7 @@
+<app-product-form (onSave)="save($event)"></app-product-form>
+<br/>
+<app-product-list [products]="products"
+                 (onRemove)="remove($event)"
+                 (onEdit)="read($event)">
+</app-product-list>
+

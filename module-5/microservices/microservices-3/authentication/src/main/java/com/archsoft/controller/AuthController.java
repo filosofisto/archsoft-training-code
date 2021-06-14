@@ -23,7 +23,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin
+//@CrossOrigin
 @RestController
 public class AuthController {
 

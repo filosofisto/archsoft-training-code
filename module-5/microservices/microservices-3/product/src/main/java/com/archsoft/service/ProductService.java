@@ -6,6 +6,8 @@ import com.archsoft.exception.RecordNotFoundException;
 import com.archsoft.model.product.Product;
 import com.archsoft.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
@@ -61,6 +63,10 @@ public class ProductService {
 
     public List<Product> list() {
         return productRepository.findAll();
+    }
+
+    public Page<Product> findAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
     }
 
     public Iterable<Product> findByDescription(String description) {

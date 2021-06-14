@@ -1,9 +1,16 @@
 # Projeto Kafka-1
 
 ##Objetivo
+
 - KafkaProducer
 
 ##Instruções
+
+###Start Kafka and Zookeeper
+
+    sudo systemctl start zookeeper
+
+    sudo systemctl start kafka
 
 ###Consume Messages
 
@@ -26,4 +33,5 @@
 
 ###Kafka Service Failed
 
+    su -l kafka
     rm kafka/logs/meta.properties

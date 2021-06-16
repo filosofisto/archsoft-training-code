@@ -1,6 +1,7 @@
 package com.archsoft;
 
 public class Account {
+
     private final String name;
     private double balance;
 

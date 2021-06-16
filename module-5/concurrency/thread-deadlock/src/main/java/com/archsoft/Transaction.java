@@ -1,6 +1,9 @@
 package com.archsoft;
 
+import static java.lang.System.out;
+
 public class Transaction extends Thread {
+
     private final String id;
     private final Account from;
     private final Account to;
@@ -17,6 +20,7 @@ public class Transaction extends Thread {
     public void run() {
         // Acquire the lock of Account 'from'
         synchronized (from) {
+            out.printf("Thread %s locked from\n", Thread.currentThread().getName());
             from.withdraw(amount);
 
 //            try {
@@ -25,11 +29,15 @@ public class Transaction extends Thread {
 
             // Acquire the lock of Account 'to'
             synchronized (to) {
+                out.printf("Thread %s locked to\n", Thread.currentThread().getName());
                 to.deposit(amount);
             }
+            out.printf("Thread %s unlocked to\n", Thread.currentThread().getName());
             // Release the lock of Account 'to'
         }
+
+        out.printf("Thread %s unlocked from\n", Thread.currentThread().getName());
         // Release the lock of Account 'from'
-        System.out.println(amount + " is transfered from " + from + " to " + to);
+        out.println(amount + " is transfered from " + from + " to " + to);
     }
 }

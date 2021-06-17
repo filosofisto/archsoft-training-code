@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    border:1px solid black;
+}
+
+bd-example-row-flex-cols .row {
+    min-height:10rem;background-color:rgba(255,0,0,0.1)
+}

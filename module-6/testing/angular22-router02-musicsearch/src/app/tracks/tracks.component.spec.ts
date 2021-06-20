@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TracksComponent } from './tracks.component';
+import {RouterModule} from '@angular/router';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {SpotifyService} from '../spotify.service';
 
 describe('TracksComponent', () => {
   let component: TracksComponent;
@@ -8,7 +11,11 @@ describe('TracksComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TracksComponent ]
+      declarations: [ TracksComponent ],
+      imports: [RouterModule.forRoot([]), HttpClientTestingModule],
+      providers: [
+        SpotifyService
+      ]
     })
     .compileComponents();
   });

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular22-route02-musicsearch';
+  public title = 'angular22-route02-musicsearch';
 }

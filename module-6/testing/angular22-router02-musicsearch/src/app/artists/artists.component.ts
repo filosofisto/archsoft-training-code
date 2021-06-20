@@ -27,7 +27,7 @@ export class ArtistsComponent implements OnInit {
       .subscribe((res: any) => this.renderArtist(res));
   }
 
-  back(): void {
+  public back(): void {
     this.location.back();
   }
 

@@ -65,12 +65,12 @@ describe('SpotifyService', () => {
   });
 
   it('retrieves using the artist ID', () => {
-    service.getTrack('ARTIST_ID').subscribe((data: any) => {
+    service.getArtist('ARTIST_ID').subscribe((data: any) => {
       expect(data).not.toBe(null);
       expect(JSON.stringify(data)).toEqual(JSON.stringify(mockArtist));
     });
 
-    const req = httpMock.expectOne('https://api.spotify.com/v1/artist/ARTIST_ID');
+    const req = httpMock.expectOne('https://api.spotify.com/v1/artists/ARTIST_ID');
 
     req.flush(mockArtist);
   });

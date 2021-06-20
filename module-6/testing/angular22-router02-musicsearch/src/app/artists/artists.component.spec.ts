@@ -1,23 +1,14 @@
-import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ArtistsComponent} from './artists.component';
-import {Router} from '@angular/router';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {SpotifyService} from '../spotify.service';
-import {AppComponent} from '../app.component';
-import {Location} from '@angular/common';
 import {RouterTestingModule} from '@angular/router/testing';
 import {routes} from '../app-routing.module';
-import {AlbumComponent} from '../album/album.component';
-import {SearchComponent} from '../search/search.component';
-import {TracksComponent} from '../tracks/tracks.component';
 
 describe('ArtistsComponent', () => {
   let component: ArtistsComponent;
   let fixture: ComponentFixture<ArtistsComponent>;
-  // let location: Location;
-  // let router: Router;
-  // let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -27,12 +18,6 @@ describe('ArtistsComponent', () => {
         SpotifyService
       ]
     }).compileComponents();
-  //
-  //   router = TestBed.inject(Router);
-  //   location = TestBed.inject(Location);
-  //   fixture = TestBed.createComponent(AppComponent);
-  //   router.initialNavigation();
-  //   httpMock = TestBed.inject(HttpTestingController);
   });
 
   beforeEach(() => {

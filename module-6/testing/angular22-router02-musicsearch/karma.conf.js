@@ -27,6 +27,11 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    browserConsoleLogOptions: {
+      level: 'log',
+      format: '%b %T: %m',
+      terminal: true
+    },
   });
 };

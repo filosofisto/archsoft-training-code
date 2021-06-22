@@ -12,6 +12,8 @@ for d in */ ; do
     fi
 
     cd ..
+    echo "Clearing npm cache..."
+    npm cache clean --force
 done
 
 

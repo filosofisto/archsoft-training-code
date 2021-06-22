@@ -8,6 +8,12 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
+// fix localStorage missing
+import 'localstorage-polyfill';
+global['localStorage'] = localStorage;
+// rebuild with => npm run build:ssr
+// run with     => npm run serve:ssr
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();

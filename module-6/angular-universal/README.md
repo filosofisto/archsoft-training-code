@@ -6,7 +6,7 @@
 
 Commands:
 
-	new new helloSSR
+	ng new helloSSR
 	cd helloSSR
 	ng add @nguniversal/express-engine
 	npm run dev:ssr
@@ -27,7 +27,36 @@ Generate bundle:
 - Works even with JavaScript disabled
 - routerLink works!
 - Browser events does not works!
-- 
+
+## product
+
+	ng new product
+	cd product
+	ng add @nguniversal/express-engine
+
+## Error
+
+Fix issue: Error: Uncaught (in promise): ReferenceError: localStorage is not defined
+
+	npm install localstorage-polyfill
+
+Add below code to server.ts
+
+	import 'localstorage-polyfill';
+	global['localStorage'] = localStorage;
+
+Rebuild 
+
+	npm run build:ssr
+
+Run
+
+	npm run serve:ssr
+
+	
+
+
+
 
 
 

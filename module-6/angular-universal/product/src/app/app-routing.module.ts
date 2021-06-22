@@ -15,7 +15,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabled'
-  }), FormsModule, HttpClientModule],
+}), FormsModule, HttpClientModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

@@ -37,7 +37,7 @@ export class ProductFormComponent implements OnInit {
       this.formGroup.setValue({id: product.id, name: product.name, description: product.description, price: product.price, category: product.category});
       this.editing = true;
 
-      // SEO Optimization
+      // SEO
       this.title.setTitle(this.product.name);
       this.meta.addTag({name: 'description', content: this.product.description});
 

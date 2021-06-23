@@ -41,7 +41,7 @@ describe('SearchComponent', () => {
     component.results = [
       {
         id: 1,
-        name: 'Matallica',
+        name: 'Metallica',
         album: {
           id: 1,
           images: [

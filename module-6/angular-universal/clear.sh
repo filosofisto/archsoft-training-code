@@ -13,7 +13,7 @@ for d in */ ; do
 
     cd ..
     echo "Clearing npm cache..."
-    npm cache clean --force
 done
 
+npm cache clean --force
 

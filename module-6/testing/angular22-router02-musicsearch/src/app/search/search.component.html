@@ -1,11 +1,11 @@
 <h1>Search</h1>
 <p>
   <input type="text" #newquery [value]="query" (keydown.enter)="submit(newquery.value)">
-  <button (click)="submit(newquery.value)">Search</button>
+  <button id="searchButton" (click)="submit(newquery.value)">Search</button>
 </p>
 
 <div *ngIf="results">
-  <div *ngIf="!results.length" class="test">
+  <div id="empty_result" *ngIf="!results.length" class="test">
     No tracks were found with the term '{{ query }}'
   </div>
   <div *ngIf="results.length">
@@ -17,16 +17,16 @@
             <img src="{{ t.album.images[0].url }}" class="img-responsive">
             <div class="caption">
               <h3>
-                <a [routerLink]="['/artists', t.artists[0].id]">{{ t.artists[0].name }}</a>
+                <a id="artist_{{t.artists[0].id}}" [routerLink]="['/artists', t.artists[0].id]">{{ t.artists[0].name }}</a>
               </h3>
               <br/>
               <p>
-                <a [routerLink]="['/tracks', t.id]">{{ t.name }}</a>
+                <a id="track_{{t.id}}" [routerLink]="['/tracks', t.id]">{{ t.name }}</a>
               </p>
             </div>
             <div class="attibution">
               <h4>
-                <a [routerLink]="['/albums', t.album.id]">{{ t.album.id }}</a>
+                <a id="album_{{t.album.id}}"[routerLink]="['/albums', t.album.id]">{{ t.album.id }}</a>
               </h4>
             </div>
           </div>

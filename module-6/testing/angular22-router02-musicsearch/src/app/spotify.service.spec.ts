@@ -18,6 +18,10 @@ export const mockArtist = {
   name: 'Metallica'
 };
 
+export const mockAlbum = {
+  name: 'XXXX'
+};
+
 describe('SpotifyService', () => {
   let service: SpotifyService;
   let httpMock: HttpTestingController;
@@ -75,8 +79,16 @@ describe('SpotifyService', () => {
     req.flush(mockArtist);
   });
 
-  // TODO: getAlbum
-  // TODO: Refactor
+  it('retrieves using the album ID', () => {
+    service.getArtist('ALBUM_ID').subscribe((data: any) => {
+      expect(data).not.toBe(null);
+      expect(JSON.stringify(data)).toEqual(JSON.stringify(mockAlbum));
+    });
+
+    const req = httpMock.expectOne('https://api.spotify.com/v1/artists/ALBUM_ID');
+
+    req.flush(mockAlbum);
+  });
 });
 
 

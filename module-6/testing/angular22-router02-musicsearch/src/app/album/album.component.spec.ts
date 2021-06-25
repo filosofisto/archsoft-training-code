@@ -29,4 +29,16 @@ describe('AlbumComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('check album rendered', () => {
+    component.album = {
+      name: 'Nothing Else Matters',
+      artists: [
+
+      ]
+    };
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toBe('Nothing Else Matters');
+  });
 });

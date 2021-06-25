@@ -1,8 +1,8 @@
 <div *ngIf="album">
   <h1>{{ album.name }}</h1>
-  <h2>{{ album.artists[0].name }}</h2>
+  <h2 *ngIf="album.artists && album.artists.length > 0">{{ album.artists[0].name }}</h2>
 
-  <p>
+  <!--<p>
     <img src="{{ album.images[1].url }}">
   </p>
 
@@ -13,7 +13,7 @@
         {{ t.name }}
       </a>
     </li>
-  </ol>
+  </ol>-->
 
   <p><a href (click)="back()">Back</a></p>
 </div>

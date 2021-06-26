@@ -2,18 +2,20 @@
   <h1>{{ album.name }}</h1>
   <h2 *ngIf="album.artists && album.artists.length > 0">{{ album.artists[0].name }}</h2>
 
-  <!--<p>
+  <p *ngIf="album.images && album.images.length > 1">
     <img src="{{ album.images[1].url }}">
   </p>
 
-  <h3>Tracks</h3>
-  <ol>
-    <li *ngFor="let t of album.tracks.items">
-      <a [routerLink]="['/tracks', t.id]">
-        {{ t.name }}
-      </a>
-    </li>
-  </ol>-->
+  <div *ngIf="album.tracks && album.tracks.length > 0">
+    <h3>Tracks</h3>
+    <ol>
+      <li *ngFor="let t of album.tracks.items">
+        <a id="track_link_{{t.id}}" [routerLink]="['/tracks', t.id]">
+          {{ t.name }}
+        </a>
+      </li>
+    </ol>
+  </div>
 
   <p><a href (click)="back()">Back</a></p>
 </div>

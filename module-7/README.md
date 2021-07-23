@@ -64,9 +64,7 @@ Add alias for microk8s kubectl (optional)
 ### View kubectl config
 
     microk8s kubectl config view
-    mkctl config view
 
 See the current context (Context bring together cluster and users under a friendle name)
 
     microk8s kubectl config current-context
-    mkctl config current-context

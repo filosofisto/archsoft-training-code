@@ -34,7 +34,7 @@ for this one
 
 Update
 
-    microk8s kubectl -f deploy.yml --record
+    microk8s kubectl apply -f deploy.yml --record
 
 Monitor rollout
 
@@ -53,7 +53,7 @@ Verify
     microk8s kubectl get rs
     microk8s kubectl describe rs
 
-Rollback Operation
+## Rollback Operation
 
     microk8s kubectl rollout undo deployment hello-deploy --to-revision=2
 

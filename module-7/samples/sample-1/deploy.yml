@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular06-inventory-deploy
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: angular06-inventory
+  minReadySeconds: 5   # Wait 5 secs between each Pod being update
+  strategy:
+    type: RollingUpdate # Type of update strategy
+    rollingUpdate:
+      maxUnavailable: 1 # Never have more than 1 Pod below desired state (never < 4)
+      maxSurge: 1       # Never have more than 1 Pod above desired state (never > 6) : Net result (6-4 = 2 Pods at time)
+  template:
+    metadata:
+      labels:
+        app: angular06-inventory
+    spec:
+      containers:
+      - name: angular06-inventory-pod
+        image: filosofisto/angular06-inventory:1.0.0
+        ports:
+        - containerPort: 8080      

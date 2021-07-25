@@ -8,10 +8,12 @@
 
     sudo docker push filosofisto/spring-5:1.0.0
 
-## K8s Deploy Deployment
+## K8s Deploy Deployment and Service
 
     microk8s kubectl apply -f deploy.yml
 
-## K8s Deploy Service
+## Delete
 
-    microk8s kubectl apply -f svc.yml
+    microk8s kubectl delete service spring-5-service
+
+    microk8s kubectl delete deploy spring-5-deploy

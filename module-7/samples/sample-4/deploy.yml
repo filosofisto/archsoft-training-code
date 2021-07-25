@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-10-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-10
+  minReadySeconds: 5   # Wait 5 secs between each Pod being update
+  strategy:
+    type: RollingUpdate # Type of update strategy
+    rollingUpdate:
+      maxUnavailable: 1 # Never have more than 1 Pod below desired state (never < 4)
+      maxSurge: 1       # Never have more than 1 Pod above desired state (never > 6) : Net result (6-4 = 2 Pods at time)
+  template:
+    metadata:
+      labels:
+        app: spring-10
+    spec:
+      containers:
+      - name: spring-10-pod
+        image: filosofisto/spring-10:1.0.0
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-10-service
+  labels:
+    app: spring-10
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 31001
+    protocol: TCP
+  selector:
+    app: spring-10 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular31-spring10-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: angular31-spring10
+  minReadySeconds: 5   # Wait 5 secs between each Pod being update
+  strategy:
+    type: RollingUpdate # Type of update strategy
+    rollingUpdate:
+      maxUnavailable: 1 # Never have more than 1 Pod below desired state (never < 4)
+      maxSurge: 1       # Never have more than 1 Pod above desired state (never > 6) : Net result (6-4 = 2 Pods at time)
+  template:
+    metadata:
+      labels:
+        app: angular31-spring10
+    spec:
+      containers:
+      - name: angular31-spring10-pod
+        image: filosofisto/angular31-spring10:1.0.
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular31-spring10-service
+  labels:
+    app: angular31-spring10
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 30001
+    protocol: TCP
+  selector:
+    app: angular31-spring10  

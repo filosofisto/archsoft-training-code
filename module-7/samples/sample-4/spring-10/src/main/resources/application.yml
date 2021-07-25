@@ -1,0 +1,22 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  datasource:
+    hikari:
+      connectionTimeout: 10000
+      maximumPoolSize: 5
+    # url: jdbc:postgresql://localhost:5432/postgres
+    # username: postgres
+    # password: socrates
+    url: jdbc:postgresql://postgres-service.default:5432/postgres
+    username: postgresadmin
+    password: admin123
+
+security:
+  jwt:
+    token:
+      secret-key: asoiuiey8723389uiajnmc*&%^^#$^&*092183797hj
+      expire-length: 360000

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-5-deploy
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: spring-5
+  minReadySeconds: 5   # Wait 5 secs between each Pod being update
+  strategy:
+    type: RollingUpdate # Type of update strategy
+    rollingUpdate:
+      maxUnavailable: 1 # Never have more than 1 Pod below desired state (never < 4)
+      maxSurge: 1       # Never have more than 1 Pod above desired state (never > 6) : Net result (6-4 = 2 Pods at time)
+  template:
+    metadata:
+      labels:
+        app: spring-5
+    spec:
+      containers:
+      - name: spring-5-pod
+        image: filosofisto/spring-5:1.0.1
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-5-service
+  labels:
+    app: spring-5
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 31080
+    protocol: TCP
+  selector:
+    app: spring-5   

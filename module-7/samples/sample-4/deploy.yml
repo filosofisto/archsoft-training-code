@@ -61,7 +61,7 @@ spec:
     spec:
       containers:
       - name: angular31-spring10-pod
-        image: filosofisto/angular31-spring10:1.0.
+        image: filosofisto/angular31-spring10:1.0.0
         ports:
         - containerPort: 80
 ---

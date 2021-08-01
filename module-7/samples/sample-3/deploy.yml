@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: spring-5-deploy
 spec:
-  replicas: 5
+  replicas: 2
   selector:
     matchLabels:
       app: spring-5

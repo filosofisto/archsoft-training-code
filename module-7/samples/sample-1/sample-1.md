@@ -23,3 +23,7 @@
 ## K8s Deploy Service
 
     microk8s kubectl apply -f svc.yml
+
+## Access the application
+
+    http://localhost:30001

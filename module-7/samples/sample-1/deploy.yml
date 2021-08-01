@@ -22,4 +22,4 @@ spec:
       - name: angular06-inventory-pod
         image: filosofisto/angular06-inventory:1.0.0
         ports:
-        - containerPort: 8080      
+        - containerPort: 80      

@@ -23,6 +23,17 @@ spec:
         image: filosofisto/spring-5:1.0.1
         ports:
         - containerPort: 8080
+        env:
+          - name: datasource.username
+            valueFrom:
+              secretKeyRef:
+                name: database-credential
+                key: dbuser
+          - name: datasource.password
+            valueFrom:
+              secretKeyRef:
+                name: database-credential
+                key: dbpassword
 ---
 apiVersion: v1
 kind: Service
@@ -37,4 +48,4 @@ spec:
     nodePort: 31080
     protocol: TCP
   selector:
-    app: spring-5   
+    app: spring-5

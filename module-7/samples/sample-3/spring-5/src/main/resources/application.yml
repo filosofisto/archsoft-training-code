@@ -11,5 +11,5 @@ spring:
       maximumPoolSize: 5
     #url: jdbc:postgresql://localhost:31070/postgres
     url: jdbc:postgresql://postgres-service.default:5432/postgres
-    username: postgresadmin
-    password: admin123
+#    username: postgresadmin
+#    password: admin123

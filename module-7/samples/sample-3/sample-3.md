@@ -8,6 +8,10 @@
 
     sudo docker push filosofisto/spring-5:1.0.0
 
+## Create Secret
+
+    microk8s kubectl create secret generic database-credential --from-literal=dbuser=postgresadmin --from-literal=dbpassword=admin123
+
 ## K8s Deploy Deployment and Service
 
     microk8s kubectl apply -f deploy.yml

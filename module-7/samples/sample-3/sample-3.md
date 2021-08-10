@@ -10,7 +10,32 @@
 
 ## Create Secret
 
+### Manually Creation
+
     microk8s kubectl create secret generic database-credential --from-literal=dbuser=postgresadmin --from-literal=dbpassword=admin123
+
+### Config Creation
+
+    echo -n postgresadmin | base64
+
+    echo -n admin123 | base64
+
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: database-credential
+    type: Opaque
+    data:
+      dbuser: cG9zdGdyZXNhZG1pbg==
+      dbpassword: YWRtaW4xMjM=
+
+### TLS public/private key pair
+
+    kubectl create secret tls <secret-object-name> --cert=<cert-path> --key=<key-file-path>
+
+### Creation From File
+
+    kubectl create secret generic sample-db-secret --from-file=username.txt --from-file=password.txt
 
 ## K8s Deploy Deployment and Service
 
@@ -21,3 +46,4 @@
     microk8s kubectl delete service spring-5-service
 
     microk8s kubectl delete deploy spring-5-deploy
+

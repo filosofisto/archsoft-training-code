@@ -61,3 +61,11 @@ Verify
 
     microk8s kubectl delete -f deploy.yml
     microk8s kubectl delete -f svc.yml
+
+## Scale Replicas
+
+    microk8s kubectl scale --replicas=<number of replicas> deployment/<deploy name>
+
+Ex: Stop all pods from a deploy
+
+    microk8s kubectl scale --replicas=0 deployment/spring-5-deploy

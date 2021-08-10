@@ -36,6 +36,15 @@ spec:
                 key: dbpassword
 ---
 apiVersion: v1
+kind: Secret
+metadata:
+  name: database-credential
+type: Opaque
+data:
+  dbuser: cG9zdGdyZXNhZG1pbg==
+  dbpassword: YWRtaW4xMjM=
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: spring-5-service

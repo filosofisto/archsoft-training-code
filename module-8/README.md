@@ -1,6 +1,6 @@
 # Instructions
 
-## Flutter Instalation
+## Flutter Installation
 
 Installation (Windows): https://flutter.dev/docs/get-started/install/windows
 

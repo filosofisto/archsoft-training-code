@@ -79,3 +79,5 @@ Copy & Past below code to dartpad
 - i_am_rich
 - personal_card | personal_card2
 - dicee
+- magic_8_ball
+- xylophone

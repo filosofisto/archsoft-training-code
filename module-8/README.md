@@ -77,7 +77,7 @@ Copy & Past below code to dartpad
 - first_material
 - first_scaffold
 - i_am_rich
-- personal_card | personal_card2
+- personal_card
 - dicee
 - magic_8_ball
 - xylophone

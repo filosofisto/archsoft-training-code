@@ -46,21 +46,12 @@ class HomeUI extends StatelessWidget {
     return Card(
       margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
       color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Row(
-          children: <Widget>[
-            Icon(iconData, color: Colors.teal.shade500),
-            SizedBox(
-              width: 10.0,
-            ),
-            Text(
-              text,
-              style: TextStyle(fontSize: 20.0),
-            )
-          ],
-        ),
-      ),
+      child: ListTile(
+          leading: Icon(iconData, color: Colors.teal.shade500),
+          title: Text(
+            text,
+            style: TextStyle(fontSize: 20.0),
+          )),
     );
   }
 }

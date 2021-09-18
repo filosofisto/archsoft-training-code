@@ -81,4 +81,4 @@ Copy & Past below code to dartpad
 - [ok] dicee
 - [ok] magic_8_ball
 - xylophone
-- quizzer
+- quizzer and quizzer_alert

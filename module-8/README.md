@@ -72,12 +72,13 @@ Copy & Past below code to dartpad
 
 ## Projects
 
-- first_from_console
-- first_flutter_app
-- first_material
-- first_scaffold
-- i_am_rich
-- personal_card
-- dicee
-- magic_8_ball
+- [ok] first_from_console
+- [ok] first_flutter_app
+- [ok] first_material
+- [ok] first_scaffold
+- [ok] i_am_rich
+- [ok] personal_card
+- [ok] dicee
+- [ok] magic_8_ball
 - xylophone
+- quizzer

@@ -80,6 +80,7 @@ Copy & Past below code to dartpad
 - [ok] personal_card
 - [ok] dicee
 - [ok] magic_8_ball
+- first_bottom_navigator
 - xylophone
 - quizzer and quizzer_alert
 - bank

@@ -82,3 +82,4 @@ Copy & Past below code to dartpad
 - [ok] magic_8_ball
 - xylophone
 - quizzer and quizzer_alert
+- bank

@@ -83,4 +83,5 @@ Copy & Past below code to dartpad
 - first_bottom_navigator
 - xylophone
 - quizzer and quizzer_alert
+- tip_calculator
 - bank

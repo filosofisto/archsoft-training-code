@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:xylophone/components/buttons.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -22,62 +23,13 @@ class XylophonePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            Expanded(
-              child: Container(
-                color: Colors.red,
-                child: InkWell(
-                  onTap: () => _playSound(1),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.blue,
-                child: InkWell(
-                  onTap: () => _playSound(2),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.yellow,
-                child: InkWell(
-                  onTap: () => _playSound(3),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.green,
-                child: InkWell(
-                  onTap: () => _playSound(4),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.orange,
-                child: InkWell(
-                  onTap: () => _playSound(5),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.teal,
-                child: InkWell(
-                  onTap: () => _playSound(6),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.grey,
-                child: InkWell(
-                  onTap: () => _playSound(7),
-                ),
-              ),
-            )
+            ExpandedButton(color: Colors.red, onTap: () => _playSound(1)),
+            ExpandedButton(color: Colors.blue, onTap: () => _playSound(2)),
+            ExpandedButton(color: Colors.yellow, onTap: () => _playSound(3)),
+            ExpandedButton(color: Colors.green, onTap: () => _playSound(4)),
+            ExpandedButton(color: Colors.orange, onTap: () => _playSound(5)),
+            ExpandedButton(color: Colors.teal, onTap: () => _playSound(6)),
+            ExpandedButton(color: Colors.grey, onTap: () => _playSound(7)),
           ],
         ),
       ),

@@ -81,9 +81,10 @@ Copy & Past below code to dartpad
 - [ok] dicee
 - [ok] magic_8_ball
 - [ok] first_bottom_navigator
-- xylophone
+- [ok] xylophone
 - quizzer and quizzer_alert
 - tip_calculator
 - bank
 - simple_http
 - simple_http_podo
+- byte_bank

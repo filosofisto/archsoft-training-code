@@ -82,9 +82,9 @@ Copy & Past below code to dartpad
 - [ok] magic_8_ball
 - [ok] first_bottom_navigator
 - [ok] xylophone
-- quizzer and quizzer_alert
-- tip_calculator
-- bank
-- simple_http
+- [ok] quizzer and quizzer_alert
+- [ok] tip_calculator
+- [ok] simple_http
 - simple_http_podo
+- bank
 - byte_bank

@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
+import 'package:simple_http_podo/model/post.dart';
 
 class Network {
 
@@ -9,13 +10,13 @@ class Network {
 
   Network(this.url);
 
-  Future fetchData() async {
+  Future<PostList> fetchData() async {
     Response response = await get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      return json.decode(response.body);
+      return PostList.fromJson(json.decode(response.body));
     } else {
-      print(response.statusCode);
+      throw Exception('Fail to get posts');
     }
   }
 }

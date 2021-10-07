@@ -85,6 +85,6 @@ Copy & Past below code to dartpad
 - [ok] quizzer and quizzer_alert
 - [ok] tip_calculator
 - [ok] simple_http
-- simple_http_podo
-- bank
+- [ok] simple_http_podo
+- [ok] bank
 - byte_bank
